@@ -5,7 +5,8 @@
     "coe_p = the same number read off Craft of Exile. null until filled in. Milestone 2 passes when |poc_p - coe_p| / coe_p <= 0.05 for every scenario.",
     "Tiers are 1 = best, counted over the mods that can roll on that base at that ilvl. Essence-forced mods get a value-based tier (see engine.mjs buildPool).",
     "Groups are RePoE mod group ids. Sides: prefix | suffix. A kOf pick means any k of the options.",
-    "All scenarios start from a fresh base of the stated ilvl, no influence, no fractured/crafted mods."
+    "All scenarios start from a fresh base of the stated ilvl, no influence, no fractured/crafted mods.",
+    "coe_p read from craftofexile.com (3.29 data) on 05/09/2026 via the Calculator. amethyst is derived by inclusion-exclusion: P(fire AND cold)=0.176%, same for the other pairs by symmetry, P(all three)=0.003565%, so P(>=2 of 3)=3*0.1761-2*0.003565=0.521%. titan-zeal-life2 was also run through CoE's Simulator (300,000 essences): 7.321% +-0.093; the Calculator is an approximation for essences, the Simulator is the emulation, and our engine agrees with the Simulator within noise."
   ],
   "league": "Allflame",
   "scenarios": [
@@ -18,7 +19,7 @@
         { "group": "FireResistance", "side": "suffix", "minTier": 2 }
       ],
       "coe_setup": "Astral Plate ilvl 86, Chaos Orb. Target: maximum Life T1 or T2 (+160 or better) AND Fire Resistance T1 or T2 (+42% or better).",
-      "coe_p": null
+      "coe_p": 0.00631
     },
     {
       "id": "astral-alch-life2-fire2",
@@ -29,7 +30,7 @@
         { "group": "FireResistance", "side": "suffix", "minTier": 2 }
       ],
       "coe_setup": "Same as above with Orb of Alchemy. Sanity check: p must equal the chaos scenario.",
-      "coe_p": null
+      "coe_p": 0.00631
     },
     {
       "id": "astral-greed-life2-fire2",
@@ -40,7 +41,7 @@
         { "group": "FireResistance", "side": "suffix", "minTier": 2 }
       ],
       "coe_setup": "Astral Plate ilvl 86, Deafening Essence of Greed (forces +160-174 Life). Target: Fire Resistance T1 or T2.",
-      "coe_p": null
+      "coe_p": 0.07575
     },
     {
       "id": "astral-anger-life2-fire2",
@@ -51,7 +52,7 @@
         { "group": "FireResistance", "side": "suffix", "minTier": 2 }
       ],
       "coe_setup": "Astral Plate ilvl 86, Deafening Essence of Anger (forces +46-48% Fire Res). Target: maximum Life T1 or T2.",
-      "coe_p": null
+      "coe_p": 0.07513
     },
     {
       "id": "astral-chaos-life1",
@@ -61,7 +62,7 @@
         { "group": "IncreasedLife", "side": "prefix", "minTier": 1 }
       ],
       "coe_setup": "Astral Plate ilvl 86, Chaos Orb. Target: maximum Life T1 (+175-189) only.",
-      "coe_p": null
+      "coe_p": 0.04002
     },
     {
       "id": "titan-chaos-ms2-life2",
@@ -72,7 +73,7 @@
         { "group": "IncreasedLife", "side": "prefix", "minTier": 2 }
       ],
       "coe_setup": "Titan Greaves ilvl 86, Chaos Orb. Target: Movement Speed T1 or T2 (30% or 35%) AND maximum Life T1 or T2.",
-      "coe_p": null
+      "coe_p": 0.00763
     },
     {
       "id": "titan-zeal-life2",
@@ -82,7 +83,7 @@
         { "group": "IncreasedLife", "side": "prefix", "minTier": 2 }
       ],
       "coe_setup": "Titan Greaves ilvl 86, Deafening Essence of Zeal (forces 32% Movement Speed, a prefix). Target: maximum Life T1 or T2.",
-      "coe_p": null
+      "coe_p": 0.07187
     },
     {
       "id": "vaal-axe-chaos-phys2",
@@ -93,7 +94,7 @@
         { "group": "LocalPhysicalDamagePercent", "side": "prefix", "minTier": 2 }
       ],
       "coe_setup": "Vaal Axe ilvl 86, Chaos Orb. Target: increased Physical Damage (pure, not the hybrid with accuracy) T1 or T2. Low p: 2M rolls.",
-      "coe_p": null
+      "coe_p": 0.00329
     },
     {
       "id": "vaal-axe-zeal-phys2",
@@ -104,7 +105,7 @@
         { "group": "LocalPhysicalDamagePercent", "side": "prefix", "minTier": 2 }
       ],
       "coe_setup": "Vaal Axe ilvl 86, Deafening Essence of Zeal (forces 28-30% Attack Speed, a suffix). Target: increased Physical Damage (pure) T1 or T2. Low p: 2M rolls.",
-      "coe_p": null
+      "coe_p": 0.00305
     },
     {
       "id": "amethyst-chaos-2of3res2",
@@ -118,7 +119,7 @@
         ] }
       ],
       "coe_setup": "Amethyst Ring ilvl 86, Chaos Orb. Target: any two of Fire/Cold/Lightning Resistance at T1 or T2. Use CoE's 'any N of' target group if available, otherwise sum the three pair cases (minus the triple counted twice).",
-      "coe_p": null
+      "coe_p": 0.00521
     }
   ]
 }

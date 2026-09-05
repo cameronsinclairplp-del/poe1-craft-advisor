@@ -1,6 +1,7 @@
 # source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/10039 (item 2 of 12 in that post)
 # posted: 28/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: Simplex Amulet: implicit allows 1 prefix / 2 suffixes; Shaper + Elder, Mirrored, Split, an item-quantity suffix no base can roll
+# expect-warning: suffix "of Amassment" is ItemFoundQuantityIncrease4 (item domain): on the item, occupies its slot, but no v1 action can roll it
 Item Class: Amulets
 Rarity: Rare
 Grim Collar

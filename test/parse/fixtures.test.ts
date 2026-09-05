@@ -1,8 +1,10 @@
 // Milestone 3 check (BRIEF.md §7.3): every real Ctrl+Alt+C paste in test/fixtures/items parses to
 // the right base, item level, mods and tiers. Two layers:
 //   1. invariants for every fixture, including ones dropped in later: it parses (or throws exactly
-//      the error its "# expect-error:" line names), every pool mod with an in-game tier passed the
-//      cross-check (a mismatch would have thrown), slots are consistent;
+//      the error its "# expect-error:" line names), every pool mod with an in-game tier either
+//      passed the cross-check or carries a "mismatch" that the fixture declares, every warning the
+//      parser raised is declared by a "# expect-warning:" line (so a new paste's findings surface
+//      as a failing test quoting the warning), slots are consistent;
 //   2. an expectation table for the fixtures we know, checked field by field.
 // A summary table is printed at the end, parity-style.
 
@@ -48,9 +50,112 @@ interface Expectation {
   slots?: { maxPrefixes: number; maxSuffixes: number; openPrefixes: number; openSuffixes: number };
   metamods?: Metamod[];
   mods?: ModExpectation[];
+  /** Number of warnings on the parsed item (their text is declared in the fixture's "# expect-warning:" lines). */
+  warnings?: number;
 }
 
 const EXPECT: Record<string, Expectation> = {
+  // Cameron's own items (3.29, 05/09/2026): the first pastes with in-game tier numbers for
+  // multi-type groups, and the reason the tier ladders are keyed per (group, side, type).
+  "rare-staff-crafted-rank-gem-level": {
+    itemClass: "Staff",
+    baseId: "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff18",
+    baseName: "Imperial Staff",
+    rarity: "rare",
+    ilvl: 87,
+    name: "Woe Bane",
+    implicits: 1,
+    enchants: 2,
+    slots: { maxPrefixes: 3, maxSuffixes: 3, openPrefixes: 0, openSuffixes: 0 },
+    metamods: [],
+    warnings: 0,
+    mods: [
+      // T5 on the old (group, side) ladder, behind the fire/cold/lightning/chaos families at the same level; T1 per type, as the game says.
+      { side: "prefix", name: "Stone Singer's", kind: "pool", modId: "GlobalPhysicalSpellGemsLevelTwoHand3", tier: 1, ourTier: 1, tierCheck: "ok" },
+      { side: "prefix", name: "Archon's", kind: "pool", modId: "GlobalSpellGemsLevelTwoHand2", tier: 1, ourTier: 1, tierCheck: "ok" },
+      { side: "prefix", name: "Runic", kind: "pool", modId: "SpellDamageOnTwoHandWeapon8", tier: 1, ourTier: 1, tierCheck: "ok" },
+      { side: "suffix", name: "of Destruction", kind: "pool", modId: "LocalCriticalMultiplier6", tier: 1, ourTier: 1, tierCheck: "ok" },
+      { side: "suffix", name: "of Finesse", kind: "pool", modId: "IncreasedCastSpeedTwoHand7", tier: 1, ourTier: 1, tierCheck: "ok" },
+      // "(Rank: 2)" on the bench craft equals the bench option's bench_tier (VERIFY 14, second data point).
+      { side: "suffix", name: "of Craft", kind: "crafted", modId: "EinharMasterCriticalStrikeChanceSpells2h2_", tier: null, rank: 2, crafted: true, tierCheck: "no-ladder" },
+    ],
+  },
+  "rare-body-armour-fractured-delve-eldritch-heist-enchant": {
+    itemClass: "Body Armour",
+    baseId: "Metadata/Items/Armours/BodyArmours/BodyInt20",
+    baseName: "Twilight Regalia",
+    rarity: "rare",
+    ilvl: 88,
+    name: "Apocalypse Coat",
+    influences: ["searing-exarch", "eater-of-worlds"],
+    fracturedItem: true,
+    implicits: 0,
+    eldritchImplicits: 2,
+    enchants: 1,
+    slots: { maxPrefixes: 3, maxSuffixes: 3, openPrefixes: 0, openSuffixes: 0 },
+    metamods: [],
+    warnings: 1,
+    mods: [
+      { side: "prefix", name: "Unfaltering", kind: "pool", modId: "LocalIncreasedEnergyShieldPercent8", tier: 1, ourTier: 1, tierCheck: "ok" },
+      // T4 on the old shared BaseLocalDefencesAndLife ladder; T2 of its own hybrid ES + mana family, as the game says.
+      { side: "prefix", name: "Priest's", kind: "pool", modId: "LocalBaseEnergyShieldAndMana3", tier: 2, ourTier: 2, tierCheck: "ok" },
+      { side: "prefix", name: "Resplendent", kind: "pool", modId: "LocalIncreasedEnergyShield11", tier: 1, ourTier: 1, tierCheck: "ok" },
+      // Delve (fossil-only) mod: in no class file, resolved from other_mods; the game prints a tier on it, the engine has no ladder.
+      { side: "suffix", name: "of the Underground", kind: "other", modId: "DelveDexterityGemLevel1", domain: "delve", tier: 1, ourTier: null, tierCheck: "no-ladder", fractured: true },
+      // Unveiled mod printed with a tier (VERIFY 15): recorded, not checked.
+      { side: "suffix", name: "of the Order", kind: "unveiled", modId: "JunMasterVeiledColdAndChaosDamageResistance", tier: 1, ourTier: null, tierCheck: "no-ladder" },
+      { side: "suffix", name: "of Craft", kind: "crafted", modId: "JunMaster2StrengthAndIntelligence3", tier: null, rank: null, crafted: true },
+    ],
+  },
+  "magic-body-armour-prefix-suffix": {
+    itemClass: "Body Armour",
+    baseId: "Metadata/Items/Armours/BodyArmours/BodyStr18",
+    baseName: "Titan Plate",
+    rarity: "magic",
+    ilvl: 85,
+    name: null,
+    implicits: 0,
+    slots: { maxPrefixes: 1, maxSuffixes: 1, openPrefixes: 0, openSuffixes: 0 },
+    warnings: 0,
+    mods: [
+      { side: "prefix", name: "Vigorous", kind: "pool", modId: "IncreasedLife10", tier: 3, ourTier: 3, tierCheck: "ok" },
+      { side: "suffix", name: "of Thick Skin", kind: "pool", modId: "StunRecovery1", tier: 6, ourTier: 6, tierCheck: "ok" },
+    ],
+  },
+  // Until 05/09/2026 these two threw TierMismatchError (STATUS.md VERIFY 7 and 13).
+  "magic-staff-prefix-suffix": {
+    itemClass: "Staff",
+    baseId: "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff18",
+    baseName: "Imperial Staff",
+    rarity: "magic",
+    ilvl: 85,
+    implicits: 1,
+    slots: { maxPrefixes: 1, maxSuffixes: 1, openPrefixes: 0, openSuffixes: 0 },
+    warnings: 0,
+    mods: [
+      { side: "prefix", name: "Schismatist's", kind: "pool", modId: "GlobalChaosSpellGemsLevelTwoHand3", tier: 1, ourTier: 1, tierCheck: "ok" },
+      { side: "suffix", name: "of the Titan", kind: "pool", modId: "Strength8", tier: 2, ourTier: 2, tierCheck: "ok" },
+    ],
+  },
+  "rare-amulet-corrupted-vaal-implicit": {
+    itemClass: "Amulet",
+    baseId: "Metadata/Items/Amulets/Amulet10",
+    baseName: "Citrine Amulet",
+    rarity: "rare",
+    ilvl: 80,
+    name: "Pandemonium Idol",
+    corrupted: true,
+    implicits: 1,
+    slots: { maxPrefixes: 3, maxSuffixes: 3, openPrefixes: 1, openSuffixes: 1 },
+    warnings: 1,
+    mods: [
+      { side: "prefix", name: "Burning", kind: "pool", modId: "AddedFireDamage4", tier: 6, ourTier: 6, tierCheck: "ok" },
+      // VERIFY 13, still open: the game says Tier 4, RePoE and Path of Building have five amulet spell damage tiers, so T2. One warning, no throw.
+      { side: "prefix", name: "Thaumaturgist's", kind: "pool", modId: "SpellDamage4", tier: 4, ourTier: 2, tierCheck: "mismatch" },
+      { side: "suffix", name: "of the Heavens", kind: "pool", modId: "AllAttributes5", tier: 5, ourTier: 5, tierCheck: "ok" },
+      { side: "suffix", name: "of Sleet", kind: "pool", modId: "ColdDamagePercent2", tier: 4, ourTier: 4, tierCheck: "ok" },
+    ],
+  },
   "rare-gloves-crafted-rank-eldritch": {
     itemClass: "Gloves",
     baseId: "Metadata/Items/Armours/Gloves/GlovesDexInt8",
@@ -288,10 +393,18 @@ describe("fixtures: real Ctrl+Alt+C pastes", () => {
       expect(item.base.id).toMatch(/^Metadata\//);
       for (const m of item.mods) {
         if (m.kind === "pool" && m.tier !== null && m.ourTier !== null) {
-          expect(m.tierCheck, `${m.side} ${m.name} tier cross-check`).toBe("ok");
-          expect(m.ourTier).toBe(m.tier);
+          // A mismatch is allowed only when the fixture declares its warning below.
+          expect(["ok", "mismatch"], `${m.side} ${m.name} tier cross-check`).toContain(m.tierCheck);
+          if (m.tierCheck === "ok") expect(m.ourTier).toBe(m.tier);
+          else expect(m.ourTier).not.toBe(m.tier);
         }
         if (m.kind !== "influence" && m.kind !== "unique") expect(m.modId, `${m.side} ${m.name} modId`).not.toBeNull();
+      }
+      // Every warning must be declared ("# expect-warning: <text>", one line per warning), so a
+      // new paste that warns fails here with the warning quoted instead of passing quietly.
+      expect(item.warnings, 'every warning needs a "# expect-warning:" line in the fixture').toHaveLength(fx.expectWarnings.length);
+      for (const w of fx.expectWarnings) {
+        expect(item.warnings.some((x) => x.includes(w)), `no warning contains ${JSON.stringify(w)}; got ${JSON.stringify(item.warnings)}`).toBe(true);
       }
       if (item.rarity !== "unique") {
         expect(item.mods.filter((m) => m.side === "prefix").length).toBeLessThanOrEqual(item.maxPrefixes);
@@ -323,6 +436,7 @@ describe("fixtures: real Ctrl+Alt+C pastes", () => {
           expect({ maxPrefixes: item.maxPrefixes, maxSuffixes: item.maxSuffixes, openPrefixes: item.openPrefixes, openSuffixes: item.openSuffixes }).toEqual(want.slots);
         }
         if (want.metamods) expect(item.metamods).toEqual(want.metamods);
+        if (want.warnings !== undefined) expect(item.warnings, "warnings").toHaveLength(want.warnings);
         if (want.mods) {
           expect(item.mods.map((m) => `${m.side} ${m.name}`)).toEqual(want.mods.map((m) => `${m.side} ${m.name}`));
           want.mods.forEach((w, i) => {
@@ -347,12 +461,14 @@ describe("fixtures: real Ctrl+Alt+C pastes", () => {
       const kinds = new Map<string, number>();
       for (const m of item.mods) kinds.set(m.kind, (kinds.get(m.kind) ?? 0) + 1);
       const checked = item.mods.filter((m) => m.tierCheck === "ok").length;
+      const mismatched = item.mods.filter((m) => m.tierCheck === "mismatch").length;
       rows.push({
         name,
         outcome: `${item.rarity} ${item.base.id.split("/").pop()} ilvl ${item.ilvl}`,
         detail:
           `P${p}/${item.maxPrefixes} S${s}/${item.maxSuffixes} open ${item.openPrefixes}/${item.openSuffixes}; ` +
           `${[...kinds.entries()].map(([k, n]) => `${n} ${k}`).join(", ") || "no mods"}; tiers ok ${checked}` +
+          (mismatched ? `, MISMATCH ${mismatched}` : "") +
           (item.influences.length ? `; ${item.influences.join("+")}` : "") +
           (item.metamods.length ? `; ${item.metamods.join(",")}` : "") +
           (item.corrupted ? "; corrupted" : "") +

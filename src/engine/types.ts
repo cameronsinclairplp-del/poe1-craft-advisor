@@ -30,6 +30,7 @@ export interface ModRecord {
   side: "prefix" | "suffix";
   /** RePoE groups. Group identity is groups[0] (CLAUDE.md conventions). Never empty in current data. */
   groups: string[];
+  /** RePoE type: the stat family. Part of the tier ladder key (group, side, type). */
   type: string;
   required_level: number;
   is_essence_only: boolean;
@@ -72,9 +73,11 @@ export interface TagSetRecord {
    */
   weights: number[];
   /**
-   * "group|side" -> mods indices with weight > 0, best first (highest required_level, stable in
-   * mods order for equal levels). A mod's tier is 1 + its position in this ladder whatever the
-   * item level; at item level L only the entries with required_level <= L are in the pool.
+   * "group|side|type" -> mods indices with weight > 0, best first (highest required_level, stable
+   * in mods order for equal levels). A mod's tier is 1 + its position in this ladder whatever the
+   * item level; at item level L only the entries with required_level <= L are in the pool. The
+   * RePoE `type` is part of the key so families that share a group but not a stat (the elemental
+   * gem-level prefixes, flat armour vs flat energy shield) are tiered apart, as the game does.
    * Essence-only mods are not in these ladders; they get a value-based tier at runtime (see
    * pool.ts buildPool).
    */
@@ -321,10 +324,10 @@ export interface PoolMod {
   addsTags: string[];
   /**
    * 1 = best, independent of item level. Rollable mods: rank by required_level (desc) within
-   * (group, side) over every mod that can roll on this base's tags at any level, so the number
-   * matches the in-game "(Tier: n)" and Craft of Exile. Essence-only mods: 1 + number of rollable
-   * tiers in the same (group, side) whose first-stat max beats this mod's; null if the mod has
-   * no stats.
+   * (group, side, type) over every mod that can roll on this base's tags at any level, so the
+   * number matches the in-game "(Tier: n)" and Craft of Exile. Essence-only mods: 1 + number of
+   * rollable tiers in the same (group, side, type) whose first-stat max beats this mod's; null if
+   * the mod has no stats.
    */
   tier: number | null;
   /** Index into PoolFile.mods. */

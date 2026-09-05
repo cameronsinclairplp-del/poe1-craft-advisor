@@ -28,10 +28,11 @@
 //      T2 = 160-174 at L81; fire res T1 = 46-48 at L84.
 //
 // Nothing in the output is invented: every field is copied from RePoE, and the derived fields
-// (weights, tiers) are computed with the same functions the engine uses at runtime. Two selection
+// (weights, tiers) are computed with the same functions the engine uses at runtime. Three selection
 // decisions are ours and are logged: classes whose item_classes.json category is null are skipped
-// (HiddenItem: 55 "Random ..." gamble/idol placeholders that can never be pasted or crafted), and a
-// mod an essence forces on a class is kept even when it has weight 0 on every tag set.
+// (HiddenItem: 55 "Random ..." gamble/idol placeholders that can never be pasted or crafted), a
+// mod an essence forces on a class is kept even when it has weight 0 on every tag set, and the
+// Royale-only mods (ids containing "Royale") are left out of every file (see isRoyaleMod).
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync, utimesSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -292,15 +293,35 @@ interface Candidate {
   raw: RawMod;
 }
 
-/** Every item-domain prefix/suffix mod, in mods.json key order. This order is kept in every PoolFile. */
+/**
+ * Royale-only mods. Four item-domain prefix/suffix mods (MovementVelocity2Royale,
+ * IncreasedCastSpeed2Royale, LocalIncreasedAttackSpeed2Royale____, IncreasedAttackSpeed2Royale)
+ * carry ordinary spawn weights in RePoE but only roll in the Royale event; Craft of Exile leaves
+ * them out, and with them out the pool weights match CoE exactly on the four parity bases
+ * (checked 05/09/2026: Astral Plate 45500/58200, Titan Greaves 39000/56600, Vaal Axe 49614/61750,
+ * Amethyst Ring 60250/103600 prefix/suffix). Left out of every file, class files and other_mods
+ * alike. The other ~140 "Royale" ids are unique/chest/monster mods that never qualified anyway.
+ * Same exclusion in poc/engine.mjs buildPool.
+ */
+const isRoyaleMod = (id: string): boolean => id.includes("Royale");
+
+/** Every item-domain prefix/suffix mod except the Royale ones, in mods.json key order. This order is kept in every PoolFile. */
 function itemPrefixSuffixMods(mods: Record<string, RawMod>): Candidate[] {
   const out: Candidate[] = [];
   for (const [id, raw] of Object.entries(mods)) {
     if (raw.domain !== "item") continue;
     if (raw.generation_type !== "prefix" && raw.generation_type !== "suffix") continue;
+    if (isRoyaleMod(id)) continue;
     out.push({ id, side: raw.generation_type, raw });
   }
   return out;
+}
+
+/** The Royale-only item-domain prefix/suffix mods itemPrefixSuffixMods() left out, for the log. */
+function excludedRoyaleMods(mods: Record<string, RawMod>): string[] {
+  return Object.entries(mods)
+    .filter(([id, raw]) => raw.domain === "item" && isSide(raw.generation_type) && isRoyaleMod(id))
+    .map(([id]) => id);
 }
 
 interface RawBaseEntry {
@@ -391,9 +412,14 @@ function toBaseRecord(entry: RawBaseEntry, tagSet: number): BaseRecord {
   };
 }
 
-/** Tier ladder key: group identity is groups[0] (CLAUDE.md), falling back to type like the engine does. */
+/**
+ * Tier ladder key: (group, side, type). Group identity is groups[0] (CLAUDE.md), falling back to
+ * type like the engine does; the RePoE `type` splits families that share a group but not a stat
+ * (the five "+n to Level of all <X> Spell Skill Gems" prefixes all sit in
+ * IncreaseSpecificSocketedGemLevel; the game tiers each family on its own). Must match pool.ts.
+ */
 function tierKey(m: ModRecord): string {
-  return `${m.groups[0] ?? m.type}|${m.side}`;
+  return `${m.groups[0] ?? m.type}|${m.side}|${m.type}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -554,15 +580,15 @@ function otherMods(mods: Record<string, RawMod>, builds: readonly ClassBuild[]):
   }
   const out: OtherModRecord[] = [];
   for (const [id, m] of Object.entries(mods)) {
-    if (!EQUIPMENT_DOMAINS.has(m.domain) || !isSide(m.generation_type) || listed.has(id)) continue;
+    if (!EQUIPMENT_DOMAINS.has(m.domain) || !isSide(m.generation_type) || listed.has(id) || isRoyaleMod(id)) continue;
     out.push({ ...toLiteRecord(id, m, m.generation_type), domain: m.domain, tags: m.spawn_weights.filter((w) => w.weight > 0).map((w) => w.tag) });
   }
   return out;
 }
 
 /**
- * "group|side" -> mods indices with weight > 0, highest required_level first. Array.prototype.sort is
- * stable, so equal levels keep mods order, exactly as the runtime buildPool does.
+ * "group|side|type" -> mods indices with weight > 0, highest required_level first. Array.prototype.sort
+ * is stable, so equal levels keep mods order, exactly as the runtime buildPool does.
  */
 function buildTierLadders(mods: readonly ModRecord[], weights: readonly number[]): Record<string, number[]> {
   const ladders = new Map<string, number[]>();
@@ -1031,7 +1057,10 @@ async function main(): Promise<void> {
   }
   const source: PoolFile["source"] = { repoe: REPOE, mods_last_modified: data.modsLastModified, data_last_modified: data.dataLastModified };
   const candidates = itemPrefixSuffixMods(data.mods);
+  const royaleMods = excludedRoyaleMods(data.mods);
   console.log(`\nmods.json: ${fmtInt(Object.keys(data.mods).length)} mods, ${fmtInt(candidates.length)} item-domain prefix/suffix candidates`);
+  console.log(`  Royale-only mods excluded from every file: ${royaleMods.length} (${royaleMods.join(", ")})`);
+  if (royaleMods.length !== 4) console.log(`  WARNING: expected the 4 Royale-only prefix/suffix mods known on 05/09/2026, found ${royaleMods.length}`);
   console.log(`data version (generated): ${generated} from Last-Modified ${data.dataLastModified ?? "(none)"}`);
   const fossils = selectFossils(data.fossils);
   const veiled = veiledMods(data.mods);

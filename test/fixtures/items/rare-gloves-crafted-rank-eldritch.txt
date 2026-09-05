@@ -1,6 +1,7 @@
 # source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/10208 (item 1 of 2 in that post)
 # posted: 12/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: rare, bench craft with (Rank: 3), Searing Exarch + Eater of Worlds implicits, one mercenary-domain suffix (of Infamy)
+# expect-warning: suffix "of Infamy" is MercenaryModTrapMineChain (mercenary domain): on the item, occupies its slot, but no v1 action can roll it
 Item Class: Gloves
 Rarity: Rare
 Tempest Vise

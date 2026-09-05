@@ -35,7 +35,7 @@ Scripts run with `tsx`. Node 22 is installed.
 
 - Australian English in UI copy and docs. Dates DD/MM/YYYY. 24-hour time.
 - Chaos Orb is the unit of account; show Divines alongside using the snapshot rate.
-- Mod identity is the RePoE mod id; group is `groups[0]`; tiers are 1 = best, ranked within (group, side) over the mods that can roll on that base's tag set at any item level, so the number matches the in-game "(Tier: n)" and Craft of Exile. The pool at a given ilvl is the subset that can roll. Essence-only mods get a value-based tier (see `poc/engine.mjs` `buildPool`). If a better tiering rule is needed, propose it in `STATUS.md` first.
+- Mod identity is the RePoE mod id; group is `groups[0]`; tiers are 1 = best, ranked within (group, side, type) over the mods that can roll on that base's tag set at any item level, so the number matches the in-game "(Tier: n)" and Craft of Exile (type is RePoE `type`; it splits families that share a group but not a stat, such as the five elemental gem-level prefixes on a staff). The pool at a given ilvl is the subset that can roll. Essence-only mods get a value-based tier (see `poc/engine.mjs` `buildPool`). If a better tiering rule is needed, propose it in `STATUS.md` first.
 - Targets are tier-based. Roll values inside a tier are out of scope for v1.
 - Keep the engine pure and deterministic (seedable RNG) so tests are reproducible.
 

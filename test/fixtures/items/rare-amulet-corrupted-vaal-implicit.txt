@@ -1,7 +1,7 @@
 # source: https://github.com/Sidekick-Poe/Sidekick/issues/1235
 # posted: 02/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
-# note: corrupted rare, Corruption Implicit replaced the base implicit, 2 prefixes + 2 suffixes. Posted 02/08/2026 (patch 3.29). The game shows "Thaumaturgist's" (18-22)% increased Spell Damage as Tier 4; RePoE (04/09/2026) and Path of Building (23/08/2026) both list only five amulet spell damage tiers, which makes it T2. The other three mods on the item check out. Unexplained: either the game has amulet spell damage tiers neither dataset carries, or the game numbers this family differently (STATUS.md VERIFY 13). The parser must fail loudly on it until that is settled.
-# expect-error: TierMismatchError
+# note: corrupted rare, Corruption Implicit replaced the base implicit, 2 prefixes + 2 suffixes. Posted 02/08/2026 (patch 3.29). The game shows "Thaumaturgist's" (18-22)% increased Spell Damage as Tier 4; RePoE (04/09/2026) and Path of Building (23/08/2026) both list only five amulet spell damage tiers, which makes it T2. The other three mods on the item check out. Unexplained: either the game has amulet spell damage tiers neither dataset carries, or the game numbers this family differently (STATUS.md VERIFY 13, still open: influence, essence and Delve mods do not explain it either). Since 05/09/2026 the tier cross-check is a warning, not a throw: the mod resolves by name, side and text and the item parses with exactly this one warning.
+# expect-warning: prefix "Thaumaturgist's" (SpellDamage4): the game says Tier 4, the engine's ladder SpellDamage|prefix|SpellDamage says T2
 Item Class: Amulets
 Rarity: Rare
 Pandemonium Idol

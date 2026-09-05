@@ -95,6 +95,10 @@ function buildPool(base, ilvl, extraTags = []) {
   for (const [id, m] of Object.entries(MODS)) {
     if (m.domain !== "item") continue;
     if (m.generation_type !== "prefix" && m.generation_type !== "suffix") continue;
+    // Royale-only mods (MovementVelocity2Royale, IncreasedCastSpeed2Royale, ...) carry ordinary
+    // spawn weights in RePoE but never roll outside the Royale event; Craft of Exile leaves them
+    // out. Same exclusion as scripts/build-data.ts. Edit to poc/ authorised by Cameron, 05/09/2026.
+    if (id.includes("Royale")) continue;
     const w = resolveWeight(m.spawn_weights, tags) * resolveGenMultiplier(m.generation_weights, tags);
     // Rollable mods need level + weight. Essence-only mods are forced, so neither applies to them.
     if (!m.is_essence_only && (m.required_level > ilvl || w <= 0)) continue;

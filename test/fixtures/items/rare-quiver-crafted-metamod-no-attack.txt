@@ -1,6 +1,7 @@
 # source: https://github.com/SnosMe/awakened-poe-trade/issues/1935
 # posted: 30/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: metamod Cannot roll Attack Modifiers (of Spellcraft); base name shared by a legacy quiver, told apart by the implicit
+# expect-warning: base name "Broadhead Arrow Quiver" is shared by several bases; chose Metadata/Items/Quivers/QuiverNew10 by implicit
 Item Class: Quivers
 Rarity: Rare
 Honour Flight

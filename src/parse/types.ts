@@ -21,8 +21,14 @@ export type Metamod = "prefixes-locked" | "suffixes-locked" | "no-attack-mods" |
 export type ModKind = "pool" | "crafted" | "unveiled" | "veiled" | "influence" | "other" | "unique";
 
 export type TierCheck =
-  /** game tier present, engine tier present, equal (a mismatch throws TierMismatchError instead) */
+  /** game tier present, engine tier present, equal */
   | "ok"
+  /**
+   * game tier present, engine tier present, different. A warning naming both numbers and the whole
+   * ladder is recorded on the item; nothing throws. Resolution is by name, side, text and ranges, so
+   * the mod is still the right one and the number is informational (STATUS.md VERIFY 13 is the open case).
+   */
+  | "mismatch"
   /** the header had no "(Tier: n)" (essence mods, crafted mods, some special mods) */
   | "no-game-tier"
   /** nothing to compare against: not a pool mod, or a pool mod that cannot roll on this base */

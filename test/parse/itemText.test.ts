@@ -7,7 +7,6 @@ import { describe, expect, it } from "vitest";
 import {
   AmbiguousBaseError,
   ParseError,
-  TierMismatchError,
   UnknownBaseError,
   UnknownModError,
   UnsupportedItemClassError,
@@ -236,24 +235,26 @@ describe("resolveItem error paths", () => {
     expect((caught as UnknownModError).nearMisses.some((n) => n.startsWith("LocalIncreasedArmourAndEvasion3:"))).toBe(true);
   });
 
-  it("tier cross-check: the in-game tier must equal the engine's level-independent tier", () => {
+  it("tier cross-check: an in-game tier that differs from the engine's ladder is a warning on the item, never a throw", () => {
+    // The real paste says (Tier: 5) and parses with no warning at all.
+    expect(parseItemFromText(fixtureText("magic-boots-1-prefix")).warnings).toEqual([]);
     const text = replaceOnce(fixtureText("magic-boots-1-prefix"), "(Tier: 5)", "(Tier: 1)");
-    let caught: unknown;
-    try {
-      parseItemFromText(text);
-    } catch (e) {
-      caught = e;
-    }
-    expect(caught).toBeInstanceOf(TierMismatchError);
-    const err = caught as TierMismatchError;
-    expect(err.code).toBe("tier-mismatch");
-    expect(err.modId).toBe("LocalIncreasedArmourAndEvasion3");
-    expect(err.gameTier).toBe(1);
-    expect(err.ourTier).toBe(5);
-    expect(err.ladder.map((e) => e.tier)).toEqual(err.ladder.map((_, i) => i + 1));
-    expect(err.ladder[4]!.id).toBe("LocalIncreasedArmourAndEvasion3");
-    expect(err.line).toBe(lineOf(text, "(Tier: 1)"));
-    expect(err.message).toMatch(/game says Tier 1, the engine's ladder DefencesPercent\|prefix says T5/);
+    const item = parseItemFromText(text);
+    const m = item.mods[0]!;
+    // Resolution is by name, side, text and ranges, so the mod is still the right one.
+    expect(m.kind).toBe("pool");
+    expect(m.modId).toBe("LocalIncreasedArmourAndEvasion3");
+    expect(m.tier).toBe(1);
+    expect(m.ourTier).toBe(5);
+    expect(m.tierCheck).toBe("mismatch");
+    expect(item.warnings).toHaveLength(1);
+    const w = item.warnings[0]!;
+    expect(w).toMatch(/^prefix "Fencer's" \(LocalIncreasedArmourAndEvasion3\): the game says Tier 1, the engine's ladder DefencesPercent\|prefix\|\w+ says T5; resolved by name, side and text, the number is informational\. Ladder: T1 L\d+ /);
+    expect(w).toMatch(/T5 L\d+ LocalIncreasedArmourAndEvasion3 "/);
+    expect(w).toMatch(new RegExp(`\\(line ${lineOf(text, "(Tier: 1)")}\\)$`));
+    // The ladder in the warning is the mod's own (group, side, type) family, dense from T1.
+    const tiers = [...w.matchAll(/T(\d+) L\d+ \w+ "/g)].map((x) => Number(x[1]));
+    expect(tiers).toEqual(tiers.map((_, i) => i + 1));
   });
 
   it("unknown base: UnknownBaseError", () => {

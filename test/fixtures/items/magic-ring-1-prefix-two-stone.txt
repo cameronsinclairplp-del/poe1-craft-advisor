@@ -1,6 +1,7 @@
 # source: https://github.com/veiset/poe.re/issues/207
 # posted: 03/07/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: magic, one prefix; Two-Stone Ring exists three times, told apart by the implicit
+# expect-warning: base name "Two-Stone Ring" is shared by several bases; chose Metadata/Items/Rings/Ring14 by implicit
 Item Class: Rings
 Rarity: Magic
 Glittering Two-Stone Ring
