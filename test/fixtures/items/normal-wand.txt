@@ -1,0 +1,21 @@
+# source: https://github.com/veiset/poe.re/issues/258
+# posted: 28/11/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: normal, implicit only
+Item Class: Wands
+Rarity: Normal
+Kinetic Wand
+--------
+Wand
+Physical Damage: 29-54
+Critical Strike Chance: 8.50%
+Attacks per Second: 1.60
+--------
+Requirements:
+Level: 59
+Int: 188 (unmet)
+--------
+Sockets: B B
+--------
+Item Level: 84
+--------
+Cannot roll Caster Modifiers (implicit)

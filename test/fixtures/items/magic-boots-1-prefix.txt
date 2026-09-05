@@ -1,0 +1,16 @@
+# source: https://github.com/veiset/poe.re/issues/206
+# posted: 03/07/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: magic, one prefix
+Item Class: Boots
+Rarity: Magic
+Fencer's Wyvernscale Boots
+--------
+Requirements:
+Level: 84
+Str: 98
+Dex: 98
+--------
+Item Level: 84
+--------
+{ Prefix Modifier "Fencer's" (Tier: 5) — Defences, Armour, Evasion }
+52(43-55)% increased Armour and Evasion

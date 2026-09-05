@@ -1,0 +1,35 @@
+# source: https://github.com/Kvan7/Exiled-Exchange-2/issues/426 (item 3 of 10 in that post)
+# posted: 14/02/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: rare with hybrid flat armour+life and armour%+stun recovery prefixes, Note: line (3.25-era client)
+Item Class: Boots
+Rarity: Rare
+Blood Stride
+Vaal Greaves
+--------
+Armour: 393 (augmented)
+--------
+Requirements:
+Level: 67
+Str: 79 (augmented)
+--------
+Sockets: R R-R
+--------
+Item Level: 86
+--------
+{ Prefix Modifier "Virile" (Tier: 2) — Life }
++108(100-114) to maximum Life
+{ Prefix Modifier "Urchin's" (Tier: 1) — Life, Defences, Armour }
++35(33-48) to Armour
++25(24-28) to maximum Life
+{ Prefix Modifier "Mammoth's" (Tier: 1) — Defences, Armour }
+40(39-42)% increased Armour
+16(16-17)% increased Stun and Block Recovery
+{ Suffix Modifier "of the Apt" (Tier: 1) }
+32% reduced Attribute Requirements
+(Attributes are Strength, Dexterity, and Intelligence)
+{ Suffix Modifier "of the Troll" (Tier: 3) — Life }
+Regenerate 43.8(32.1-48) Life per second
+{ Suffix Modifier "of Tzteosh" (Tier: 1) — Elemental, Fire, Resistance }
++48(46-48)% to Fire Resistance
+--------
+Note: ~price 15 chaos

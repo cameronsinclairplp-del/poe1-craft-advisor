@@ -43,15 +43,23 @@ import { poolFileName } from "../src/engine/types.ts";
 import type {
   BaseRecord,
   BenchRecord,
+  CraftedModRecord,
   DataIndex,
   EssenceRecord,
   FossilRecord,
+  ImplicitModRecord,
+  InfluenceModRecord,
+  LiteModRecord,
   ModRecord,
+  OtherModRecord,
+  OtherModsFile,
   PoolFile,
   PoolMod,
   StatRange,
   TagSetRecord,
   TagWeight,
+  UnveiledModRecord,
+  VeiledModRecord,
 } from "../src/engine/types.ts";
 
 // ---------------------------------------------------------------------------
@@ -145,9 +153,12 @@ interface RawEssence {
 type RawFossil = Omit<FossilRecord, "id">;
 
 interface RawItemClass {
+  /** In-game display name, the "Item Class:" line of a pasted item (e.g. "Body Armours", "Rune Daggers"). */
   name: string;
   /** null for HiddenItem (gamble/idol placeholders) and other non-equipment classes. */
   category: string | null;
+  /** The six influence tags of an equipment class; null for classes that cannot be influenced. */
+  influence_tags: string[] | null;
 }
 
 interface RepoeData {
@@ -159,6 +170,8 @@ interface RepoeData {
   itemClasses: Record<string, RawItemClass>;
   /** Last-Modified header of mods.json, from the cached .headers file. */
   modsLastModified: string | null;
+  /** The newest Last-Modified among all inputs; null when no input carried the header. */
+  dataLastModified: string | null;
 }
 
 // ---------------------------------------------------------------------------
@@ -247,6 +260,16 @@ async function loadRepoeData(opts: Options): Promise<RepoeData> {
     return value as T;
   };
   const modsFile = loaded.find(([name]) => name === "mods");
+  // The data's version is the newest Last-Modified among the inputs. A missing or unparsable
+  // header is skipped; `generated` then falls back to the run time (main() warns).
+  let newest: { ms: number; text: string } | null = null;
+  for (const [, file] of loaded) {
+    const text = file.headers.get("last-modified");
+    if (!text) continue;
+    const ms = Date.parse(text);
+    if (Number.isNaN(ms)) continue;
+    if (!newest || ms > newest.ms) newest = { ms, text };
+  }
   return {
     mods: take<Record<string, RawMod>>("mods"),
     bases: take<Record<string, RawBase>>("base_items"),
@@ -255,6 +278,7 @@ async function loadRepoeData(opts: Options): Promise<RepoeData> {
     bench: take<BenchRecord[]>("crafting_bench_options"),
     itemClasses: take<Record<string, RawItemClass>>("item_classes"),
     modsLastModified: modsFile?.[1].headers.get("last-modified") ?? null,
+    dataLastModified: newest?.text ?? null,
   };
 }
 
@@ -372,6 +396,170 @@ function tierKey(m: ModRecord): string {
   return `${m.groups[0] ?? m.type}|${m.side}`;
 }
 
+// ---------------------------------------------------------------------------
+// Milestone 3 lists: mods the parser recognises by name and text (never rolled)
+// ---------------------------------------------------------------------------
+
+function isSide(gt: string): gt is "prefix" | "suffix" {
+  return gt === "prefix" || gt === "suffix";
+}
+
+function toLiteRecord(id: string, m: RawMod, side: "prefix" | "suffix"): LiteModRecord {
+  return {
+    id,
+    name: m.name,
+    text: m.text ?? "",
+    side,
+    groups: m.groups,
+    type: m.type,
+    required_level: m.required_level,
+    stats: m.stats,
+  };
+}
+
+/**
+ * Influence tag suffix -> influence name. The three that are not self-evident come from the
+ * names of the mods that carry the tag (basilisk: "Hunter's" / "of the Hunt", eyrie: "Redeemer's" /
+ * "of Redemption", adjudicator: "Warlord's" / "of the Conquest"); checkInfluenceNames() verifies
+ * that against the data on every build and warns if a tag ever carries other names.
+ */
+const INFLUENCE_BY_TAG_SUFFIX: Record<string, string> = {
+  shaper: "shaper",
+  elder: "elder",
+  crusader: "crusader",
+  basilisk: "hunter",
+  eyrie: "redeemer",
+  adjudicator: "warlord",
+};
+
+const INFLUENCE_MOD_NAMES: Record<string, readonly string[]> = {
+  shaper: ["The Shaper's", "of Shaping"],
+  elder: ["The Elder's", "of the Elder"],
+  crusader: ["Crusader's", "of the Crusade"],
+  hunter: ["Hunter's", "of the Hunt"],
+  redeemer: ["Redeemer's", "of Redemption"],
+  warlord: ["Warlord's", "of the Conquest"],
+};
+
+function influenceOfTag(tag: string): string {
+  const suffix = tag.slice(tag.lastIndexOf("_") + 1);
+  const name = INFLUENCE_BY_TAG_SUFFIX[suffix];
+  if (!name) throw new Error(`influence tag ${tag} has an unknown suffix "${suffix}"`);
+  return name;
+}
+
+/**
+ * Item-domain prefix/suffix mods that are not in the class's mods list and whose spawn_weights name
+ * one of the class's influence tags. Weight > 0: an ordinary influence mod. Weight 0 on every
+ * influence tag: a Maven-elevated version (only created by elevating an existing influence mod).
+ */
+function influenceModsForClass(candidates: readonly Candidate[], inFile: ReadonlySet<string>, influenceTags: readonly string[]): InfluenceModRecord[] {
+  const tagSet = new Set(influenceTags);
+  const out: InfluenceModRecord[] = [];
+  for (const c of candidates) {
+    if (inFile.has(c.id)) continue;
+    const named = c.raw.spawn_weights.filter((w) => tagSet.has(w.tag));
+    if (named.length === 0) continue;
+    const influences = [...new Set(named.map((w) => influenceOfTag(w.tag)))];
+    const elevated = !named.some((w) => w.weight > 0);
+    out.push({ ...toLiteRecord(c.id, c.raw, c.side), influences, elevated });
+  }
+  return out;
+}
+
+/** Warn if an influence tag carries mod names other than the two the mapping above was derived from. */
+function checkInfluenceNames(builds: readonly ClassBuild[]): void {
+  const seen = new Map<string, Set<string>>();
+  for (const { file } of builds) {
+    for (const m of file.influence_mods) {
+      if (m.elevated) continue;
+      for (const inf of m.influences) {
+        const names = seen.get(inf) ?? new Set<string>();
+        names.add(m.name);
+        seen.set(inf, names);
+      }
+    }
+  }
+  for (const [inf, names] of seen) {
+    const expected = INFLUENCE_MOD_NAMES[inf] ?? [];
+    const other = [...names].filter((n) => !expected.includes(n));
+    if (other.length) console.log(`  WARNING: ${inf} influence mods also carry names ${other.join(", ")}; the tag -> influence mapping in build-data may need a look`);
+  }
+  console.log(`  influence names: ${[...seen.entries()].map(([inf, names]) => `${inf}=${[...names].join("/")}`).join(", ")}`);
+}
+
+/** Unveiled mods (domain "unveiled") with a positive weight on at least one of the class's tag sets. */
+function unveiledModsForClass(mods: Record<string, RawMod>, tagSets: readonly { tags: string[] }[]): UnveiledModRecord[] {
+  const sets = tagSets.map((t) => new Set(t.tags));
+  const out: UnveiledModRecord[] = [];
+  for (const [id, m] of Object.entries(mods)) {
+    if (m.domain !== "unveiled" || !isSide(m.generation_type)) continue;
+    if (!sets.some((s) => resolveWeight(m.spawn_weights, s) > 0)) continue;
+    out.push({ ...toLiteRecord(id, m, m.generation_type), spawn_weights: m.spawn_weights });
+  }
+  return out;
+}
+
+/** The crafted mod behind every bench option of the class that adds an explicit mod, each id once, in bench order. */
+function craftedModsForClass(mods: Record<string, RawMod>, bench: readonly BenchRecord[], itemClass: string): CraftedModRecord[] {
+  const out: CraftedModRecord[] = [];
+  const seen = new Set<string>();
+  for (const b of bench) {
+    const id = b.actions.add_explicit_mod;
+    if (!id || seen.has(id)) continue;
+    const m = mods[id];
+    if (!m) throw new Error(`${itemClass}: bench option adds ${id}, which is not in mods.json`);
+    if (!isSide(m.generation_type)) throw new Error(`${itemClass}: bench mod ${id} is a ${m.generation_type}, not a prefix/suffix`);
+    seen.add(id);
+    out.push({ ...toLiteRecord(id, m, m.generation_type), bench_tier: b.bench_tier });
+  }
+  return out;
+}
+
+/** Text and stats of every implicit the class's bases reference. */
+function implicitModsForClass(mods: Record<string, RawMod>, bases: readonly BaseRecord[], itemClass: string): Record<string, ImplicitModRecord> {
+  const out: Record<string, ImplicitModRecord> = {};
+  for (const b of bases) {
+    for (const id of b.implicits) {
+      if (out[id]) continue;
+      const m = mods[id];
+      if (!m) throw new Error(`${itemClass}: base ${b.id} has implicit ${id}, which is not in mods.json`);
+      out[id] = { text: m.text ?? "", stats: m.stats };
+    }
+  }
+  return out;
+}
+
+/** The veiled placeholder mods (domain "veiled"), shared by every class file. */
+function veiledMods(mods: Record<string, RawMod>): VeiledModRecord[] {
+  const out: VeiledModRecord[] = [];
+  for (const [id, m] of Object.entries(mods)) {
+    if (m.domain !== "veiled" || !isSide(m.generation_type)) continue;
+    out.push({ id, name: m.name, side: m.generation_type });
+  }
+  return out;
+}
+
+/** Domains whose prefix/suffix mods can sit on a piece of equipment. */
+const EQUIPMENT_DOMAINS: ReadonlySet<string> = new Set(["item", "crafted", "unveiled", "delve", "mercenary", "ducat_crafted"]);
+
+/** Every equipment-domain prefix/suffix that no class file lists (see OtherModsFile). mods.json order. */
+function otherMods(mods: Record<string, RawMod>, builds: readonly ClassBuild[]): OtherModRecord[] {
+  const listed = new Set<string>();
+  for (const { file } of builds) {
+    for (const m of file.mods) listed.add(m.id);
+    for (const m of file.crafted_mods) listed.add(m.id);
+    for (const m of file.unveiled_mods) listed.add(m.id);
+    for (const m of file.influence_mods) listed.add(m.id);
+  }
+  const out: OtherModRecord[] = [];
+  for (const [id, m] of Object.entries(mods)) {
+    if (!EQUIPMENT_DOMAINS.has(m.domain) || !isSide(m.generation_type) || listed.has(id)) continue;
+    out.push({ ...toLiteRecord(id, m, m.generation_type), domain: m.domain, tags: m.spawn_weights.filter((w) => w.weight > 0).map((w) => w.tag) });
+  }
+  return out;
+}
+
 /**
  * "group|side" -> mods indices with weight > 0, highest required_level first. Array.prototype.sort is
  * stable, so equal levels keep mods order, exactly as the runtime buildPool does.
@@ -414,6 +602,12 @@ interface ClassStats {
   nullRequirementBases: number;
   nullTextMods: number;
   gzBytes: number;
+  /** Milestone 3 lists. */
+  craftedMods: number;
+  unveiledMods: number;
+  influenceMods: number;
+  elevatedMods: number;
+  implicitMods: number;
 }
 
 interface ClassBuild {
@@ -425,9 +619,12 @@ interface BuildContext {
   generated: string;
   source: PoolFile["source"];
   candidates: Candidate[];
+  mods: Record<string, RawMod>;
+  itemClasses: Record<string, RawItemClass>;
   essences: Record<string, RawEssence>;
   bench: BenchRecord[];
   fossils: FossilRecord[];
+  veiled: VeiledModRecord[];
 }
 
 /** essence name(s) by forced mod id, for one item class. */
@@ -489,6 +686,11 @@ function buildClassFile(itemClass: string, classBases: readonly RawBaseEntry[], 
     nullRequirementBases: 0,
     nullTextMods: 0,
     gzBytes: 0,
+    craftedMods: 0,
+    unveiledMods: 0,
+    influenceMods: 0,
+    elevatedMods: 0,
+    implicitMods: 0,
   };
 
   // Distinct tag arrays among the bases, in order of first appearance.
@@ -544,22 +746,40 @@ function buildClassFile(itemClass: string, classBases: readonly RawBaseEntry[], 
   const essences = essenceRecordsForClass(ctx.essences, itemClass, modIds, stats);
   const bench = ctx.bench.filter((b) => b.item_classes.includes(itemClass));
 
+  // Milestone 3 lists (matched by name and text by the parser; the engine never rolls them).
+  const influence_tags = ctx.itemClasses[itemClass]?.influence_tags ?? [];
+  const implicit_mods = implicitModsForClass(ctx.mods, bases, itemClass);
+  const crafted_mods = craftedModsForClass(ctx.mods, bench, itemClass);
+  const unveiled_mods = unveiledModsForClass(ctx.mods, tagSetDrafts);
+  const influence_mods = influenceModsForClass(ctx.candidates, modIds, influence_tags);
+
   stats.tagSets = tag_sets.length;
   stats.mods = mods.length;
   stats.essences = essences.length;
   stats.bench = bench.length;
+  stats.craftedMods = crafted_mods.length;
+  stats.unveiledMods = unveiled_mods.length;
+  stats.influenceMods = influence_mods.length;
+  stats.elevatedMods = influence_mods.filter((m) => m.elevated).length;
+  stats.implicitMods = Object.keys(implicit_mods).length;
 
   const file: PoolFile = {
-    schema: 1,
+    schema: 2,
     generated: ctx.generated,
     source: ctx.source,
     item_class: itemClass,
+    influence_tags,
     bases,
     mods,
     tag_sets,
     essences,
     bench,
     fossils: ctx.fossils,
+    implicit_mods,
+    crafted_mods,
+    unveiled_mods,
+    influence_mods,
+    veiled_mods: ctx.veiled,
   };
   return { file, stats };
 }
@@ -582,6 +802,9 @@ function logClassBuild({ stats }: ClassBuild): void {
   if (s.essencesDangling.length) console.log(`      WARNING essences whose forced mod is not in mods.json (dropped): ${s.essencesDangling.join(", ")}`);
   if (s.nullRequirementBases) console.log(`      bases with requirements: null in RePoE (copied verbatim): ${s.nullRequirementBases}`);
   if (s.nullTextMods) console.log(`      WARNING mods with text: null written as "": ${s.nullTextMods}`);
+  console.log(
+    `      parser lists: ${s.craftedMods} crafted, ${s.unveiledMods} unveiled, ${s.influenceMods} influence (${s.elevatedMods} elevated), ${s.implicitMods} implicit mods`,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -604,17 +827,31 @@ function readPoolFile(path: string): PoolFile {
  */
 const isRoyaleCopy = (b: BaseRecord): boolean => /Royale/.test(b.id);
 
-function buildIndex(builds: readonly ClassBuild[], generated: string, source: PoolFile["source"]): DataIndex {
+const OTHER_MODS_FILE = "other_mods.json.gz";
+
+function buildIndex(
+  builds: readonly ClassBuild[],
+  generated: string,
+  source: PoolFile["source"],
+  itemClasses: Record<string, RawItemClass>,
+  otherModCount: number,
+): DataIndex {
   return {
-    schema: 1,
+    schema: 2,
     generated,
     source,
-    classes: builds.map(({ file }) => ({
-      item_class: file.item_class,
-      file: poolFileName(file.item_class),
-      bases: file.bases.length,
-      mods: file.mods.length,
-    })),
+    classes: builds.map(({ file }) => {
+      const name = itemClasses[file.item_class]?.name;
+      if (!name) throw new Error(`item_classes.json has no display name for ${file.item_class}`);
+      return {
+        item_class: file.item_class,
+        name,
+        file: poolFileName(file.item_class),
+        bases: file.bases.length,
+        mods: file.mods.length,
+      };
+    }),
+    other_mods: { file: OTHER_MODS_FILE, mods: otherModCount },
     bases: builds.flatMap(({ file }) =>
       file.bases.filter((b) => !isRoyaleCopy(b)).map((b) => ({ name: b.name, id: b.id, item_class: b.item_class, drop_level: b.drop_level })),
     ),
@@ -623,7 +860,7 @@ function buildIndex(builds: readonly ClassBuild[], generated: string, source: Po
 
 function removeStaleFiles(produced: ReadonlySet<string>): void {
   for (const name of readdirSync(OUT_DIR)) {
-    if (!name.endsWith(".json.gz") || produced.has(name)) continue;
+    if (!name.endsWith(".json.gz") || produced.has(name) || name === OTHER_MODS_FILE) continue;
     unlinkSync(resolve(OUT_DIR, name));
     console.log(`  removed stale ${name}`);
   }
@@ -783,12 +1020,32 @@ async function main(): Promise<void> {
   console.log(`build-data ${flags}\nRePoE files (${REPOE}):`);
   const data = await loadRepoeData(opts);
 
-  const generated = new Date().toISOString();
-  const source: PoolFile["source"] = { repoe: REPOE, mods_last_modified: data.modsLastModified };
+  // Stamp the output with the data's version (newest Last-Modified among the inputs), not the run
+  // time, so a re-run over unchanged data rewrites byte-identical files and dirties nothing.
+  let generated: string;
+  if (data.dataLastModified) {
+    generated = new Date(data.dataLastModified).toISOString();
+  } else {
+    generated = new Date().toISOString();
+    console.log("\n  WARNING: no input carried a Last-Modified header; stamping the files with the run time instead");
+  }
+  const source: PoolFile["source"] = { repoe: REPOE, mods_last_modified: data.modsLastModified, data_last_modified: data.dataLastModified };
   const candidates = itemPrefixSuffixMods(data.mods);
   console.log(`\nmods.json: ${fmtInt(Object.keys(data.mods).length)} mods, ${fmtInt(candidates.length)} item-domain prefix/suffix candidates`);
+  console.log(`data version (generated): ${generated} from Last-Modified ${data.dataLastModified ?? "(none)"}`);
   const fossils = selectFossils(data.fossils);
-  const ctx: BuildContext = { generated, source, candidates, essences: data.essences, bench: data.bench, fossils };
+  const veiled = veiledMods(data.mods);
+  const ctx: BuildContext = {
+    generated,
+    source,
+    candidates,
+    mods: data.mods,
+    itemClasses: data.itemClasses,
+    essences: data.essences,
+    bench: data.bench,
+    fossils,
+    veiled,
+  };
 
   // Build every class.
   console.log("\nClasses:");
@@ -825,11 +1082,19 @@ async function main(): Promise<void> {
     build.stats.gzBytes = gz.byteLength;
     produced.add(name);
   }
-  const index = buildIndex(builds, generated, source);
+  const other: OtherModsFile = { schema: 2, generated, source, mods: otherMods(data.mods, builds) };
+  const otherGz = gzipJson(other);
+  writeFileSync(resolve(OUT_DIR, OTHER_MODS_FILE), otherGz);
+  const index = buildIndex(builds, generated, source, data.itemClasses, other.mods.length);
   const indexJson = `${JSON.stringify(index, null, 2)}\n`;
   writeFileSync(resolve(OUT_DIR, "index.json"), indexJson);
   const royale = builds.flatMap(({ file }) => file.bases.filter(isRoyaleCopy));
   console.log(`  wrote ${produced.size} class files and index.json (${fmtInt(index.bases.length)} bases; ${royale.length} Royale copies left out: ${royale.map((b) => b.name).join(", ")})`);
+  const otherByDomain = new Map<string, number>();
+  for (const m of other.mods) otherByDomain.set(m.domain, (otherByDomain.get(m.domain) ?? 0) + 1);
+  console.log(
+    `  wrote ${OTHER_MODS_FILE}: ${fmtInt(other.mods.length)} equipment-domain mods no class file lists (${[...otherByDomain.entries()].map(([d, n]) => `${d} ${n}`).join(", ")}), ${fmtInt(otherGz.byteLength)} bytes gzipped`,
+  );
   removeStaleFiles(produced);
 
   // Self-checks on the re-read files.
@@ -838,12 +1103,15 @@ async function main(): Promise<void> {
   for (const build of builds) {
     const path = resolve(OUT_DIR, poolFileName(build.file.item_class));
     const file = readPoolFile(path);
-    if (file.schema !== 1 || file.item_class !== build.file.item_class || file.mods.length !== build.file.mods.length) {
+    if (file.schema !== 2 || file.item_class !== build.file.item_class || file.mods.length !== build.file.mods.length) {
       throw new Error(`round trip of ${path} does not match what was written`);
     }
     reread.set(file.item_class, file);
   }
   console.log(`  round trip: ${reread.size} files gunzipped and parsed`);
+  checkInfluenceNames(builds);
+  const otherReread = JSON.parse(gunzipSync(readFileSync(resolve(OUT_DIR, OTHER_MODS_FILE))).toString("utf8")) as OtherModsFile;
+  if (otherReread.schema !== 2 || otherReread.mods.length !== other.mods.length) throw new Error(`round trip of ${OTHER_MODS_FILE} does not match what was written`);
   let basesChecked = 0;
   for (const file of reread.values()) {
     verifyAgainstRuntime(file);

@@ -1,0 +1,40 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/9972 (item 1 of 2 in that post)
+# posted: 22/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: unique whose explicit mods are unveiled (Chosen / of the Order); rarity only
+Item Class: Warstaves
+Rarity: Unique
+Cane of Kulemak
+Serpentine Staff
+--------
+Warstaff
+Physical Damage: 56-117
+Critical Strike Chance: 7.80%
+Attacks per Second: 1.25
+Weapon Range: 1.3 metres
+--------
+Requirements:
+Level: 68
+Str: 85
+Int: 85 (unmet)
+--------
+Sockets: R R-R-B R
+--------
+Item Level: 85
+--------
+{ Implicit Modifier }
++22% Chance to Block Attack Damage while wielding a Staff
+(Warstaves are considered Staves)
+--------
+{ Prefix Modifier "Chosen" (Tier: 1) — Damage, Chaos, Caster  — 78% Increased }
+96(90-99)% increased Spell Damage
+Gain 9(9-10)% of Non-Chaos Damage as extra Chaos Damage
+{ Prefix Modifier "Chosen" (Tier: 1) — Damage, Elemental, Attack  — 78% Increased }
+Attacks with this Weapon Penetrate 15(14-16)% Elemental Resistances
+{ Unique Modifier }
+78(60-90)% increased Unveiled Modifier magnitudes — Unscalable Value
+{ Suffix Modifier "of the Order" (Tier: 1) — Damage  — 78% Increased }
+7(7-8)% increased Damage per Endurance Charge
+--------
+Stolen power is still power.
+--------
+Note: ~b/o 20 chaos

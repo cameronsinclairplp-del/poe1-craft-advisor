@@ -1,0 +1,42 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues/10097 (item 1 of 4 in that post)
+# posted: 03/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: unique, corrupted, Corruption Implicit; rarity only, no mod resolution
+Item Class: Shields
+Rarity: Unique
+Aegis Aurora
+Champion Kite Shield
+--------
+Chance to Block: 38% (augmented)
+Armour: 979 (augmented)
+Energy Shield: 198 (augmented)
+--------
+Requirements:
+Level: 62
+Str: 85
+Int: 85 (unmet)
+--------
+Sockets: R-W-W
+--------
+Item Level: 83
+--------
+{ Corruption Implicit Modifier }
+20(20-30)% increased Chance to Block
+--------
+{ Unique Modifier — Defences, Armour, Energy Shield }
+313(300-400)% increased Armour and Energy Shield
+{ Unique Modifier — Elemental, Cold, Resistance }
++5% to maximum Cold Resistance
+(Maximum Resistances cannot be raised above 90%)
+{ Unique Modifier — Elemental, Resistance }
++10% to all Elemental Resistances
+{ Unique Modifier — Damage, Elemental, Attack }
+16(10-20)% increased Elemental Damage with Attack Skills
+{ Unique Modifier }
++6% Chance to Block
+{ Unique Modifier — Defences, Energy Shield }
+Recover Energy Shield equal to 2% of Armour when you Block
+--------
+Born from the marriage of ice and sky,
+the aurora evokes both awe and power.
+--------
+Corrupted

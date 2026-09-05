@@ -71,10 +71,11 @@ const MODS: ModRecord[] = [
 ];
 
 const FILE: PoolFile = {
-  schema: 1,
+  schema: 2,
   generated: "2026-09-05T00:00:00.000Z",
-  source: { repoe: "synthetic", mods_last_modified: null },
+  source: { repoe: "synthetic", mods_last_modified: null, data_last_modified: null },
   item_class: "Body Armour",
+  influence_tags: [],
   bases: [BASE],
   mods: MODS,
   tag_sets: [
@@ -97,6 +98,11 @@ const FILE: PoolFile = {
   ],
   bench: [],
   fossils: [],
+  implicit_mods: {},
+  crafted_mods: [],
+  unveiled_mods: [],
+  influence_mods: [],
+  veiled_mods: [],
 };
 
 const POOL_86 = buildPool(FILE, BASE, 86);

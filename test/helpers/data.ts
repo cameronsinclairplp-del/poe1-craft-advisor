@@ -5,19 +5,22 @@
 // are gunzipped and parsed once and then shared: the parity suite asks for the same Body Armour
 // file five times.
 
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { gunzipSync } from "node:zlib";
 
 import { poolFileName } from "../../src/engine/types.ts";
-import type { DataIndex, PoolFile, Target } from "../../src/engine/types.ts";
+import type { DataIndex, OtherModsFile, PoolFile, Target } from "../../src/engine/types.ts";
+import { detectItemClass, parseItem } from "../../src/parse/itemText.ts";
+import type { Item } from "../../src/parse/itemText.ts";
 
 /** Repository root (this file lives in test/helpers). */
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const DATA_DIR = resolve(ROOT, "public", "data");
 export const SCENARIOS_PATH = resolve(ROOT, "test", "parity", "scenarios.json");
 export const POC_RESULTS_PATH = resolve(ROOT, "poc", "results.json");
+export const FIXTURES_DIR = resolve(ROOT, "test", "fixtures", "items");
 
 // ---------------------------------------------------------------------------
 // public/data
@@ -60,6 +63,62 @@ export function loadPoolFileFor(baseName: string): PoolFile {
   const [itemClass] = classes;
   if (itemClass === undefined) throw new Error("unreachable: non-empty set yielded no item class");
   return loadPoolFileByClass(itemClass);
+}
+
+let otherCache: OtherModsFile | undefined;
+
+/** public/data/other_mods.json.gz, parsed once. */
+export function loadOtherMods(): OtherModsFile {
+  if (!otherCache) {
+    const name = loadIndex().other_mods.file;
+    otherCache = JSON.parse(gunzipSync(readFileSync(resolve(DATA_DIR, name))).toString("utf8")) as OtherModsFile;
+  }
+  return otherCache;
+}
+
+// ---------------------------------------------------------------------------
+// test/fixtures/items/*.txt — real Ctrl+Alt+C pastes
+// ---------------------------------------------------------------------------
+
+/**
+ * A fixture is the pasted text with a few leading "#" comment lines:
+ *   # source: <url>                       where the paste was found (required)
+ *   # note: <free text>                   what it covers
+ *   # expect-error: <ErrorClassName>      the parser must throw this (jewels, flasks, ...)
+ * Drop a new .txt into test/fixtures/items and the fixture suite picks it up.
+ */
+export interface Fixture {
+  name: string;
+  path: string;
+  text: string;
+  source: string | null;
+  note: string | null;
+  expectError: string | null;
+}
+
+/** Fixture file names (without .txt), sorted. */
+export function listFixtures(): string[] {
+  return readdirSync(FIXTURES_DIR)
+    .filter((f) => f.endsWith(".txt"))
+    .map((f) => f.slice(0, -4))
+    .sort();
+}
+
+export function readFixture(name: string): Fixture {
+  const path = resolve(FIXTURES_DIR, `${name}.txt`);
+  const text = readFileSync(path, "utf8");
+  const directive = (key: string): string | null => {
+    const m = new RegExp(`^# ${key}: (.+)$`, "m").exec(text);
+    return m?.[1]?.trim() ?? null;
+  };
+  return { name, path, text, source: directive("source"), note: directive("note"), expectError: directive("expect-error") };
+}
+
+/** detectItemClass + the right class file + parseItem, the way the UI will do it. */
+export function parseItemFromText(text: string): Item {
+  const index = loadIndex();
+  const detected = detectItemClass(text, index);
+  return parseItem(text, { index, classFile: loadPoolFileByClass(detected.itemClass), otherMods: loadOtherMods() });
 }
 
 // ---------------------------------------------------------------------------

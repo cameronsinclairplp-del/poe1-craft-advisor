@@ -1,0 +1,35 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/9955 (item 1 of 4 in that post)
+# posted: 20/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: Helical Ring: implicit allows 1 prefix / 4 suffixes; fractured suffix, bench craft, Split, magnitude notes in headers
+Item Class: Rings
+Rarity: Rare
+Torment Hold
+Helical Ring
+--------
+Quality (Resistance Modifiers): +20% (augmented)
+--------
+Requirements:
+Level: 67
+--------
+Item Level: 84
+--------
+{ Implicit Modifier }
+-2 Prefix Modifiers allowed
++1 Suffix Modifier allowed
+Implicit Modifiers Cannot Be Changed — Unscalable Value
+50% increased Suffix Modifier magnitudes — Unscalable Value
+--------
+{ Prefix Modifier "Robust" (Tier: 3) — Life }
++73(70-84) to maximum Life
+{ Fractured Suffix Modifier "of the Rainbow" (Tier: 1) — Elemental, Resistance  — 70% Increased }
++15(15-16)% to all Elemental Resistances
+{ Suffix Modifier "of Bameth" (Tier: 1) — Chaos, Resistance  — 70% Increased }
++32(31-35)% to Chaos Resistance
+{ Suffix Modifier "of Tzteosh" (Tier: 1) — Elemental, Fire, Resistance  — 70% Increased }
++48(46-48)% to Fire Resistance
+{ Master Crafted Suffix Modifier "of Craft" — Elemental, Fire, Chaos, Resistance  — 70% Increased }
++15(13-15)% to Fire and Chaos Resistances
+--------
+Split
+--------
+Fractured Item

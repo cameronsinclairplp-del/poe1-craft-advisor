@@ -1,0 +1,44 @@
+# source: https://github.com/Sidekick-Poe/Sidekick/issues/889
+# posted: 08/11/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: Shaper + Elder influenced rare with two influence-only prefixes, a bench craft, blank lines between mods (3.26-era client). Posted in patch 3.26; its "Entombing" prefix shows Adds (41-54) to (81-93) Cold Damage to Spells, while the 3.29 data (RePoE 04/09/2026 and Path of Building 23/08/2026 agree) has (52-69) to (103-118) for the wand mod SpellAddedColdDamage9 and no mod with the old ranges, so the parser refuses it: an item from an older patch that no longer matches the data (STATUS.md milestone 3, patch drift). The Shaper + Elder case that parses is rare-amulet-shaper-elder-mirrored-quantity.
+# expect-error: UnknownModError
+Item Class: Wands
+Rarity: Rare
+Damnation Call
+Prophecy Wand
+--------
+Wand
+Quality: +20% (augmented)
+Physical Damage: 31-58 (augmented)
+Critical Strike Chance: 8.70%
+Attacks per Second: 1.50
+--------
+Requirements:
+Level: 68
+Int: 245
+--------
+Sockets: B-B G
+--------
+Item Level: 85
+--------
+{ Implicit Modifier — Damage, Caster }
+39(36-40)% increased Spell Damage (implicit)
+--------
+{ Prefix Modifier "The Elder's" (Tier: 1) — Damage, Caster }
+1% increased Spell Damage per 16 Intelligence
+
+{ Prefix Modifier "The Shaper's" (Tier: 1) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 5(5-6) Lightning Damage to Attacks with this Weapon per 10 Intelligence
+
+{ Prefix Modifier "Entombing" (Tier: 1) — Damage, Elemental, Cold, Caster }
+Adds 43(41-54) to 86(81-93) Cold Damage to Spells
+
+{ Suffix Modifier "of Arcing" (Tier: 1) — Damage, Elemental, Lightning }
+29(27-30)% increased Lightning Damage
+
+{ Master Crafted Suffix Modifier "of Craft" — Attack, Speed }
+10(10-11)% increased Attack Speed while a Rare or Unique Enemy is Nearby (crafted)
+
+--------
+Shaper Item
+Elder Item

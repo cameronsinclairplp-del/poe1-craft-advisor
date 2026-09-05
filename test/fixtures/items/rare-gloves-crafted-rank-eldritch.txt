@@ -1,0 +1,43 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/10208 (item 1 of 2 in that post)
+# posted: 12/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: rare, bench craft with (Rank: 3), Searing Exarch + Eater of Worlds implicits, one mercenary-domain suffix (of Infamy)
+Item Class: Gloves
+Rarity: Rare
+Tempest Vise
+Murder Mitts
+--------
+Quality: +20% (augmented)
+Evasion Rating: 272 (augmented)
+Energy Shield: 55 (augmented)
+Intangibility: 11%
+--------
+Requirements:
+Level: 67 (unmet)
+Dex: 51 (unmet)
+Int: 51 (unmet)
+--------
+Sockets: G-W-B-B
+--------
+Item Level: 84
+--------
+{ Searing Exarch Implicit Modifier (Lesser) — Speed }
+8% increased Mine Throwing Speed
+{ Eater of Worlds Implicit Modifier (Lesser) }
++5% chance to Suppress Spell Damage
+(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)
+--------
+{ Prefix Modifier "Virile" (Tier: 2) — Life }
++105(100-114) to maximum Life
+{ Prefix Modifier "Mazarine" (Tier: 3) — Mana }
++60(60-64) to maximum Mana
+{ Master Crafted Prefix Modifier "Upgraded" (Rank: 3) — Defences, Evasion, Energy Shield }
+69(56-74)% increased Evasion and Energy Shield
+{ Suffix Modifier "of Infamy" (Tier: 1) }
+Skills used by your Traps and Mines Chain 2 additional times
+{ Suffix Modifier "of the Volcano" (Tier: 3) — Elemental, Fire, Resistance }
++38(36-41)% to Fire Resistance
+{ Suffix Modifier "of Abjuration" (Tier: 2) }
++11(11-12)% chance to Suppress Spell Damage
+(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)
+Searing Exarch Item
+Eater of Worlds Item

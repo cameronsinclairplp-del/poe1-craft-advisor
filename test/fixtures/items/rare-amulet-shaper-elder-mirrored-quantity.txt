@@ -1,0 +1,36 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/10039 (item 2 of 12 in that post)
+# posted: 28/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: Simplex Amulet: implicit allows 1 prefix / 2 suffixes; Shaper + Elder, Mirrored, Split, an item-quantity suffix no base can roll
+Item Class: Amulets
+Rarity: Rare
+Grim Collar
+Simplex Amulet
+--------
+Quality (Critical Modifiers): +20% (augmented)
+--------
+Requirements:
+Level: 64
+--------
+Item Level: 87
+--------
+Allocates Force of Darkness (enchant)
+--------
+{ Implicit Modifier }
+-2 Prefix Modifiers allowed
+-1 Suffix Modifier allowed
+Implicit Modifiers Cannot Be Changed
+100% increased Explicit Modifier magnitudes
+--------
+{ Prefix Modifier "The Elder's" (Tier: 1) — Damage, Chaos  — 100% Increased }
+Gain 13(3-5)% of Non-Chaos Damage as extra Chaos Damage
+{ Suffix Modifier "of Destruction" (Tier: 1) — Damage, Critical  — 120% Increased }
++70(35-38)% to Global Critical Strike Multiplier
+{ Suffix Modifier "of Amassment" — Drop  — 100% Increased }
+20(17-20)% increased Quantity of Items found
+--------
+Mirrored
+--------
+Split
+--------
+Shaper Item
+Elder Item
