@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+# Every deploy (a push to main, the 6-hourly schedule, or a manual run) fetches fresh poe.ninja
+# prices into the build, so the site ships current prices without any bot commit. The committed
+# public/prices/Allflame.json is the dev/offline fallback and the baseline the snapshot script
+# falls back to (marked stale) when poe.ninja is unavailable or returns a bad body.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      # ETag store and body cache for poe.ninja, restored from the previous run so requests send
+      # If-None-Match and can get 304s instead of re-downloading the 8.5 MB BaseType body.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/ninja
+          key: ninja-cache-${{ github.run_id }}
+          restore-keys: |
+            ninja-cache-
+      # --force bypasses the 30-minute guard (the committed fallback may be recent) and the
+      # Cache-Control shortcut; the empty-body and plausibility protections stay on. A snapshot
+      # failure must never block shipping code: the committed file is what gets built then.
+      - run: npm run snapshot-prices -- --league Allflame --force
+        continue-on-error: true
+      - run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

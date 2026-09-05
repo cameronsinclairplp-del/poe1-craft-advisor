@@ -1,0 +1,31 @@
+name: CI
+
+# Runs on every pull request (and every push to a PR branch). The "typecheck-and-test" check is
+# required by the main branch ruleset (.github/ruleset-main.json), so nothing merges red.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck-and-test:
+    name: typecheck-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/

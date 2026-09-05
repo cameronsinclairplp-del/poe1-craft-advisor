@@ -1,0 +1,6204 @@
+{
+  "schema": 1,
+  "generated": "2026-09-05T04:18:50.036Z",
+  "source": {
+    "repoe": "https://repoe-fork.github.io",
+    "mods_last_modified": "Fri, 04 Sep 2026 22:58:29 GMT"
+  },
+  "classes": [
+    {
+      "item_class": "Amulet",
+      "file": "Amulet.json.gz",
+      "bases": 97,
+      "mods": 309
+    },
+    {
+      "item_class": "Belt",
+      "file": "Belt.json.gz",
+      "bases": 16,
+      "mods": 205
+    },
+    {
+      "item_class": "Body Armour",
+      "file": "Body_Armour.json.gz",
+      "bases": 122,
+      "mods": 337
+    },
+    {
+      "item_class": "Boots",
+      "file": "Boots.json.gz",
+      "bases": 81,
+      "mods": 329
+    },
+    {
+      "item_class": "Bow",
+      "file": "Bow.json.gz",
+      "bases": 29,
+      "mods": 214
+    },
+    {
+      "item_class": "Claw",
+      "file": "Claw.json.gz",
+      "bases": 28,
+      "mods": 234
+    },
+    {
+      "item_class": "Dagger",
+      "file": "Dagger.json.gz",
+      "bases": 13,
+      "mods": 247
+    },
+    {
+      "item_class": "FishingRod",
+      "file": "FishingRod.json.gz",
+      "bases": 1,
+      "mods": 82
+    },
+    {
+      "item_class": "Gloves",
+      "file": "Gloves.json.gz",
+      "bases": 79,
+      "mods": 348
+    },
+    {
+      "item_class": "Helmet",
+      "file": "Helmet.json.gz",
+      "bases": 94,
+      "mods": 352
+    },
+    {
+      "item_class": "One Hand Axe",
+      "file": "One_Hand_Axe.json.gz",
+      "bases": 28,
+      "mods": 226
+    },
+    {
+      "item_class": "One Hand Mace",
+      "file": "One_Hand_Mace.json.gz",
+      "bases": 28,
+      "mods": 217
+    },
+    {
+      "item_class": "One Hand Sword",
+      "file": "One_Hand_Sword.json.gz",
+      "bases": 31,
+      "mods": 226
+    },
+    {
+      "item_class": "Quiver",
+      "file": "Quiver.json.gz",
+      "bases": 22,
+      "mods": 204
+    },
+    {
+      "item_class": "Ring",
+      "file": "Ring.json.gz",
+      "bases": 47,
+      "mods": 286
+    },
+    {
+      "item_class": "Rune Dagger",
+      "file": "Rune_Dagger.json.gz",
+      "bases": 18,
+      "mods": 231
+    },
+    {
+      "item_class": "Sceptre",
+      "file": "Sceptre.json.gz",
+      "bases": 28,
+      "mods": 313
+    },
+    {
+      "item_class": "Shield",
+      "file": "Shield.json.gz",
+      "bases": 97,
+      "mods": 444
+    },
+    {
+      "item_class": "Staff",
+      "file": "Staff.json.gz",
+      "bases": 16,
+      "mods": 348
+    },
+    {
+      "item_class": "Thrusting One Hand Sword",
+      "file": "Thrusting_One_Hand_Sword.json.gz",
+      "bases": 25,
+      "mods": 226
+    },
+    {
+      "item_class": "Two Hand Axe",
+      "file": "Two_Hand_Axe.json.gz",
+      "bases": 25,
+      "mods": 226
+    },
+    {
+      "item_class": "Two Hand Mace",
+      "file": "Two_Hand_Mace.json.gz",
+      "bases": 25,
+      "mods": 217
+    },
+    {
+      "item_class": "Two Hand Sword",
+      "file": "Two_Hand_Sword.json.gz",
+      "bases": 26,
+      "mods": 226
+    },
+    {
+      "item_class": "Wand",
+      "file": "Wand.json.gz",
+      "bases": 29,
+      "mods": 347
+    },
+    {
+      "item_class": "Warstaff",
+      "file": "Warstaff.json.gz",
+      "bases": 12,
+      "mods": 215
+    }
+  ],
+  "bases": [
+    {
+      "name": "Paua Amulet",
+      "id": "Metadata/Items/Amulets/Amulet1",
+      "item_class": "Amulet",
+      "drop_level": 3
+    },
+    {
+      "name": "Coral Amulet",
+      "id": "Metadata/Items/Amulets/Amulet2",
+      "item_class": "Amulet",
+      "drop_level": 3
+    },
+    {
+      "name": "Amber Amulet",
+      "id": "Metadata/Items/Amulets/Amulet3",
+      "item_class": "Amulet",
+      "drop_level": 7
+    },
+    {
+      "name": "Jade Amulet",
+      "id": "Metadata/Items/Amulets/Amulet4",
+      "item_class": "Amulet",
+      "drop_level": 7
+    },
+    {
+      "name": "Lapis Amulet",
+      "id": "Metadata/Items/Amulets/Amulet5",
+      "item_class": "Amulet",
+      "drop_level": 7
+    },
+    {
+      "name": "Gold Amulet",
+      "id": "Metadata/Items/Amulets/Amulet6",
+      "item_class": "Amulet",
+      "drop_level": 15
+    },
+    {
+      "name": "Onyx Amulet",
+      "id": "Metadata/Items/Amulets/Amulet7",
+      "item_class": "Amulet",
+      "drop_level": 25
+    },
+    {
+      "name": "Turquoise Amulet",
+      "id": "Metadata/Items/Amulets/Amulet8",
+      "item_class": "Amulet",
+      "drop_level": 20
+    },
+    {
+      "name": "Agate Amulet",
+      "id": "Metadata/Items/Amulets/Amulet9",
+      "item_class": "Amulet",
+      "drop_level": 20
+    },
+    {
+      "name": "Citrine Amulet",
+      "id": "Metadata/Items/Amulets/Amulet10",
+      "item_class": "Amulet",
+      "drop_level": 20
+    },
+    {
+      "name": "Unset Amulet",
+      "id": "Metadata/Items/Amulets/Amulet12",
+      "item_class": "Amulet",
+      "drop_level": 45
+    },
+    {
+      "name": "Pearlescent Amulet",
+      "id": "Metadata/Items/Amulets/Amulet13",
+      "item_class": "Amulet",
+      "drop_level": 10
+    },
+    {
+      "name": "Astrolabe Amulet",
+      "id": "Metadata/Items/Amulets/AmuletE1",
+      "item_class": "Amulet",
+      "drop_level": 75
+    },
+    {
+      "name": "Simplex Amulet",
+      "id": "Metadata/Items/Amulets/AmuletE2",
+      "item_class": "Amulet",
+      "drop_level": 80
+    },
+    {
+      "name": "Focused Amulet",
+      "id": "Metadata/Items/Amulets/AmuletE3",
+      "item_class": "Amulet",
+      "drop_level": 80
+    },
+    {
+      "name": "Blue Pearl Amulet",
+      "id": "Metadata/Items/Amulet/AmuletAtlas1",
+      "item_class": "Amulet",
+      "drop_level": 77
+    },
+    {
+      "name": "Marble Amulet",
+      "id": "Metadata/Items/Amulet/AmuletAtlas2",
+      "item_class": "Amulet",
+      "drop_level": 74
+    },
+    {
+      "name": "Seaglass Amulet",
+      "id": "Metadata/Items/Amulet/AmuletAtlas3",
+      "item_class": "Amulet",
+      "drop_level": 74
+    },
+    {
+      "name": "Black Maw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_1",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Bonespire Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_2",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Ashscale Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_3",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Lone Antler Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_4",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Deep One Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_5",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Breakrib Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_6",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Deadhand Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_7",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Undying Flesh Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_8",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Rot Head Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_9",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Mandible Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_10",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Chrysalis Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_11",
+      "item_class": "Amulet",
+      "drop_level": 35
+    },
+    {
+      "name": "Writhing Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman1_12",
+      "item_class": "Amulet",
+      "drop_level": 35
+    },
+    {
+      "name": "Hexclaw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_1",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Primal Skull Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_2",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Wereclaw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_3",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Splitnewt Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_4",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Clutching Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_5",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_1",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_2",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_3",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_4",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_5",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Avian Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_6_6",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Fangjaw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_7",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Horned Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman2_8",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Spinefuse Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_1",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Three Rat Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_2",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Monkey Twins Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_3",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Longtooth Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_4",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Rotfeather Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_5",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Monkey Paw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_6_1",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Monkey Paw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_6_2",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Monkey Paw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_6_3",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Three Hands Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman3_7",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Greatwolf Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/Talisman4",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Chieftain Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanChieftain",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Gargantuan Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBeast",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Goliath Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSpiker",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Rhoa Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanRhoa",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Blood Viper Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSandSnake",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Chimeral Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanIguana",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Squid Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSirenSpawn",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Sand Spitter Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSandSpitter",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Shield Crab Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanShieldCrab",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Goatman Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanGoatman",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Devourer Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanDevourer",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Plagued Arachnid Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanPlagueSpider",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Watcher Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSquid",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Savage Crab Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanCrab",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Flame Hellion Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanHellionFire",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Frost Hellion Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanHellionIce",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Lynx Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanLynx",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Ape Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanMonkey",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Wolf Alpha Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanWolf",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Magma Hound Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanHound",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Pitbull Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanPitbull",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Ursa Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanUrsa",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Taurus Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBull",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Retch Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanKiweth",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Cobra Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanForestSnake",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Carrion Queen Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanCarrionQueen",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Scrabbler Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSandLeaper",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Black Widow Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanSpider",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Scorpion Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanScorpion",
+      "item_class": "Amulet",
+      "drop_level": 28
+    },
+    {
+      "name": "Tiger Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanTiger",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Vulture Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanVulture",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Rhex Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanRhex",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Hybrid Arachnid Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanPlatedSpider",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Octopus Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanParasiticSquid",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Spider Crab Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanCrab2",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Great Maw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanFrog",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Croaker Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanGemFrog",
+      "item_class": "Amulet",
+      "drop_level": 36
+    },
+    {
+      "name": "Craicic Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBossCrab",
+      "item_class": "Amulet",
+      "drop_level": 45
+    },
+    {
+      "name": "Fenumal Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBossSpider",
+      "item_class": "Amulet",
+      "drop_level": 45
+    },
+    {
+      "name": "Saqawine Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBossBird",
+      "item_class": "Amulet",
+      "drop_level": 45
+    },
+    {
+      "name": "Farric Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBossTiger",
+      "item_class": "Amulet",
+      "drop_level": 45
+    },
+    {
+      "name": "Greatwolf Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanGreatwolf",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Black Maw Talisman",
+      "id": "Metadata/Items/Amulets/Talismans/TalismanBlackMaw",
+      "item_class": "Amulet",
+      "drop_level": 1
+    },
+    {
+      "name": "Rustic Sash",
+      "id": "Metadata/Items/Belts/Belt1",
+      "item_class": "Belt",
+      "drop_level": 2
+    },
+    {
+      "name": "Chain Belt",
+      "id": "Metadata/Items/Belts/Belt2",
+      "item_class": "Belt",
+      "drop_level": 2
+    },
+    {
+      "name": "Leather Belt",
+      "id": "Metadata/Items/Belts/Belt3",
+      "item_class": "Belt",
+      "drop_level": 10
+    },
+    {
+      "name": "Heavy Belt",
+      "id": "Metadata/Items/Belts/Belt4",
+      "item_class": "Belt",
+      "drop_level": 10
+    },
+    {
+      "name": "Cloth Belt",
+      "id": "Metadata/Items/Belts/Belt5",
+      "item_class": "Belt",
+      "drop_level": 20
+    },
+    {
+      "name": "Studded Belt",
+      "id": "Metadata/Items/Belts/Belt6",
+      "item_class": "Belt",
+      "drop_level": 20
+    },
+    {
+      "name": "Micro-Distillery Belt",
+      "id": "Metadata/Items/Belts/BeltE1",
+      "item_class": "Belt",
+      "drop_level": 68
+    },
+    {
+      "name": "Mechalarm Belt",
+      "id": "Metadata/Items/Belts/BeltE2",
+      "item_class": "Belt",
+      "drop_level": 70
+    },
+    {
+      "name": "Mechanical Belt",
+      "id": "Metadata/Items/Belts/BeltE3",
+      "item_class": "Belt",
+      "drop_level": 70
+    },
+    {
+      "name": "Vanguard Belt",
+      "id": "Metadata/Items/Belts/BeltAtlas1",
+      "item_class": "Belt",
+      "drop_level": 73
+    },
+    {
+      "name": "Crystal Belt",
+      "id": "Metadata/Items/Belts/BeltAtlas2",
+      "item_class": "Belt",
+      "drop_level": 73
+    },
+    {
+      "name": "Stygian Vise",
+      "id": "Metadata/Items/Belts/BeltAbyss",
+      "item_class": "Belt",
+      "drop_level": 1
+    },
+    {
+      "name": "Cord Belt",
+      "id": "Metadata/Items/Belts/BeltFaridun",
+      "item_class": "Belt",
+      "drop_level": 1
+    },
+    {
+      "name": "Plate Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr1",
+      "item_class": "Body Armour",
+      "drop_level": 1
+    },
+    {
+      "name": "Chestplate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr2",
+      "item_class": "Body Armour",
+      "drop_level": 6
+    },
+    {
+      "name": "Copper Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr3",
+      "item_class": "Body Armour",
+      "drop_level": 17
+    },
+    {
+      "name": "War Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr4",
+      "item_class": "Body Armour",
+      "drop_level": 21
+    },
+    {
+      "name": "Full Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Arena Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Lordly Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Bronze Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr8",
+      "item_class": "Body Armour",
+      "drop_level": 37
+    },
+    {
+      "name": "Battle Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr9",
+      "item_class": "Body Armour",
+      "drop_level": 41
+    },
+    {
+      "name": "Sun Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr10",
+      "item_class": "Body Armour",
+      "drop_level": 45
+    },
+    {
+      "name": "Colosseum Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr11",
+      "item_class": "Body Armour",
+      "drop_level": 49
+    },
+    {
+      "name": "Majestic Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr12",
+      "item_class": "Body Armour",
+      "drop_level": 53
+    },
+    {
+      "name": "Golden Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr13",
+      "item_class": "Body Armour",
+      "drop_level": 56
+    },
+    {
+      "name": "Crusader Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr14",
+      "item_class": "Body Armour",
+      "drop_level": 59
+    },
+    {
+      "name": "Astral Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr15",
+      "item_class": "Body Armour",
+      "drop_level": 62
+    },
+    {
+      "name": "Gladiator Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr16",
+      "item_class": "Body Armour",
+      "drop_level": 65
+    },
+    {
+      "name": "Glorious Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr17",
+      "item_class": "Body Armour",
+      "drop_level": 68
+    },
+    {
+      "name": "Titan Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Legion Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Royal Plate",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStr20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Shabby Jerkin",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex1",
+      "item_class": "Body Armour",
+      "drop_level": 2
+    },
+    {
+      "name": "Strapped Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex2",
+      "item_class": "Body Armour",
+      "drop_level": 9
+    },
+    {
+      "name": "Buckskin Tunic",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex3",
+      "item_class": "Body Armour",
+      "drop_level": 17
+    },
+    {
+      "name": "Wild Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex4",
+      "item_class": "Body Armour",
+      "drop_level": 25
+    },
+    {
+      "name": "Full Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Sun Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Thief's Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Eelskin Tunic",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex8",
+      "item_class": "Body Armour",
+      "drop_level": 37
+    },
+    {
+      "name": "Frontier Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex9",
+      "item_class": "Body Armour",
+      "drop_level": 41
+    },
+    {
+      "name": "Glorious Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex10",
+      "item_class": "Body Armour",
+      "drop_level": 45
+    },
+    {
+      "name": "Coronal Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex11",
+      "item_class": "Body Armour",
+      "drop_level": 49
+    },
+    {
+      "name": "Cutthroat's Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex12",
+      "item_class": "Body Armour",
+      "drop_level": 53
+    },
+    {
+      "name": "Sharkskin Tunic",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex13",
+      "item_class": "Body Armour",
+      "drop_level": 56
+    },
+    {
+      "name": "Destiny Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex14",
+      "item_class": "Body Armour",
+      "drop_level": 59
+    },
+    {
+      "name": "Exquisite Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex15",
+      "item_class": "Body Armour",
+      "drop_level": 62
+    },
+    {
+      "name": "Zodiac Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex16",
+      "item_class": "Body Armour",
+      "drop_level": 65
+    },
+    {
+      "name": "Assassin's Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex17",
+      "item_class": "Body Armour",
+      "drop_level": 68
+    },
+    {
+      "name": "Supreme Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Astral Leather",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Syndicate's Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDex20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Simple Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt1",
+      "item_class": "Body Armour",
+      "drop_level": 3
+    },
+    {
+      "name": "Silken Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt2",
+      "item_class": "Body Armour",
+      "drop_level": 11
+    },
+    {
+      "name": "Scholar's Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt3",
+      "item_class": "Body Armour",
+      "drop_level": 18
+    },
+    {
+      "name": "Silken Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt4",
+      "item_class": "Body Armour",
+      "drop_level": 25
+    },
+    {
+      "name": "Mage's Vestment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Silk Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Cabalist Regalia",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Sage's Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt8",
+      "item_class": "Body Armour",
+      "drop_level": 37
+    },
+    {
+      "name": "Silken Wrap",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt9",
+      "item_class": "Body Armour",
+      "drop_level": 41
+    },
+    {
+      "name": "Conjurer's Vestment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt10",
+      "item_class": "Body Armour",
+      "drop_level": 45
+    },
+    {
+      "name": "Spidersilk Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt11",
+      "item_class": "Body Armour",
+      "drop_level": 49
+    },
+    {
+      "name": "Destroyer Regalia",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt12",
+      "item_class": "Body Armour",
+      "drop_level": 53
+    },
+    {
+      "name": "Savant's Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt13",
+      "item_class": "Body Armour",
+      "drop_level": 56
+    },
+    {
+      "name": "Necromancer Silks",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt14",
+      "item_class": "Body Armour",
+      "drop_level": 59
+    },
+    {
+      "name": "Occultist's Vestment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt15",
+      "item_class": "Body Armour",
+      "drop_level": 62
+    },
+    {
+      "name": "Widowsilk Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt16",
+      "item_class": "Body Armour",
+      "drop_level": 65
+    },
+    {
+      "name": "Vaal Regalia",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt17",
+      "item_class": "Body Armour",
+      "drop_level": 68
+    },
+    {
+      "name": "Arcane Vestment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Nightweave Robe",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Twilight Regalia",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyInt20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Scale Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex1",
+      "item_class": "Body Armour",
+      "drop_level": 4
+    },
+    {
+      "name": "Light Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex2",
+      "item_class": "Body Armour",
+      "drop_level": 8
+    },
+    {
+      "name": "Scale Doublet",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex3",
+      "item_class": "Body Armour",
+      "drop_level": 17
+    },
+    {
+      "name": "Infantry Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex4",
+      "item_class": "Body Armour",
+      "drop_level": 21
+    },
+    {
+      "name": "Full Scale Armour",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Soldier's Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Field Lamellar",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Wyrmscale Doublet",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex8",
+      "item_class": "Body Armour",
+      "drop_level": 38
+    },
+    {
+      "name": "Hussar Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex9",
+      "item_class": "Body Armour",
+      "drop_level": 42
+    },
+    {
+      "name": "Full Wyrmscale",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex10",
+      "item_class": "Body Armour",
+      "drop_level": 46
+    },
+    {
+      "name": "Commander's Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex11",
+      "item_class": "Body Armour",
+      "drop_level": 50
+    },
+    {
+      "name": "Battle Lamellar",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex12",
+      "item_class": "Body Armour",
+      "drop_level": 54
+    },
+    {
+      "name": "Dragonscale Doublet",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex13",
+      "item_class": "Body Armour",
+      "drop_level": 57
+    },
+    {
+      "name": "Desert Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex14",
+      "item_class": "Body Armour",
+      "drop_level": 60
+    },
+    {
+      "name": "Full Dragonscale",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex15",
+      "item_class": "Body Armour",
+      "drop_level": 63
+    },
+    {
+      "name": "General's Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex16",
+      "item_class": "Body Armour",
+      "drop_level": 66
+    },
+    {
+      "name": "Triumphant Lamellar",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex17",
+      "item_class": "Body Armour",
+      "drop_level": 69
+    },
+    {
+      "name": "Full Wyvernscale",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Marshall's Brigandine",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Conquest Lamellar",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDex20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Chainmail Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt1",
+      "item_class": "Body Armour",
+      "drop_level": 4
+    },
+    {
+      "name": "Chainmail Tunic",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt2",
+      "item_class": "Body Armour",
+      "drop_level": 8
+    },
+    {
+      "name": "Ringmail Coat",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt3",
+      "item_class": "Body Armour",
+      "drop_level": 17
+    },
+    {
+      "name": "Chainmail Doublet",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt4",
+      "item_class": "Body Armour",
+      "drop_level": 21
+    },
+    {
+      "name": "Full Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Full Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Holy Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Latticed Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt8",
+      "item_class": "Body Armour",
+      "drop_level": 39
+    },
+    {
+      "name": "Crusader Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt9",
+      "item_class": "Body Armour",
+      "drop_level": 43
+    },
+    {
+      "name": "Ornate Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt10",
+      "item_class": "Body Armour",
+      "drop_level": 47
+    },
+    {
+      "name": "Chain Hauberk",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt11",
+      "item_class": "Body Armour",
+      "drop_level": 51
+    },
+    {
+      "name": "Devout Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt12",
+      "item_class": "Body Armour",
+      "drop_level": 55
+    },
+    {
+      "name": "Loricated Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt13",
+      "item_class": "Body Armour",
+      "drop_level": 58
+    },
+    {
+      "name": "Conquest Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt14",
+      "item_class": "Body Armour",
+      "drop_level": 61
+    },
+    {
+      "name": "Elegant Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt15",
+      "item_class": "Body Armour",
+      "drop_level": 64
+    },
+    {
+      "name": "Saint's Hauberk",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt16",
+      "item_class": "Body Armour",
+      "drop_level": 67
+    },
+    {
+      "name": "Saintly Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt17",
+      "item_class": "Body Armour",
+      "drop_level": 70
+    },
+    {
+      "name": "Grand Ringmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Paladin's Hauberk",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Sacred Chainmail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrInt20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Padded Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt1",
+      "item_class": "Body Armour",
+      "drop_level": 4
+    },
+    {
+      "name": "Oiled Vest",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt2",
+      "item_class": "Body Armour",
+      "drop_level": 9
+    },
+    {
+      "name": "Padded Jacket",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt3",
+      "item_class": "Body Armour",
+      "drop_level": 18
+    },
+    {
+      "name": "Oiled Coat",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt4",
+      "item_class": "Body Armour",
+      "drop_level": 22
+    },
+    {
+      "name": "Scarlet Raiment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt5",
+      "item_class": "Body Armour",
+      "drop_level": 28
+    },
+    {
+      "name": "Waxed Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt6",
+      "item_class": "Body Armour",
+      "drop_level": 32
+    },
+    {
+      "name": "Bone Armour",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt7",
+      "item_class": "Body Armour",
+      "drop_level": 35
+    },
+    {
+      "name": "Quilted Jacket",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt8",
+      "item_class": "Body Armour",
+      "drop_level": 40
+    },
+    {
+      "name": "Sleek Coat",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt9",
+      "item_class": "Body Armour",
+      "drop_level": 44
+    },
+    {
+      "name": "Crimson Raiment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt10",
+      "item_class": "Body Armour",
+      "drop_level": 48
+    },
+    {
+      "name": "Lacquered Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt11",
+      "item_class": "Body Armour",
+      "drop_level": 52
+    },
+    {
+      "name": "Crypt Armour",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt12",
+      "item_class": "Body Armour",
+      "drop_level": 56
+    },
+    {
+      "name": "Sentinel Jacket",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt13",
+      "item_class": "Body Armour",
+      "drop_level": 59
+    },
+    {
+      "name": "Varnished Coat",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt14",
+      "item_class": "Body Armour",
+      "drop_level": 62
+    },
+    {
+      "name": "Blood Raiment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt15",
+      "item_class": "Body Armour",
+      "drop_level": 65
+    },
+    {
+      "name": "Sadist Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt16",
+      "item_class": "Body Armour",
+      "drop_level": 68
+    },
+    {
+      "name": "Carnal Armour",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt17",
+      "item_class": "Body Armour",
+      "drop_level": 71
+    },
+    {
+      "name": "Sanguine Raiment",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt18",
+      "item_class": "Body Armour",
+      "drop_level": 73
+    },
+    {
+      "name": "Torturer Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt19",
+      "item_class": "Body Armour",
+      "drop_level": 78
+    },
+    {
+      "name": "Necrotic Armour",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyDexInt20",
+      "item_class": "Body Armour",
+      "drop_level": 84
+    },
+    {
+      "name": "Sacrificial Garb",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDexInt1",
+      "item_class": "Body Armour",
+      "drop_level": 72
+    },
+    {
+      "name": "Grasping Mail",
+      "id": "Metadata/Items/Armours/BodyArmours/BodyStrDexInt2",
+      "item_class": "Body Armour",
+      "drop_level": 70
+    },
+    {
+      "name": "Iron Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr1",
+      "item_class": "Boots",
+      "drop_level": 1
+    },
+    {
+      "name": "Steel Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr2",
+      "item_class": "Boots",
+      "drop_level": 9
+    },
+    {
+      "name": "Plated Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr3",
+      "item_class": "Boots",
+      "drop_level": 23
+    },
+    {
+      "name": "Reinforced Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr4",
+      "item_class": "Boots",
+      "drop_level": 33
+    },
+    {
+      "name": "Antique Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr5",
+      "item_class": "Boots",
+      "drop_level": 37
+    },
+    {
+      "name": "Ancient Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr6",
+      "item_class": "Boots",
+      "drop_level": 46
+    },
+    {
+      "name": "Goliath Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr7",
+      "item_class": "Boots",
+      "drop_level": 54
+    },
+    {
+      "name": "Vaal Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr8",
+      "item_class": "Boots",
+      "drop_level": 62
+    },
+    {
+      "name": "Titan Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr9",
+      "item_class": "Boots",
+      "drop_level": 68
+    },
+    {
+      "name": "Precursor Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr10",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Leviathan Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsStr11",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Basemetal Treads",
+      "id": "Metadata/Items/Armours/Boots/BootsStrRitual1",
+      "item_class": "Boots",
+      "drop_level": 20
+    },
+    {
+      "name": "Darksteel Treads",
+      "id": "Metadata/Items/Armours/Boots/BootsStrRitual2",
+      "item_class": "Boots",
+      "drop_level": 50
+    },
+    {
+      "name": "Brimstone Treads",
+      "id": "Metadata/Items/Armours/Boots/BootsStrRitual3",
+      "item_class": "Boots",
+      "drop_level": 80
+    },
+    {
+      "name": "Rawhide Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex1",
+      "item_class": "Boots",
+      "drop_level": 3
+    },
+    {
+      "name": "Goathide Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex2",
+      "item_class": "Boots",
+      "drop_level": 12
+    },
+    {
+      "name": "Deerskin Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex3",
+      "item_class": "Boots",
+      "drop_level": 22
+    },
+    {
+      "name": "Nubuck Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex4",
+      "item_class": "Boots",
+      "drop_level": 34
+    },
+    {
+      "name": "Eelskin Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex5",
+      "item_class": "Boots",
+      "drop_level": 39
+    },
+    {
+      "name": "Sharkskin Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex6",
+      "item_class": "Boots",
+      "drop_level": 44
+    },
+    {
+      "name": "Shagreen Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex7",
+      "item_class": "Boots",
+      "drop_level": 55
+    },
+    {
+      "name": "Stealth Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex8",
+      "item_class": "Boots",
+      "drop_level": 62
+    },
+    {
+      "name": "Slink Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex9",
+      "item_class": "Boots",
+      "drop_level": 69
+    },
+    {
+      "name": "Harpyskin Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex10",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Velour Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDex11",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Cloudwhisper Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexRitual1",
+      "item_class": "Boots",
+      "drop_level": 20
+    },
+    {
+      "name": "Windbreak Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexRitual2",
+      "item_class": "Boots",
+      "drop_level": 50
+    },
+    {
+      "name": "Stormrider Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexRitual3",
+      "item_class": "Boots",
+      "drop_level": 80
+    },
+    {
+      "name": "Wool Shoes",
+      "id": "Metadata/Items/Armours/Boots/BootsInt1",
+      "item_class": "Boots",
+      "drop_level": 3
+    },
+    {
+      "name": "Velvet Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt2",
+      "item_class": "Boots",
+      "drop_level": 9
+    },
+    {
+      "name": "Silk Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt3",
+      "item_class": "Boots",
+      "drop_level": 22
+    },
+    {
+      "name": "Scholar Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsInt4",
+      "item_class": "Boots",
+      "drop_level": 32
+    },
+    {
+      "name": "Satin Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt5",
+      "item_class": "Boots",
+      "drop_level": 38
+    },
+    {
+      "name": "Samite Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt6",
+      "item_class": "Boots",
+      "drop_level": 44
+    },
+    {
+      "name": "Conjurer Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsInt7",
+      "item_class": "Boots",
+      "drop_level": 53
+    },
+    {
+      "name": "Arcanist Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt8",
+      "item_class": "Boots",
+      "drop_level": 61
+    },
+    {
+      "name": "Sorcerer Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsInt9",
+      "item_class": "Boots",
+      "drop_level": 67
+    },
+    {
+      "name": "Sage Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsInt10",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Warlock Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsInt11",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Duskwalk Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsIntRitual1",
+      "item_class": "Boots",
+      "drop_level": 20
+    },
+    {
+      "name": "Nightwind Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsIntRitual2",
+      "item_class": "Boots",
+      "drop_level": 50
+    },
+    {
+      "name": "Dreamquest Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsIntRitual3",
+      "item_class": "Boots",
+      "drop_level": 80
+    },
+    {
+      "name": "Leatherscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex1",
+      "item_class": "Boots",
+      "drop_level": 6
+    },
+    {
+      "name": "Ironscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex2",
+      "item_class": "Boots",
+      "drop_level": 18
+    },
+    {
+      "name": "Bronzescale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex3",
+      "item_class": "Boots",
+      "drop_level": 30
+    },
+    {
+      "name": "Steelscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex4",
+      "item_class": "Boots",
+      "drop_level": 36
+    },
+    {
+      "name": "Serpentscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex5",
+      "item_class": "Boots",
+      "drop_level": 42
+    },
+    {
+      "name": "Wyrmscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex6",
+      "item_class": "Boots",
+      "drop_level": 51
+    },
+    {
+      "name": "Hydrascale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex7",
+      "item_class": "Boots",
+      "drop_level": 59
+    },
+    {
+      "name": "Dragonscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex8",
+      "item_class": "Boots",
+      "drop_level": 65
+    },
+    {
+      "name": "Chimerascale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex9",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Wyvernscale Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrDex10",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Chain Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt1",
+      "item_class": "Boots",
+      "drop_level": 5
+    },
+    {
+      "name": "Ringmail Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt2",
+      "item_class": "Boots",
+      "drop_level": 13
+    },
+    {
+      "name": "Mesh Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt3",
+      "item_class": "Boots",
+      "drop_level": 28
+    },
+    {
+      "name": "Riveted Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt4",
+      "item_class": "Boots",
+      "drop_level": 36
+    },
+    {
+      "name": "Zealot Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt5",
+      "item_class": "Boots",
+      "drop_level": 40
+    },
+    {
+      "name": "Soldier Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt6",
+      "item_class": "Boots",
+      "drop_level": 49
+    },
+    {
+      "name": "Legion Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt7",
+      "item_class": "Boots",
+      "drop_level": 58
+    },
+    {
+      "name": "Crusader Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt8",
+      "item_class": "Boots",
+      "drop_level": 64
+    },
+    {
+      "name": "Martyr Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt9",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Paladin Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsStrInt10",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Wrapped Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt1",
+      "item_class": "Boots",
+      "drop_level": 6
+    },
+    {
+      "name": "Strapped Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt2",
+      "item_class": "Boots",
+      "drop_level": 16
+    },
+    {
+      "name": "Clasped Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt3",
+      "item_class": "Boots",
+      "drop_level": 27
+    },
+    {
+      "name": "Shackled Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt4",
+      "item_class": "Boots",
+      "drop_level": 34
+    },
+    {
+      "name": "Trapper Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt5",
+      "item_class": "Boots",
+      "drop_level": 41
+    },
+    {
+      "name": "Ambush Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt6",
+      "item_class": "Boots",
+      "drop_level": 47
+    },
+    {
+      "name": "Carnal Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt7",
+      "item_class": "Boots",
+      "drop_level": 55
+    },
+    {
+      "name": "Assassin's Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt8",
+      "item_class": "Boots",
+      "drop_level": 63
+    },
+    {
+      "name": "Murder Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt9",
+      "item_class": "Boots",
+      "drop_level": 69
+    },
+    {
+      "name": "Infiltrator Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt10",
+      "item_class": "Boots",
+      "drop_level": 78
+    },
+    {
+      "name": "Phantom Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsDexInt11",
+      "item_class": "Boots",
+      "drop_level": 84
+    },
+    {
+      "name": "Avian Slippers",
+      "id": "Metadata/Items/Armours/Boots/BootsDescent1",
+      "item_class": "Boots",
+      "drop_level": 1
+    },
+    {
+      "name": "Two-Toned Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsAtlas1",
+      "item_class": "Boots",
+      "drop_level": 70
+    },
+    {
+      "name": "Two-Toned Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsAtlas2",
+      "item_class": "Boots",
+      "drop_level": 70
+    },
+    {
+      "name": "Two-Toned Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsAtlas3",
+      "item_class": "Boots",
+      "drop_level": 70
+    },
+    {
+      "name": "Fugitive Boots",
+      "id": "Metadata/Items/Armours/Boots/BootsAtlas4",
+      "item_class": "Boots",
+      "drop_level": 70
+    },
+    {
+      "name": "Runic Greaves",
+      "id": "Metadata/Items/Armours/Boots/BootsExpedition1",
+      "item_class": "Boots",
+      "drop_level": 24
+    },
+    {
+      "name": "Runic Sollerets",
+      "id": "Metadata/Items/Armours/Boots/BootsExpedition2",
+      "item_class": "Boots",
+      "drop_level": 48
+    },
+    {
+      "name": "Runic Sabatons",
+      "id": "Metadata/Items/Armours/Boots/BootsExpedition3",
+      "item_class": "Boots",
+      "drop_level": 69
+    },
+    {
+      "name": "Crude Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow1",
+      "item_class": "Bow",
+      "drop_level": 1
+    },
+    {
+      "name": "Short Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow2",
+      "item_class": "Bow",
+      "drop_level": 5
+    },
+    {
+      "name": "Long Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow3",
+      "item_class": "Bow",
+      "drop_level": 9
+    },
+    {
+      "name": "Composite Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow4",
+      "item_class": "Bow",
+      "drop_level": 14
+    },
+    {
+      "name": "Recurve Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow5",
+      "item_class": "Bow",
+      "drop_level": 18
+    },
+    {
+      "name": "Bone Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow6",
+      "item_class": "Bow",
+      "drop_level": 23
+    },
+    {
+      "name": "Royal Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow7",
+      "item_class": "Bow",
+      "drop_level": 28
+    },
+    {
+      "name": "Death Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow8",
+      "item_class": "Bow",
+      "drop_level": 32
+    },
+    {
+      "name": "Reflex Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowM1",
+      "item_class": "Bow",
+      "drop_level": 36
+    },
+    {
+      "name": "Grove Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow9",
+      "item_class": "Bow",
+      "drop_level": 35
+    },
+    {
+      "name": "Decurve Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow10",
+      "item_class": "Bow",
+      "drop_level": 38
+    },
+    {
+      "name": "Compound Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow11",
+      "item_class": "Bow",
+      "drop_level": 41
+    },
+    {
+      "name": "Sniper Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow12",
+      "item_class": "Bow",
+      "drop_level": 44
+    },
+    {
+      "name": "Ivory Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow13",
+      "item_class": "Bow",
+      "drop_level": 47
+    },
+    {
+      "name": "Highborn Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow14",
+      "item_class": "Bow",
+      "drop_level": 50
+    },
+    {
+      "name": "Decimation Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow15",
+      "item_class": "Bow",
+      "drop_level": 53
+    },
+    {
+      "name": "Steelwood Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowM2",
+      "item_class": "Bow",
+      "drop_level": 57
+    },
+    {
+      "name": "Thicket Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow16",
+      "item_class": "Bow",
+      "drop_level": 56
+    },
+    {
+      "name": "Citadel Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow17",
+      "item_class": "Bow",
+      "drop_level": 58
+    },
+    {
+      "name": "Ranger Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow18",
+      "item_class": "Bow",
+      "drop_level": 60
+    },
+    {
+      "name": "Assassin Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow19",
+      "item_class": "Bow",
+      "drop_level": 62
+    },
+    {
+      "name": "Spine Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow20",
+      "item_class": "Bow",
+      "drop_level": 64
+    },
+    {
+      "name": "Imperial Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow21",
+      "item_class": "Bow",
+      "drop_level": 66
+    },
+    {
+      "name": "Harbinger Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow22",
+      "item_class": "Bow",
+      "drop_level": 68
+    },
+    {
+      "name": "Maraketh Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowM3",
+      "item_class": "Bow",
+      "drop_level": 71
+    },
+    {
+      "name": "Hedron Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowE1",
+      "item_class": "Bow",
+      "drop_level": 30
+    },
+    {
+      "name": "Foundry Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowE2",
+      "item_class": "Bow",
+      "drop_level": 50
+    },
+    {
+      "name": "Solarine Bow",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowE3",
+      "item_class": "Bow",
+      "drop_level": 70
+    },
+    {
+      "name": "Nailed Fist",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw1",
+      "item_class": "Claw",
+      "drop_level": 3
+    },
+    {
+      "name": "Sharktooth Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw2",
+      "item_class": "Claw",
+      "drop_level": 7
+    },
+    {
+      "name": "Awl",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw3",
+      "item_class": "Claw",
+      "drop_level": 12
+    },
+    {
+      "name": "Cat's Paw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw4",
+      "item_class": "Claw",
+      "drop_level": 17
+    },
+    {
+      "name": "Blinder",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw5",
+      "item_class": "Claw",
+      "drop_level": 22
+    },
+    {
+      "name": "Timeworn Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw6",
+      "item_class": "Claw",
+      "drop_level": 26
+    },
+    {
+      "name": "Sparkling Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw7",
+      "item_class": "Claw",
+      "drop_level": 30
+    },
+    {
+      "name": "Fright Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw8",
+      "item_class": "Claw",
+      "drop_level": 34
+    },
+    {
+      "name": "Double Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawM1",
+      "item_class": "Claw",
+      "drop_level": 36
+    },
+    {
+      "name": "Thresher Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw9",
+      "item_class": "Claw",
+      "drop_level": 37
+    },
+    {
+      "name": "Gouger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw10",
+      "item_class": "Claw",
+      "drop_level": 40
+    },
+    {
+      "name": "Tiger's Paw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw11",
+      "item_class": "Claw",
+      "drop_level": 43
+    },
+    {
+      "name": "Gut Ripper",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw12",
+      "item_class": "Claw",
+      "drop_level": 46
+    },
+    {
+      "name": "Prehistoric Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw13",
+      "item_class": "Claw",
+      "drop_level": 49
+    },
+    {
+      "name": "Noble Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw14",
+      "item_class": "Claw",
+      "drop_level": 52
+    },
+    {
+      "name": "Eagle Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw15",
+      "item_class": "Claw",
+      "drop_level": 55
+    },
+    {
+      "name": "Twin Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawM2",
+      "item_class": "Claw",
+      "drop_level": 57
+    },
+    {
+      "name": "Great White Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw16",
+      "item_class": "Claw",
+      "drop_level": 58
+    },
+    {
+      "name": "Throat Stabber",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw17",
+      "item_class": "Claw",
+      "drop_level": 60
+    },
+    {
+      "name": "Hellion's Paw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw18",
+      "item_class": "Claw",
+      "drop_level": 62
+    },
+    {
+      "name": "Eye Gouger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw19",
+      "item_class": "Claw",
+      "drop_level": 64
+    },
+    {
+      "name": "Vaal Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw20",
+      "item_class": "Claw",
+      "drop_level": 66
+    },
+    {
+      "name": "Imperial Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw21",
+      "item_class": "Claw",
+      "drop_level": 68
+    },
+    {
+      "name": "Terror Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/Claw22",
+      "item_class": "Claw",
+      "drop_level": 70
+    },
+    {
+      "name": "Gemini Claw",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawM3",
+      "item_class": "Claw",
+      "drop_level": 72
+    },
+    {
+      "name": "Shadow Fangs",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawE1",
+      "item_class": "Claw",
+      "drop_level": 30
+    },
+    {
+      "name": "Malign Fangs",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawE2",
+      "item_class": "Claw",
+      "drop_level": 50
+    },
+    {
+      "name": "Void Fangs",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Claws/ClawE3",
+      "item_class": "Claw",
+      "drop_level": 70
+    },
+    {
+      "name": "Glass Shank",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger1",
+      "item_class": "Dagger",
+      "drop_level": 1
+    },
+    {
+      "name": "Skinning Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger2",
+      "item_class": "Dagger",
+      "drop_level": 5
+    },
+    {
+      "name": "Stiletto",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger4",
+      "item_class": "Dagger",
+      "drop_level": 15
+    },
+    {
+      "name": "Prong Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerM1",
+      "item_class": "Dagger",
+      "drop_level": 36
+    },
+    {
+      "name": "Flaying Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger9",
+      "item_class": "Dagger",
+      "drop_level": 30
+    },
+    {
+      "name": "Poignard",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger11",
+      "item_class": "Dagger",
+      "drop_level": 41
+    },
+    {
+      "name": "Trisula",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerM2",
+      "item_class": "Dagger",
+      "drop_level": 51
+    },
+    {
+      "name": "Gutting Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger16",
+      "item_class": "Dagger",
+      "drop_level": 56
+    },
+    {
+      "name": "Ambusher",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger18",
+      "item_class": "Dagger",
+      "drop_level": 60
+    },
+    {
+      "name": "Sai",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerM3",
+      "item_class": "Dagger",
+      "drop_level": 70
+    },
+    {
+      "name": "Hollowpoint Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerE1",
+      "item_class": "Dagger",
+      "drop_level": 30
+    },
+    {
+      "name": "Pressurised Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerE2",
+      "item_class": "Dagger",
+      "drop_level": 50
+    },
+    {
+      "name": "Pneumatic Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/DaggerE3",
+      "item_class": "Dagger",
+      "drop_level": 70
+    },
+    {
+      "name": "Fishing Rod",
+      "id": "Metadata/Items/Weapons/TwoHandWeapon/FishingRods/FishingRod1",
+      "item_class": "FishingRod",
+      "drop_level": 1
+    },
+    {
+      "name": "Iron Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr1",
+      "item_class": "Gloves",
+      "drop_level": 1
+    },
+    {
+      "name": "Plated Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr2",
+      "item_class": "Gloves",
+      "drop_level": 11
+    },
+    {
+      "name": "Bronze Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr3",
+      "item_class": "Gloves",
+      "drop_level": 23
+    },
+    {
+      "name": "Steel Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr4",
+      "item_class": "Gloves",
+      "drop_level": 35
+    },
+    {
+      "name": "Antique Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr5",
+      "item_class": "Gloves",
+      "drop_level": 39
+    },
+    {
+      "name": "Ancient Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr6",
+      "item_class": "Gloves",
+      "drop_level": 47
+    },
+    {
+      "name": "Goliath Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr7",
+      "item_class": "Gloves",
+      "drop_level": 53
+    },
+    {
+      "name": "Vaal Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr8",
+      "item_class": "Gloves",
+      "drop_level": 63
+    },
+    {
+      "name": "Titan Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr9",
+      "item_class": "Gloves",
+      "drop_level": 69
+    },
+    {
+      "name": "Precursor Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr10",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Leviathan Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStr11",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Preserving Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrRitual1",
+      "item_class": "Gloves",
+      "drop_level": 10
+    },
+    {
+      "name": "Guarding Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrRitual2",
+      "item_class": "Gloves",
+      "drop_level": 40
+    },
+    {
+      "name": "Thwarting Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrRitual3",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Rawhide Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex1",
+      "item_class": "Gloves",
+      "drop_level": 3
+    },
+    {
+      "name": "Goathide Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex2",
+      "item_class": "Gloves",
+      "drop_level": 9
+    },
+    {
+      "name": "Deerskin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex3",
+      "item_class": "Gloves",
+      "drop_level": 21
+    },
+    {
+      "name": "Nubuck Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex4",
+      "item_class": "Gloves",
+      "drop_level": 33
+    },
+    {
+      "name": "Eelskin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex5",
+      "item_class": "Gloves",
+      "drop_level": 38
+    },
+    {
+      "name": "Sharkskin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex6",
+      "item_class": "Gloves",
+      "drop_level": 45
+    },
+    {
+      "name": "Shagreen Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex7",
+      "item_class": "Gloves",
+      "drop_level": 54
+    },
+    {
+      "name": "Stealth Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex8",
+      "item_class": "Gloves",
+      "drop_level": 62
+    },
+    {
+      "name": "Slink Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex9",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Harpyskin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex10",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Velour Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDex11",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Tinker Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexRitual1",
+      "item_class": "Gloves",
+      "drop_level": 10
+    },
+    {
+      "name": "Apprentice Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexRitual2",
+      "item_class": "Gloves",
+      "drop_level": 40
+    },
+    {
+      "name": "Trapsetter Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexRitual3",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Wool Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt1",
+      "item_class": "Gloves",
+      "drop_level": 3
+    },
+    {
+      "name": "Velvet Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt2",
+      "item_class": "Gloves",
+      "drop_level": 12
+    },
+    {
+      "name": "Silk Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt3",
+      "item_class": "Gloves",
+      "drop_level": 25
+    },
+    {
+      "name": "Embroidered Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt4",
+      "item_class": "Gloves",
+      "drop_level": 36
+    },
+    {
+      "name": "Satin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt5",
+      "item_class": "Gloves",
+      "drop_level": 41
+    },
+    {
+      "name": "Samite Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt6",
+      "item_class": "Gloves",
+      "drop_level": 47
+    },
+    {
+      "name": "Conjurer Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt7",
+      "item_class": "Gloves",
+      "drop_level": 55
+    },
+    {
+      "name": "Arcanist Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt8",
+      "item_class": "Gloves",
+      "drop_level": 60
+    },
+    {
+      "name": "Sorcerer Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt9",
+      "item_class": "Gloves",
+      "drop_level": 69
+    },
+    {
+      "name": "Sage Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt10",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Warlock Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesInt11",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Leyline Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesIntRitual1",
+      "item_class": "Gloves",
+      "drop_level": 10
+    },
+    {
+      "name": "Aetherwind Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesIntRitual2",
+      "item_class": "Gloves",
+      "drop_level": 40
+    },
+    {
+      "name": "Nexus Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesIntRitual3",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Fishscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex1",
+      "item_class": "Gloves",
+      "drop_level": 4
+    },
+    {
+      "name": "Ironscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex2",
+      "item_class": "Gloves",
+      "drop_level": 15
+    },
+    {
+      "name": "Bronzescale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex3",
+      "item_class": "Gloves",
+      "drop_level": 27
+    },
+    {
+      "name": "Steelscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex4",
+      "item_class": "Gloves",
+      "drop_level": 36
+    },
+    {
+      "name": "Serpentscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex5",
+      "item_class": "Gloves",
+      "drop_level": 43
+    },
+    {
+      "name": "Wyrmscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex6",
+      "item_class": "Gloves",
+      "drop_level": 49
+    },
+    {
+      "name": "Hydrascale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex7",
+      "item_class": "Gloves",
+      "drop_level": 59
+    },
+    {
+      "name": "Dragonscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex8",
+      "item_class": "Gloves",
+      "drop_level": 67
+    },
+    {
+      "name": "Chimerascale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex9",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Wyvernscale Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrDex10",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Chain Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt1",
+      "item_class": "Gloves",
+      "drop_level": 7
+    },
+    {
+      "name": "Ringmail Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt2",
+      "item_class": "Gloves",
+      "drop_level": 19
+    },
+    {
+      "name": "Mesh Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt3",
+      "item_class": "Gloves",
+      "drop_level": 32
+    },
+    {
+      "name": "Riveted Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt4",
+      "item_class": "Gloves",
+      "drop_level": 37
+    },
+    {
+      "name": "Zealot Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt5",
+      "item_class": "Gloves",
+      "drop_level": 43
+    },
+    {
+      "name": "Soldier Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt6",
+      "item_class": "Gloves",
+      "drop_level": 51
+    },
+    {
+      "name": "Legion Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt7",
+      "item_class": "Gloves",
+      "drop_level": 57
+    },
+    {
+      "name": "Crusader Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt8",
+      "item_class": "Gloves",
+      "drop_level": 66
+    },
+    {
+      "name": "Martyr Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt9",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Paladin Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesStrInt10",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Wrapped Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt1",
+      "item_class": "Gloves",
+      "drop_level": 5
+    },
+    {
+      "name": "Strapped Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt2",
+      "item_class": "Gloves",
+      "drop_level": 16
+    },
+    {
+      "name": "Clasped Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt3",
+      "item_class": "Gloves",
+      "drop_level": 31
+    },
+    {
+      "name": "Trapper Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt4",
+      "item_class": "Gloves",
+      "drop_level": 36
+    },
+    {
+      "name": "Ambush Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt5",
+      "item_class": "Gloves",
+      "drop_level": 45
+    },
+    {
+      "name": "Carnal Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt6",
+      "item_class": "Gloves",
+      "drop_level": 50
+    },
+    {
+      "name": "Assassin's Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt7",
+      "item_class": "Gloves",
+      "drop_level": 58
+    },
+    {
+      "name": "Murder Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt8",
+      "item_class": "Gloves",
+      "drop_level": 67
+    },
+    {
+      "name": "Infiltrator Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt9",
+      "item_class": "Gloves",
+      "drop_level": 78
+    },
+    {
+      "name": "Phantom Mitts",
+      "id": "Metadata/Items/Armours/Gloves/GlovesDexInt10",
+      "item_class": "Gloves",
+      "drop_level": 84
+    },
+    {
+      "name": "Spiked Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesAtlasStr",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Gripped Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesAtlasDex",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Fingerless Silk Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesAtlasInt",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Apothecary's Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesAtlasStrInt",
+      "item_class": "Gloves",
+      "drop_level": 70
+    },
+    {
+      "name": "Runic Gloves",
+      "id": "Metadata/Items/Armours/Gloves/GlovesExpedition1",
+      "item_class": "Gloves",
+      "drop_level": 24
+    },
+    {
+      "name": "Runic Gages",
+      "id": "Metadata/Items/Armours/Gloves/GlovesExpedition2",
+      "item_class": "Gloves",
+      "drop_level": 48
+    },
+    {
+      "name": "Runic Gauntlets",
+      "id": "Metadata/Items/Armours/Gloves/GlovesExpedition3",
+      "item_class": "Gloves",
+      "drop_level": 69
+    },
+    {
+      "name": "Iron Hat",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr1",
+      "item_class": "Helmet",
+      "drop_level": 1
+    },
+    {
+      "name": "Cone Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr2",
+      "item_class": "Helmet",
+      "drop_level": 7
+    },
+    {
+      "name": "Barbute Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr3",
+      "item_class": "Helmet",
+      "drop_level": 18
+    },
+    {
+      "name": "Close Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr4",
+      "item_class": "Helmet",
+      "drop_level": 26
+    },
+    {
+      "name": "Gladiator Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr5",
+      "item_class": "Helmet",
+      "drop_level": 35
+    },
+    {
+      "name": "Reaver Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr6",
+      "item_class": "Helmet",
+      "drop_level": 40
+    },
+    {
+      "name": "Siege Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr7",
+      "item_class": "Helmet",
+      "drop_level": 48
+    },
+    {
+      "name": "Samnite Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr8",
+      "item_class": "Helmet",
+      "drop_level": 55
+    },
+    {
+      "name": "Ezomyte Burgonet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr9",
+      "item_class": "Helmet",
+      "drop_level": 60
+    },
+    {
+      "name": "Royal Burgonet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr10",
+      "item_class": "Helmet",
+      "drop_level": 65
+    },
+    {
+      "name": "Eternal Burgonet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr11",
+      "item_class": "Helmet",
+      "drop_level": 69
+    },
+    {
+      "name": "General's Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr12",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Conqueror's Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr13",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Giantslayer Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStr14",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Leather Cap",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex1",
+      "item_class": "Helmet",
+      "drop_level": 3
+    },
+    {
+      "name": "Tricorne",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex2",
+      "item_class": "Helmet",
+      "drop_level": 10
+    },
+    {
+      "name": "Leather Hood",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex3",
+      "item_class": "Helmet",
+      "drop_level": 20
+    },
+    {
+      "name": "Wolf Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex4",
+      "item_class": "Helmet",
+      "drop_level": 30
+    },
+    {
+      "name": "Hunter Hood",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex5",
+      "item_class": "Helmet",
+      "drop_level": 41
+    },
+    {
+      "name": "Noble Tricorne",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex6",
+      "item_class": "Helmet",
+      "drop_level": 47
+    },
+    {
+      "name": "Ursine Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex7",
+      "item_class": "Helmet",
+      "drop_level": 55
+    },
+    {
+      "name": "Silken Hood",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex8",
+      "item_class": "Helmet",
+      "drop_level": 60
+    },
+    {
+      "name": "Sinner Tricorne",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex9",
+      "item_class": "Helmet",
+      "drop_level": 64
+    },
+    {
+      "name": "Lion Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex10",
+      "item_class": "Helmet",
+      "drop_level": 70
+    },
+    {
+      "name": "Dire Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex11",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Grizzly Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex12",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Majestic Pelt",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDex13",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Vine Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt1",
+      "item_class": "Helmet",
+      "drop_level": 3
+    },
+    {
+      "name": "Iron Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt2",
+      "item_class": "Helmet",
+      "drop_level": 8
+    },
+    {
+      "name": "Torture Cage",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt3",
+      "item_class": "Helmet",
+      "drop_level": 17
+    },
+    {
+      "name": "Tribal Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt4",
+      "item_class": "Helmet",
+      "drop_level": 26
+    },
+    {
+      "name": "Bone Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt5",
+      "item_class": "Helmet",
+      "drop_level": 34
+    },
+    {
+      "name": "Lunaris Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt6",
+      "item_class": "Helmet",
+      "drop_level": 39
+    },
+    {
+      "name": "Steel Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt7",
+      "item_class": "Helmet",
+      "drop_level": 48
+    },
+    {
+      "name": "Necromancer Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt8",
+      "item_class": "Helmet",
+      "drop_level": 54
+    },
+    {
+      "name": "Solaris Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt9",
+      "item_class": "Helmet",
+      "drop_level": 59
+    },
+    {
+      "name": "Mind Cage",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt10",
+      "item_class": "Helmet",
+      "drop_level": 65
+    },
+    {
+      "name": "Hubris Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt11",
+      "item_class": "Helmet",
+      "drop_level": 69
+    },
+    {
+      "name": "Moonlit Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt12",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Sunfire Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt13",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Lich's Circlet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetInt14",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Battered Helm",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex1",
+      "item_class": "Helmet",
+      "drop_level": 4
+    },
+    {
+      "name": "Sallet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex2",
+      "item_class": "Helmet",
+      "drop_level": 13
+    },
+    {
+      "name": "Visored Sallet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex3",
+      "item_class": "Helmet",
+      "drop_level": 23
+    },
+    {
+      "name": "Gilded Sallet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex4",
+      "item_class": "Helmet",
+      "drop_level": 33
+    },
+    {
+      "name": "Secutor Helm",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex5",
+      "item_class": "Helmet",
+      "drop_level": 36
+    },
+    {
+      "name": "Fencer Helm",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex6",
+      "item_class": "Helmet",
+      "drop_level": 43
+    },
+    {
+      "name": "Lacquered Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex7",
+      "item_class": "Helmet",
+      "drop_level": 51
+    },
+    {
+      "name": "Fluted Bascinet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex8",
+      "item_class": "Helmet",
+      "drop_level": 58
+    },
+    {
+      "name": "Pig-Faced Bascinet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex9",
+      "item_class": "Helmet",
+      "drop_level": 63
+    },
+    {
+      "name": "Nightmare Bascinet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex10",
+      "item_class": "Helmet",
+      "drop_level": 67
+    },
+    {
+      "name": "Knight Helm",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex11",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Conquest Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex12",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Haunted Bascinet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDex13",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Sorrow Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDexRitual1",
+      "item_class": "Helmet",
+      "drop_level": 15
+    },
+    {
+      "name": "Atonement Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDexRitual2",
+      "item_class": "Helmet",
+      "drop_level": 45
+    },
+    {
+      "name": "Penitent Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrDexRitual3",
+      "item_class": "Helmet",
+      "drop_level": 75
+    },
+    {
+      "name": "Rusted Coif",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt1",
+      "item_class": "Helmet",
+      "drop_level": 5
+    },
+    {
+      "name": "Soldier Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt2",
+      "item_class": "Helmet",
+      "drop_level": 12
+    },
+    {
+      "name": "Great Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt3",
+      "item_class": "Helmet",
+      "drop_level": 22
+    },
+    {
+      "name": "Crusader Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt4",
+      "item_class": "Helmet",
+      "drop_level": 31
+    },
+    {
+      "name": "Aventail Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt5",
+      "item_class": "Helmet",
+      "drop_level": 37
+    },
+    {
+      "name": "Zealot Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt6",
+      "item_class": "Helmet",
+      "drop_level": 44
+    },
+    {
+      "name": "Great Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt7",
+      "item_class": "Helmet",
+      "drop_level": 53
+    },
+    {
+      "name": "Magistrate Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt8",
+      "item_class": "Helmet",
+      "drop_level": 58
+    },
+    {
+      "name": "Prophet Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt9",
+      "item_class": "Helmet",
+      "drop_level": 63
+    },
+    {
+      "name": "Praetor Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt10",
+      "item_class": "Helmet",
+      "drop_level": 68
+    },
+    {
+      "name": "Faithful Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt11",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Paladin Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt12",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Divine Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrInt13",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Imp Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrIntRitual1",
+      "item_class": "Helmet",
+      "drop_level": 15
+    },
+    {
+      "name": "Demon Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrIntRitual2",
+      "item_class": "Helmet",
+      "drop_level": 45
+    },
+    {
+      "name": "Archdemon Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetStrIntRitual3",
+      "item_class": "Helmet",
+      "drop_level": 75
+    },
+    {
+      "name": "Scare Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt1",
+      "item_class": "Helmet",
+      "drop_level": 4
+    },
+    {
+      "name": "Plague Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt2",
+      "item_class": "Helmet",
+      "drop_level": 10
+    },
+    {
+      "name": "Iron Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt3",
+      "item_class": "Helmet",
+      "drop_level": 17
+    },
+    {
+      "name": "Festival Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt4",
+      "item_class": "Helmet",
+      "drop_level": 28
+    },
+    {
+      "name": "Golden Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt5",
+      "item_class": "Helmet",
+      "drop_level": 35
+    },
+    {
+      "name": "Raven Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt6",
+      "item_class": "Helmet",
+      "drop_level": 38
+    },
+    {
+      "name": "Callous Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt7",
+      "item_class": "Helmet",
+      "drop_level": 45
+    },
+    {
+      "name": "Regicide Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt8",
+      "item_class": "Helmet",
+      "drop_level": 52
+    },
+    {
+      "name": "Harlequin Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt9",
+      "item_class": "Helmet",
+      "drop_level": 57
+    },
+    {
+      "name": "Vaal Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt10",
+      "item_class": "Helmet",
+      "drop_level": 62
+    },
+    {
+      "name": "Deicide Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt11",
+      "item_class": "Helmet",
+      "drop_level": 67
+    },
+    {
+      "name": "Jester Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt12",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Ancient Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt13",
+      "item_class": "Helmet",
+      "drop_level": 78
+    },
+    {
+      "name": "Torturer's Mask",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexInt14",
+      "item_class": "Helmet",
+      "drop_level": 84
+    },
+    {
+      "name": "Gale Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexIntRitual1",
+      "item_class": "Helmet",
+      "drop_level": 15
+    },
+    {
+      "name": "Winter Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexIntRitual2",
+      "item_class": "Helmet",
+      "drop_level": 45
+    },
+    {
+      "name": "Blizzard Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetDexIntRitual3",
+      "item_class": "Helmet",
+      "drop_level": 75
+    },
+    {
+      "name": "Bone Helmet",
+      "id": "Metadata/Items/Armours/Helmets/HelmetAtlas1",
+      "item_class": "Helmet",
+      "drop_level": 73
+    },
+    {
+      "name": "Runic Helm",
+      "id": "Metadata/Items/Armours/Helmets/HelmetExpedition1",
+      "item_class": "Helmet",
+      "drop_level": 25
+    },
+    {
+      "name": "Runic Crest",
+      "id": "Metadata/Items/Armours/Helmets/HelmetExpedition2",
+      "item_class": "Helmet",
+      "drop_level": 49
+    },
+    {
+      "name": "Runic Crown",
+      "id": "Metadata/Items/Armours/Helmets/HelmetExpedition3",
+      "item_class": "Helmet",
+      "drop_level": 68
+    },
+    {
+      "name": "Rusted Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe1",
+      "item_class": "One Hand Axe",
+      "drop_level": 2
+    },
+    {
+      "name": "Jade Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe2",
+      "item_class": "One Hand Axe",
+      "drop_level": 6
+    },
+    {
+      "name": "Boarding Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe3",
+      "item_class": "One Hand Axe",
+      "drop_level": 11
+    },
+    {
+      "name": "Cleaver",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe4",
+      "item_class": "One Hand Axe",
+      "drop_level": 16
+    },
+    {
+      "name": "Broad Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe5",
+      "item_class": "One Hand Axe",
+      "drop_level": 21
+    },
+    {
+      "name": "Arming Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe6",
+      "item_class": "One Hand Axe",
+      "drop_level": 25
+    },
+    {
+      "name": "Decorative Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe7",
+      "item_class": "One Hand Axe",
+      "drop_level": 29
+    },
+    {
+      "name": "Spectral Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe8",
+      "item_class": "One Hand Axe",
+      "drop_level": 33
+    },
+    {
+      "name": "Etched Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeM1",
+      "item_class": "One Hand Axe",
+      "drop_level": 35
+    },
+    {
+      "name": "Jasper Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe9",
+      "item_class": "One Hand Axe",
+      "drop_level": 36
+    },
+    {
+      "name": "Tomahawk",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe10",
+      "item_class": "One Hand Axe",
+      "drop_level": 39
+    },
+    {
+      "name": "Wrist Chopper",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe11",
+      "item_class": "One Hand Axe",
+      "drop_level": 42
+    },
+    {
+      "name": "War Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe12",
+      "item_class": "One Hand Axe",
+      "drop_level": 45
+    },
+    {
+      "name": "Chest Splitter",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe13",
+      "item_class": "One Hand Axe",
+      "drop_level": 48
+    },
+    {
+      "name": "Ceremonial Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe14",
+      "item_class": "One Hand Axe",
+      "drop_level": 51
+    },
+    {
+      "name": "Wraith Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe15",
+      "item_class": "One Hand Axe",
+      "drop_level": 54
+    },
+    {
+      "name": "Engraved Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeM2",
+      "item_class": "One Hand Axe",
+      "drop_level": 56
+    },
+    {
+      "name": "Karui Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe16",
+      "item_class": "One Hand Axe",
+      "drop_level": 57
+    },
+    {
+      "name": "Siege Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe17",
+      "item_class": "One Hand Axe",
+      "drop_level": 59
+    },
+    {
+      "name": "Reaver Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe18",
+      "item_class": "One Hand Axe",
+      "drop_level": 61
+    },
+    {
+      "name": "Butcher Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe19",
+      "item_class": "One Hand Axe",
+      "drop_level": 63
+    },
+    {
+      "name": "Vaal Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe20",
+      "item_class": "One Hand Axe",
+      "drop_level": 65
+    },
+    {
+      "name": "Royal Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe21",
+      "item_class": "One Hand Axe",
+      "drop_level": 67
+    },
+    {
+      "name": "Infernal Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxe22",
+      "item_class": "One Hand Axe",
+      "drop_level": 69
+    },
+    {
+      "name": "Runic Hatchet",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeM3",
+      "item_class": "One Hand Axe",
+      "drop_level": 71
+    },
+    {
+      "name": "Maltreatment Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeE1",
+      "item_class": "One Hand Axe",
+      "drop_level": 30
+    },
+    {
+      "name": "Disapprobation Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeE2",
+      "item_class": "One Hand Axe",
+      "drop_level": 50
+    },
+    {
+      "name": "Psychotic Axe",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandAxes/OneHandAxeE3",
+      "item_class": "One Hand Axe",
+      "drop_level": 70
+    },
+    {
+      "name": "Driftwood Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace1",
+      "item_class": "One Hand Mace",
+      "drop_level": 1
+    },
+    {
+      "name": "Tribal Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace2",
+      "item_class": "One Hand Mace",
+      "drop_level": 5
+    },
+    {
+      "name": "Spiked Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace3",
+      "item_class": "One Hand Mace",
+      "drop_level": 10
+    },
+    {
+      "name": "Stone Hammer",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace4",
+      "item_class": "One Hand Mace",
+      "drop_level": 15
+    },
+    {
+      "name": "War Hammer",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace5",
+      "item_class": "One Hand Mace",
+      "drop_level": 20
+    },
+    {
+      "name": "Bladed Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace6",
+      "item_class": "One Hand Mace",
+      "drop_level": 24
+    },
+    {
+      "name": "Ceremonial Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace7",
+      "item_class": "One Hand Mace",
+      "drop_level": 28
+    },
+    {
+      "name": "Dream Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace8",
+      "item_class": "One Hand Mace",
+      "drop_level": 32
+    },
+    {
+      "name": "Wyrm Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceM1",
+      "item_class": "One Hand Mace",
+      "drop_level": 34
+    },
+    {
+      "name": "Petrified Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace9",
+      "item_class": "One Hand Mace",
+      "drop_level": 35
+    },
+    {
+      "name": "Barbed Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace10",
+      "item_class": "One Hand Mace",
+      "drop_level": 38
+    },
+    {
+      "name": "Rock Breaker",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace11",
+      "item_class": "One Hand Mace",
+      "drop_level": 41
+    },
+    {
+      "name": "Battle Hammer",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace12",
+      "item_class": "One Hand Mace",
+      "drop_level": 44
+    },
+    {
+      "name": "Flanged Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace13",
+      "item_class": "One Hand Mace",
+      "drop_level": 47
+    },
+    {
+      "name": "Ornate Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace14",
+      "item_class": "One Hand Mace",
+      "drop_level": 50
+    },
+    {
+      "name": "Phantom Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace15",
+      "item_class": "One Hand Mace",
+      "drop_level": 53
+    },
+    {
+      "name": "Dragon Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceM2",
+      "item_class": "One Hand Mace",
+      "drop_level": 55
+    },
+    {
+      "name": "Ancestral Club",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace16",
+      "item_class": "One Hand Mace",
+      "drop_level": 56
+    },
+    {
+      "name": "Tenderizer",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace17",
+      "item_class": "One Hand Mace",
+      "drop_level": 58
+    },
+    {
+      "name": "Gavel",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace18",
+      "item_class": "One Hand Mace",
+      "drop_level": 60
+    },
+    {
+      "name": "Legion Hammer",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace19",
+      "item_class": "One Hand Mace",
+      "drop_level": 62
+    },
+    {
+      "name": "Pernach",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace20",
+      "item_class": "One Hand Mace",
+      "drop_level": 64
+    },
+    {
+      "name": "Auric Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace21",
+      "item_class": "One Hand Mace",
+      "drop_level": 66
+    },
+    {
+      "name": "Nightmare Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMace22",
+      "item_class": "One Hand Mace",
+      "drop_level": 68
+    },
+    {
+      "name": "Behemoth Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceM3",
+      "item_class": "One Hand Mace",
+      "drop_level": 70
+    },
+    {
+      "name": "Flare Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceE1",
+      "item_class": "One Hand Mace",
+      "drop_level": 30
+    },
+    {
+      "name": "Crack Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceE2",
+      "item_class": "One Hand Mace",
+      "drop_level": 50
+    },
+    {
+      "name": "Boom Mace",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/OneHandMaceE3",
+      "item_class": "One Hand Mace",
+      "drop_level": 70
+    },
+    {
+      "name": "Golden Blade",
+      "id": "Metadata/items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordDemigods1",
+      "item_class": "One Hand Sword",
+      "drop_level": 1
+    },
+    {
+      "name": "Rusted Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword1",
+      "item_class": "One Hand Sword",
+      "drop_level": 1
+    },
+    {
+      "name": "Copper Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword2",
+      "item_class": "One Hand Sword",
+      "drop_level": 5
+    },
+    {
+      "name": "Sabre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword3",
+      "item_class": "One Hand Sword",
+      "drop_level": 10
+    },
+    {
+      "name": "Broad Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword4",
+      "item_class": "One Hand Sword",
+      "drop_level": 15
+    },
+    {
+      "name": "War Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword5",
+      "item_class": "One Hand Sword",
+      "drop_level": 20
+    },
+    {
+      "name": "Ancient Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword6",
+      "item_class": "One Hand Sword",
+      "drop_level": 24
+    },
+    {
+      "name": "Elegant Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword7",
+      "item_class": "One Hand Sword",
+      "drop_level": 28
+    },
+    {
+      "name": "Dusk Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword8",
+      "item_class": "One Hand Sword",
+      "drop_level": 32
+    },
+    {
+      "name": "Hook Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordM1",
+      "item_class": "One Hand Sword",
+      "drop_level": 34
+    },
+    {
+      "name": "Variscite Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword9",
+      "item_class": "One Hand Sword",
+      "drop_level": 35
+    },
+    {
+      "name": "Cutlass",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword10",
+      "item_class": "One Hand Sword",
+      "drop_level": 38
+    },
+    {
+      "name": "Baselard",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword11",
+      "item_class": "One Hand Sword",
+      "drop_level": 41
+    },
+    {
+      "name": "Battle Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword12",
+      "item_class": "One Hand Sword",
+      "drop_level": 44
+    },
+    {
+      "name": "Elder Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword13",
+      "item_class": "One Hand Sword",
+      "drop_level": 47
+    },
+    {
+      "name": "Graceful Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword14",
+      "item_class": "One Hand Sword",
+      "drop_level": 50
+    },
+    {
+      "name": "Twilight Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword15",
+      "item_class": "One Hand Sword",
+      "drop_level": 53
+    },
+    {
+      "name": "Grappler",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordM2",
+      "item_class": "One Hand Sword",
+      "drop_level": 55
+    },
+    {
+      "name": "Gemstone Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword16",
+      "item_class": "One Hand Sword",
+      "drop_level": 56
+    },
+    {
+      "name": "Corsair Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword17",
+      "item_class": "One Hand Sword",
+      "drop_level": 58
+    },
+    {
+      "name": "Gladius",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword18",
+      "item_class": "One Hand Sword",
+      "drop_level": 60
+    },
+    {
+      "name": "Legion Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword19",
+      "item_class": "One Hand Sword",
+      "drop_level": 62
+    },
+    {
+      "name": "Vaal Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword20",
+      "item_class": "One Hand Sword",
+      "drop_level": 64
+    },
+    {
+      "name": "Eternal Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword21",
+      "item_class": "One Hand Sword",
+      "drop_level": 66
+    },
+    {
+      "name": "Midnight Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSword22",
+      "item_class": "One Hand Sword",
+      "drop_level": 68
+    },
+    {
+      "name": "Tiger Hook",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordM3",
+      "item_class": "One Hand Sword",
+      "drop_level": 70
+    },
+    {
+      "name": "Fickle Spiritblade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordE1",
+      "item_class": "One Hand Sword",
+      "drop_level": 30
+    },
+    {
+      "name": "Capricious Spiritblade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordE2",
+      "item_class": "One Hand Sword",
+      "drop_level": 50
+    },
+    {
+      "name": "Anarchic Spiritblade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordE3",
+      "item_class": "One Hand Sword",
+      "drop_level": 70
+    },
+    {
+      "name": "Ghostflame Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/OneHandSwordD1",
+      "item_class": "One Hand Sword",
+      "drop_level": 68
+    },
+    {
+      "name": "Energy Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandSwords/StormBladeOneHand",
+      "item_class": "One Hand Sword",
+      "drop_level": 1
+    },
+    {
+      "name": "Serrated Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver6",
+      "item_class": "Quiver",
+      "drop_level": 5
+    },
+    {
+      "name": "Two-Point Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver7",
+      "item_class": "Quiver",
+      "drop_level": 5
+    },
+    {
+      "name": "Sharktooth Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver8",
+      "item_class": "Quiver",
+      "drop_level": 10
+    },
+    {
+      "name": "Blunt Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver9",
+      "item_class": "Quiver",
+      "drop_level": 16
+    },
+    {
+      "name": "Fire Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver10",
+      "item_class": "Quiver",
+      "drop_level": 22
+    },
+    {
+      "name": "Broadhead Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver11",
+      "item_class": "Quiver",
+      "drop_level": 28
+    },
+    {
+      "name": "Penetrating Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver12",
+      "item_class": "Quiver",
+      "drop_level": 36
+    },
+    {
+      "name": "Spike-Point Arrow Quiver",
+      "id": "Metadata/Items/Quivers/Quiver13",
+      "item_class": "Quiver",
+      "drop_level": 45
+    },
+    {
+      "name": "Serrated Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew1",
+      "item_class": "Quiver",
+      "drop_level": 4
+    },
+    {
+      "name": "Fire Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew2",
+      "item_class": "Quiver",
+      "drop_level": 9
+    },
+    {
+      "name": "Sharktooth Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew3",
+      "item_class": "Quiver",
+      "drop_level": 14
+    },
+    {
+      "name": "Feathered Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew4",
+      "item_class": "Quiver",
+      "drop_level": 20
+    },
+    {
+      "name": "Penetrating Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew5",
+      "item_class": "Quiver",
+      "drop_level": 25
+    },
+    {
+      "name": "Blunt Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew6",
+      "item_class": "Quiver",
+      "drop_level": 31
+    },
+    {
+      "name": "Two-Point Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew7",
+      "item_class": "Quiver",
+      "drop_level": 36
+    },
+    {
+      "name": "Spike-Point Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew8",
+      "item_class": "Quiver",
+      "drop_level": 40
+    },
+    {
+      "name": "Blazing Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew9",
+      "item_class": "Quiver",
+      "drop_level": 45
+    },
+    {
+      "name": "Broadhead Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew10",
+      "item_class": "Quiver",
+      "drop_level": 49
+    },
+    {
+      "name": "Vile Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew11",
+      "item_class": "Quiver",
+      "drop_level": 55
+    },
+    {
+      "name": "Heavy Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew12",
+      "item_class": "Quiver",
+      "drop_level": 61
+    },
+    {
+      "name": "Primal Arrow Quiver",
+      "id": "Metadata/Items/Quivers/QuiverNew13",
+      "item_class": "Quiver",
+      "drop_level": 66
+    },
+    {
+      "name": "Artillery Quiver",
+      "id": "Metadata/Items/Quivers/QuiverAtlas1",
+      "item_class": "Quiver",
+      "drop_level": 74
+    },
+    {
+      "name": "Iron Ring",
+      "id": "Metadata/Items/Rings/Ring1",
+      "item_class": "Ring",
+      "drop_level": 2
+    },
+    {
+      "name": "Coral Ring",
+      "id": "Metadata/Items/Rings/Ring2",
+      "item_class": "Ring",
+      "drop_level": 4
+    },
+    {
+      "name": "Paua Ring",
+      "id": "Metadata/Items/Rings/Ring3",
+      "item_class": "Ring",
+      "drop_level": 5
+    },
+    {
+      "name": "Gold Ring",
+      "id": "Metadata/Items/Rings/Ring4",
+      "item_class": "Ring",
+      "drop_level": 20
+    },
+    {
+      "name": "Topaz Ring",
+      "id": "Metadata/Items/Rings/Ring5",
+      "item_class": "Ring",
+      "drop_level": 12
+    },
+    {
+      "name": "Sapphire Ring",
+      "id": "Metadata/Items/Rings/Ring6",
+      "item_class": "Ring",
+      "drop_level": 8
+    },
+    {
+      "name": "Ruby Ring",
+      "id": "Metadata/Items/Rings/Ring7",
+      "item_class": "Ring",
+      "drop_level": 16
+    },
+    {
+      "name": "Prismatic Ring",
+      "id": "Metadata/Items/Rings/Ring8",
+      "item_class": "Ring",
+      "drop_level": 30
+    },
+    {
+      "name": "Moonstone Ring",
+      "id": "Metadata/Items/Rings/Ring9",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Amethyst Ring",
+      "id": "Metadata/Items/Rings/Ring10",
+      "item_class": "Ring",
+      "drop_level": 38
+    },
+    {
+      "name": "Diamond Ring",
+      "id": "Metadata/Items/Rings/Ring11",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Two-Stone Ring",
+      "id": "Metadata/Items/Rings/Ring12",
+      "item_class": "Ring",
+      "drop_level": 20
+    },
+    {
+      "name": "Two-Stone Ring",
+      "id": "Metadata/Items/Rings/Ring13",
+      "item_class": "Ring",
+      "drop_level": 20
+    },
+    {
+      "name": "Two-Stone Ring",
+      "id": "Metadata/Items/Rings/Ring14",
+      "item_class": "Ring",
+      "drop_level": 20
+    },
+    {
+      "name": "Unset Ring",
+      "id": "Metadata/Items/Rings/Ring15",
+      "item_class": "Ring",
+      "drop_level": 45
+    },
+    {
+      "name": "Bone Ring",
+      "id": "Metadata/Items/Rings/Ring16",
+      "item_class": "Ring",
+      "drop_level": 30
+    },
+    {
+      "name": "Cryonic Ring",
+      "id": "Metadata/Items/Rings/RingB1",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Enthalpic Ring",
+      "id": "Metadata/Items/Rings/RingB2",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Synaptic Ring",
+      "id": "Metadata/Items/Rings/RingB3",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Organic Ring",
+      "id": "Metadata/Items/Rings/RingB4",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Fugitive Ring",
+      "id": "Metadata/Items/Rings/RingB5",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Formless Ring",
+      "id": "Metadata/Items/Rings/RingB6",
+      "item_class": "Ring",
+      "drop_level": 40
+    },
+    {
+      "name": "Cogwork Ring",
+      "id": "Metadata/Items/Rings/RingE1",
+      "item_class": "Ring",
+      "drop_level": 68
+    },
+    {
+      "name": "Geodesic Ring",
+      "id": "Metadata/Items/Rings/RingE2",
+      "item_class": "Ring",
+      "drop_level": 68
+    },
+    {
+      "name": "Composite Ring",
+      "id": "Metadata/Items/Rings/RingE3",
+      "item_class": "Ring",
+      "drop_level": 68
+    },
+    {
+      "name": "Manifold Ring",
+      "id": "Metadata/Items/Rings/RingE4",
+      "item_class": "Ring",
+      "drop_level": 75
+    },
+    {
+      "name": "Ratcheting Ring",
+      "id": "Metadata/Items/Rings/RingE5",
+      "item_class": "Ring",
+      "drop_level": 68
+    },
+    {
+      "name": "Helical Ring",
+      "id": "Metadata/Items/Rings/RingE6",
+      "item_class": "Ring",
+      "drop_level": 75
+    },
+    {
+      "name": "Dusk Ring",
+      "id": "Metadata/Items/Rings/RingK1",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Penumbra Ring",
+      "id": "Metadata/Items/Rings/RingK2",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Gloam Ring",
+      "id": "Metadata/Items/Rings/RingK3",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Tenebrous Ring",
+      "id": "Metadata/Items/Rings/RingK4",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Shadowed Ring",
+      "id": "Metadata/Items/Rings/RingK5a",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Shadowed Ring",
+      "id": "Metadata/Items/Rings/RingK5b",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Shadowed Ring",
+      "id": "Metadata/Items/Rings/RingK5c",
+      "item_class": "Ring",
+      "drop_level": 25
+    },
+    {
+      "name": "Nameless Ring",
+      "id": "Metadata/Items/Rings/RingR1",
+      "item_class": "Ring",
+      "drop_level": 68
+    },
+    {
+      "name": "Steel Ring",
+      "id": "Metadata/Items/Rings/RingAtlas1",
+      "item_class": "Ring",
+      "drop_level": 78
+    },
+    {
+      "name": "Opal Ring",
+      "id": "Metadata/Items/Rings/RingAtlas2",
+      "item_class": "Ring",
+      "drop_level": 78
+    },
+    {
+      "name": "Vermillion Ring",
+      "id": "Metadata/Items/Rings/RingAtlas3",
+      "item_class": "Ring",
+      "drop_level": 80
+    },
+    {
+      "name": "Cerulean Ring",
+      "id": "Metadata/Items/Rings/RingAtlas4",
+      "item_class": "Ring",
+      "drop_level": 80
+    },
+    {
+      "name": "Iolite Ring",
+      "id": "Metadata/Items/Rings/RingAtlas5",
+      "item_class": "Ring",
+      "drop_level": 78
+    },
+    {
+      "name": "Ring",
+      "id": "Metadata/Items/Rings/MirrorRing",
+      "item_class": "Ring",
+      "drop_level": 1
+    },
+    {
+      "name": "Breach Ring",
+      "id": "Metadata/Items/Rings/BreachRing",
+      "item_class": "Ring",
+      "drop_level": 1
+    },
+    {
+      "name": "Carving Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger3",
+      "item_class": "Rune Dagger",
+      "drop_level": 10
+    },
+    {
+      "name": "Boot Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger5",
+      "item_class": "Rune Dagger",
+      "drop_level": 20
+    },
+    {
+      "name": "Copper Kris",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger6",
+      "item_class": "Rune Dagger",
+      "drop_level": 24
+    },
+    {
+      "name": "Skean",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger7",
+      "item_class": "Rune Dagger",
+      "drop_level": 28
+    },
+    {
+      "name": "Imp Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger8",
+      "item_class": "Rune Dagger",
+      "drop_level": 32
+    },
+    {
+      "name": "Butcher Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger10",
+      "item_class": "Rune Dagger",
+      "drop_level": 38
+    },
+    {
+      "name": "Boot Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger12",
+      "item_class": "Rune Dagger",
+      "drop_level": 44
+    },
+    {
+      "name": "Golden Kris",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger13",
+      "item_class": "Rune Dagger",
+      "drop_level": 47
+    },
+    {
+      "name": "Royal Skean",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger14",
+      "item_class": "Rune Dagger",
+      "drop_level": 50
+    },
+    {
+      "name": "Fiend Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger15",
+      "item_class": "Rune Dagger",
+      "drop_level": 53
+    },
+    {
+      "name": "Slaughter Knife",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger17",
+      "item_class": "Rune Dagger",
+      "drop_level": 58
+    },
+    {
+      "name": "Ezomyte Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger19",
+      "item_class": "Rune Dagger",
+      "drop_level": 62
+    },
+    {
+      "name": "Platinum Kris",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger20",
+      "item_class": "Rune Dagger",
+      "drop_level": 64
+    },
+    {
+      "name": "Imperial Skean",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger21",
+      "item_class": "Rune Dagger",
+      "drop_level": 66
+    },
+    {
+      "name": "Demon Dagger",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger22",
+      "item_class": "Rune Dagger",
+      "drop_level": 68
+    },
+    {
+      "name": "Flickerflame Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/RuneDaggerE1",
+      "item_class": "Rune Dagger",
+      "drop_level": 30
+    },
+    {
+      "name": "Flashfire Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/RuneDaggerE2",
+      "item_class": "Rune Dagger",
+      "drop_level": 50
+    },
+    {
+      "name": "Infernal Blade",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/RuneDaggerE3",
+      "item_class": "Rune Dagger",
+      "drop_level": 70
+    },
+    {
+      "name": "Driftwood Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre1",
+      "item_class": "Sceptre",
+      "drop_level": 1
+    },
+    {
+      "name": "Darkwood Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre2",
+      "item_class": "Sceptre",
+      "drop_level": 5
+    },
+    {
+      "name": "Bronze Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre3",
+      "item_class": "Sceptre",
+      "drop_level": 10
+    },
+    {
+      "name": "Quartz Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre4",
+      "item_class": "Sceptre",
+      "drop_level": 15
+    },
+    {
+      "name": "Iron Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre5",
+      "item_class": "Sceptre",
+      "drop_level": 20
+    },
+    {
+      "name": "Ochre Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre6",
+      "item_class": "Sceptre",
+      "drop_level": 24
+    },
+    {
+      "name": "Ritual Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre7",
+      "item_class": "Sceptre",
+      "drop_level": 28
+    },
+    {
+      "name": "Shadow Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre8",
+      "item_class": "Sceptre",
+      "drop_level": 32
+    },
+    {
+      "name": "Horned Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreM1",
+      "item_class": "Sceptre",
+      "drop_level": 36
+    },
+    {
+      "name": "Grinning Fetish",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre9",
+      "item_class": "Sceptre",
+      "drop_level": 35
+    },
+    {
+      "name": "Sekhem",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre10",
+      "item_class": "Sceptre",
+      "drop_level": 38
+    },
+    {
+      "name": "Crystal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre11",
+      "item_class": "Sceptre",
+      "drop_level": 41
+    },
+    {
+      "name": "Lead Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre12",
+      "item_class": "Sceptre",
+      "drop_level": 44
+    },
+    {
+      "name": "Blood Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre13",
+      "item_class": "Sceptre",
+      "drop_level": 47
+    },
+    {
+      "name": "Royal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre14",
+      "item_class": "Sceptre",
+      "drop_level": 50
+    },
+    {
+      "name": "Abyssal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre15",
+      "item_class": "Sceptre",
+      "drop_level": 53
+    },
+    {
+      "name": "Stag Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreM2",
+      "item_class": "Sceptre",
+      "drop_level": 55
+    },
+    {
+      "name": "Karui Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre16",
+      "item_class": "Sceptre",
+      "drop_level": 56
+    },
+    {
+      "name": "Tyrant's Sekhem",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre17",
+      "item_class": "Sceptre",
+      "drop_level": 58
+    },
+    {
+      "name": "Opal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre18",
+      "item_class": "Sceptre",
+      "drop_level": 60
+    },
+    {
+      "name": "Platinum Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre19",
+      "item_class": "Sceptre",
+      "drop_level": 62
+    },
+    {
+      "name": "Vaal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre20",
+      "item_class": "Sceptre",
+      "drop_level": 64
+    },
+    {
+      "name": "Carnal Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre21",
+      "item_class": "Sceptre",
+      "drop_level": 66
+    },
+    {
+      "name": "Void Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/Sceptre22",
+      "item_class": "Sceptre",
+      "drop_level": 68
+    },
+    {
+      "name": "Sambar Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreM3",
+      "item_class": "Sceptre",
+      "drop_level": 70
+    },
+    {
+      "name": "Oscillating Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreE1",
+      "item_class": "Sceptre",
+      "drop_level": 30
+    },
+    {
+      "name": "Stabilising Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreE2",
+      "item_class": "Sceptre",
+      "drop_level": 50
+    },
+    {
+      "name": "Alternating Sceptre",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandMaces/SceptreE3",
+      "item_class": "Sceptre",
+      "drop_level": 70
+    },
+    {
+      "name": "Splintered Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr1",
+      "item_class": "Shield",
+      "drop_level": 1
+    },
+    {
+      "name": "Corroded Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr2",
+      "item_class": "Shield",
+      "drop_level": 5
+    },
+    {
+      "name": "Rawhide Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr3",
+      "item_class": "Shield",
+      "drop_level": 11
+    },
+    {
+      "name": "Cedar Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr4",
+      "item_class": "Shield",
+      "drop_level": 17
+    },
+    {
+      "name": "Copper Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr5",
+      "item_class": "Shield",
+      "drop_level": 24
+    },
+    {
+      "name": "Reinforced Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr6",
+      "item_class": "Shield",
+      "drop_level": 30
+    },
+    {
+      "name": "Painted Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr7",
+      "item_class": "Shield",
+      "drop_level": 35
+    },
+    {
+      "name": "Buckskin Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr8",
+      "item_class": "Shield",
+      "drop_level": 39
+    },
+    {
+      "name": "Mahogany Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr9",
+      "item_class": "Shield",
+      "drop_level": 43
+    },
+    {
+      "name": "Bronze Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr10",
+      "item_class": "Shield",
+      "drop_level": 47
+    },
+    {
+      "name": "Girded Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr11",
+      "item_class": "Shield",
+      "drop_level": 51
+    },
+    {
+      "name": "Crested Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr12",
+      "item_class": "Shield",
+      "drop_level": 55
+    },
+    {
+      "name": "Shagreen Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr13",
+      "item_class": "Shield",
+      "drop_level": 58
+    },
+    {
+      "name": "Ebony Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr14",
+      "item_class": "Shield",
+      "drop_level": 61
+    },
+    {
+      "name": "Ezomyte Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr15",
+      "item_class": "Shield",
+      "drop_level": 64
+    },
+    {
+      "name": "Colossal Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr16",
+      "item_class": "Shield",
+      "drop_level": 67
+    },
+    {
+      "name": "Pinnacle Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStr17",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Exothermic Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrE1",
+      "item_class": "Shield",
+      "drop_level": 30
+    },
+    {
+      "name": "Magmatic Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrE2",
+      "item_class": "Shield",
+      "drop_level": 50
+    },
+    {
+      "name": "Heat-attuned Tower Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrE3",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Goathide Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex1",
+      "item_class": "Shield",
+      "drop_level": 2
+    },
+    {
+      "name": "Pine Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex2",
+      "item_class": "Shield",
+      "drop_level": 8
+    },
+    {
+      "name": "Painted Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex3",
+      "item_class": "Shield",
+      "drop_level": 16
+    },
+    {
+      "name": "Hammered Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex4",
+      "item_class": "Shield",
+      "drop_level": 23
+    },
+    {
+      "name": "War Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex5",
+      "item_class": "Shield",
+      "drop_level": 29
+    },
+    {
+      "name": "Gilded Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex6",
+      "item_class": "Shield",
+      "drop_level": 34
+    },
+    {
+      "name": "Oak Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex7",
+      "item_class": "Shield",
+      "drop_level": 38
+    },
+    {
+      "name": "Enameled Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex8",
+      "item_class": "Shield",
+      "drop_level": 42
+    },
+    {
+      "name": "Corrugated Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex9",
+      "item_class": "Shield",
+      "drop_level": 46
+    },
+    {
+      "name": "Battle Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex10",
+      "item_class": "Shield",
+      "drop_level": 50
+    },
+    {
+      "name": "Golden Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex11",
+      "item_class": "Shield",
+      "drop_level": 54
+    },
+    {
+      "name": "Ironwood Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex12",
+      "item_class": "Shield",
+      "drop_level": 57
+    },
+    {
+      "name": "Lacquered Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex13",
+      "item_class": "Shield",
+      "drop_level": 60
+    },
+    {
+      "name": "Vaal Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex14",
+      "item_class": "Shield",
+      "drop_level": 63
+    },
+    {
+      "name": "Crusader Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex15",
+      "item_class": "Shield",
+      "drop_level": 66
+    },
+    {
+      "name": "Imperial Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDex16",
+      "item_class": "Shield",
+      "drop_level": 69
+    },
+    {
+      "name": "Endothermic Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexE1",
+      "item_class": "Shield",
+      "drop_level": 30
+    },
+    {
+      "name": "Polar Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexE2",
+      "item_class": "Shield",
+      "drop_level": 50
+    },
+    {
+      "name": "Cold-attuned Buckler",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexE3",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Twig Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt1",
+      "item_class": "Shield",
+      "drop_level": 3
+    },
+    {
+      "name": "Yew Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt2",
+      "item_class": "Shield",
+      "drop_level": 9
+    },
+    {
+      "name": "Bone Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt3",
+      "item_class": "Shield",
+      "drop_level": 15
+    },
+    {
+      "name": "Tarnished Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt4",
+      "item_class": "Shield",
+      "drop_level": 23
+    },
+    {
+      "name": "Jingling Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt5",
+      "item_class": "Shield",
+      "drop_level": 28
+    },
+    {
+      "name": "Brass Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt6",
+      "item_class": "Shield",
+      "drop_level": 33
+    },
+    {
+      "name": "Walnut Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt7",
+      "item_class": "Shield",
+      "drop_level": 37
+    },
+    {
+      "name": "Ivory Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt8",
+      "item_class": "Shield",
+      "drop_level": 41
+    },
+    {
+      "name": "Ancient Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt9",
+      "item_class": "Shield",
+      "drop_level": 45
+    },
+    {
+      "name": "Chiming Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt10",
+      "item_class": "Shield",
+      "drop_level": 49
+    },
+    {
+      "name": "Thorium Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt11",
+      "item_class": "Shield",
+      "drop_level": 53
+    },
+    {
+      "name": "Lacewood Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt12",
+      "item_class": "Shield",
+      "drop_level": 56
+    },
+    {
+      "name": "Fossilised Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt13",
+      "item_class": "Shield",
+      "drop_level": 59
+    },
+    {
+      "name": "Vaal Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt14",
+      "item_class": "Shield",
+      "drop_level": 62
+    },
+    {
+      "name": "Harmonic Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt15",
+      "item_class": "Shield",
+      "drop_level": 65
+    },
+    {
+      "name": "Titanium Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldInt16",
+      "item_class": "Shield",
+      "drop_level": 68
+    },
+    {
+      "name": "Exhausting Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldIntE1",
+      "item_class": "Shield",
+      "drop_level": 30
+    },
+    {
+      "name": "Subsuming Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldIntE2",
+      "item_class": "Shield",
+      "drop_level": 50
+    },
+    {
+      "name": "Transfer-attuned Spirit Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldIntE3",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Rotted Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex1",
+      "item_class": "Shield",
+      "drop_level": 5
+    },
+    {
+      "name": "Fir Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex2",
+      "item_class": "Shield",
+      "drop_level": 12
+    },
+    {
+      "name": "Studded Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex3",
+      "item_class": "Shield",
+      "drop_level": 20
+    },
+    {
+      "name": "Scarlet Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex4",
+      "item_class": "Shield",
+      "drop_level": 27
+    },
+    {
+      "name": "Splendid Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex5",
+      "item_class": "Shield",
+      "drop_level": 33
+    },
+    {
+      "name": "Maple Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex6",
+      "item_class": "Shield",
+      "drop_level": 39
+    },
+    {
+      "name": "Spiked Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex7",
+      "item_class": "Shield",
+      "drop_level": 45
+    },
+    {
+      "name": "Crimson Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex8",
+      "item_class": "Shield",
+      "drop_level": 49
+    },
+    {
+      "name": "Baroque Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex9",
+      "item_class": "Shield",
+      "drop_level": 54
+    },
+    {
+      "name": "Teak Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex10",
+      "item_class": "Shield",
+      "drop_level": 58
+    },
+    {
+      "name": "Spiny Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex11",
+      "item_class": "Shield",
+      "drop_level": 62
+    },
+    {
+      "name": "Cardinal Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex12",
+      "item_class": "Shield",
+      "drop_level": 66
+    },
+    {
+      "name": "Elegant Round Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrDex13",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Plank Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt1",
+      "item_class": "Shield",
+      "drop_level": 7
+    },
+    {
+      "name": "Linden Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt2",
+      "item_class": "Shield",
+      "drop_level": 13
+    },
+    {
+      "name": "Reinforced Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt3",
+      "item_class": "Shield",
+      "drop_level": 20
+    },
+    {
+      "name": "Layered Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt4",
+      "item_class": "Shield",
+      "drop_level": 27
+    },
+    {
+      "name": "Ceremonial Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt5",
+      "item_class": "Shield",
+      "drop_level": 34
+    },
+    {
+      "name": "Etched Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt6",
+      "item_class": "Shield",
+      "drop_level": 40
+    },
+    {
+      "name": "Steel Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt7",
+      "item_class": "Shield",
+      "drop_level": 46
+    },
+    {
+      "name": "Laminated Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt8",
+      "item_class": "Shield",
+      "drop_level": 50
+    },
+    {
+      "name": "Angelic Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt9",
+      "item_class": "Shield",
+      "drop_level": 55
+    },
+    {
+      "name": "Branded Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt10",
+      "item_class": "Shield",
+      "drop_level": 59
+    },
+    {
+      "name": "Champion Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt11",
+      "item_class": "Shield",
+      "drop_level": 62
+    },
+    {
+      "name": "Mosaic Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt12",
+      "item_class": "Shield",
+      "drop_level": 65
+    },
+    {
+      "name": "Archon Kite Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldStrInt13",
+      "item_class": "Shield",
+      "drop_level": 68
+    },
+    {
+      "name": "Spiked Bundle",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt1",
+      "item_class": "Shield",
+      "drop_level": 5
+    },
+    {
+      "name": "Driftwood Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt2",
+      "item_class": "Shield",
+      "drop_level": 12
+    },
+    {
+      "name": "Alloyed Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt3",
+      "item_class": "Shield",
+      "drop_level": 20
+    },
+    {
+      "name": "Burnished Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt4",
+      "item_class": "Shield",
+      "drop_level": 27
+    },
+    {
+      "name": "Ornate Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt5",
+      "item_class": "Shield",
+      "drop_level": 33
+    },
+    {
+      "name": "Redwood Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt6",
+      "item_class": "Shield",
+      "drop_level": 39
+    },
+    {
+      "name": "Compound Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt7",
+      "item_class": "Shield",
+      "drop_level": 45
+    },
+    {
+      "name": "Polished Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt8",
+      "item_class": "Shield",
+      "drop_level": 49
+    },
+    {
+      "name": "Sovereign Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt9",
+      "item_class": "Shield",
+      "drop_level": 54
+    },
+    {
+      "name": "Alder Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt10",
+      "item_class": "Shield",
+      "drop_level": 58
+    },
+    {
+      "name": "Ezomyte Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt11",
+      "item_class": "Shield",
+      "drop_level": 62
+    },
+    {
+      "name": "Mirrored Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt12",
+      "item_class": "Shield",
+      "drop_level": 66
+    },
+    {
+      "name": "Supreme Spiked Shield",
+      "id": "Metadata/Items/Armours/Shields/ShieldDexInt13",
+      "item_class": "Shield",
+      "drop_level": 70
+    },
+    {
+      "name": "Gnarled Branch",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff1",
+      "item_class": "Staff",
+      "drop_level": 4
+    },
+    {
+      "name": "Primitive Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff2",
+      "item_class": "Staff",
+      "drop_level": 9
+    },
+    {
+      "name": "Long Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff3",
+      "item_class": "Staff",
+      "drop_level": 18
+    },
+    {
+      "name": "Royal Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff6",
+      "item_class": "Staff",
+      "drop_level": 28
+    },
+    {
+      "name": "Crescent Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffM1",
+      "item_class": "Staff",
+      "drop_level": 36
+    },
+    {
+      "name": "Woodful Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff8",
+      "item_class": "Staff",
+      "drop_level": 37
+    },
+    {
+      "name": "Quarterstaff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff9",
+      "item_class": "Staff",
+      "drop_level": 45
+    },
+    {
+      "name": "Highborn Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff12",
+      "item_class": "Staff",
+      "drop_level": 52
+    },
+    {
+      "name": "Moon Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffM2",
+      "item_class": "Staff",
+      "drop_level": 57
+    },
+    {
+      "name": "Primordial Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff14",
+      "item_class": "Staff",
+      "drop_level": 58
+    },
+    {
+      "name": "Lathi",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff15",
+      "item_class": "Staff",
+      "drop_level": 62
+    },
+    {
+      "name": "Imperial Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff18",
+      "item_class": "Staff",
+      "drop_level": 66
+    },
+    {
+      "name": "Eclipse Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffM3",
+      "item_class": "Staff",
+      "drop_level": 70
+    },
+    {
+      "name": "Transformer Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffE1",
+      "item_class": "Staff",
+      "drop_level": 30
+    },
+    {
+      "name": "Reciprocation Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffE2",
+      "item_class": "Staff",
+      "drop_level": 50
+    },
+    {
+      "name": "Battery Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/StaffE3",
+      "item_class": "Staff",
+      "drop_level": 70
+    },
+    {
+      "name": "Rusted Spike",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier1",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 3
+    },
+    {
+      "name": "Whalebone Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier2",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 7
+    },
+    {
+      "name": "Battered Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier3",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 12
+    },
+    {
+      "name": "Basket Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier4",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 17
+    },
+    {
+      "name": "Jagged Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier5",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 22
+    },
+    {
+      "name": "Antique Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier6",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 26
+    },
+    {
+      "name": "Elegant Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier7",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 30
+    },
+    {
+      "name": "Thorn Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier8",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 34
+    },
+    {
+      "name": "Smallsword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/RapierM1",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 36
+    },
+    {
+      "name": "Wyrmbone Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier9",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 37
+    },
+    {
+      "name": "Burnished Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier10",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 40
+    },
+    {
+      "name": "Estoc",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier11",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 43
+    },
+    {
+      "name": "Serrated Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier12",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 46
+    },
+    {
+      "name": "Primeval Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier13",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 49
+    },
+    {
+      "name": "Fancy Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier14",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 52
+    },
+    {
+      "name": "Apex Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier15",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 55
+    },
+    {
+      "name": "Courtesan Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/RapierM2",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 57
+    },
+    {
+      "name": "Dragonbone Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier16",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 58
+    },
+    {
+      "name": "Tempered Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier17",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 60
+    },
+    {
+      "name": "Pecoraro",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier18",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 62
+    },
+    {
+      "name": "Spiraled Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier19",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 64
+    },
+    {
+      "name": "Vaal Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier20",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 66
+    },
+    {
+      "name": "Jewelled Foil",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier21",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 68
+    },
+    {
+      "name": "Harpy Rapier",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/Rapier22",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 70
+    },
+    {
+      "name": "Dragoon Sword",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/OneHandThrustingSwords/RapierM3",
+      "item_class": "Thrusting One Hand Sword",
+      "drop_level": 72
+    },
+    {
+      "name": "Stone Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe1",
+      "item_class": "Two Hand Axe",
+      "drop_level": 4
+    },
+    {
+      "name": "Jade Chopper",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe2",
+      "item_class": "Two Hand Axe",
+      "drop_level": 9
+    },
+    {
+      "name": "Woodsplitter",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe3",
+      "item_class": "Two Hand Axe",
+      "drop_level": 13
+    },
+    {
+      "name": "Poleaxe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe4",
+      "item_class": "Two Hand Axe",
+      "drop_level": 18
+    },
+    {
+      "name": "Double Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe5",
+      "item_class": "Two Hand Axe",
+      "drop_level": 23
+    },
+    {
+      "name": "Gilded Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe6",
+      "item_class": "Two Hand Axe",
+      "drop_level": 28
+    },
+    {
+      "name": "Shadow Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe7",
+      "item_class": "Two Hand Axe",
+      "drop_level": 33
+    },
+    {
+      "name": "Dagger Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeM1",
+      "item_class": "Two Hand Axe",
+      "drop_level": 36
+    },
+    {
+      "name": "Jasper Chopper",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe8",
+      "item_class": "Two Hand Axe",
+      "drop_level": 37
+    },
+    {
+      "name": "Timber Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe9",
+      "item_class": "Two Hand Axe",
+      "drop_level": 41
+    },
+    {
+      "name": "Headsman Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe10",
+      "item_class": "Two Hand Axe",
+      "drop_level": 45
+    },
+    {
+      "name": "Labrys",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe11",
+      "item_class": "Two Hand Axe",
+      "drop_level": 49
+    },
+    {
+      "name": "Noble Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe12",
+      "item_class": "Two Hand Axe",
+      "drop_level": 52
+    },
+    {
+      "name": "Abyssal Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe13",
+      "item_class": "Two Hand Axe",
+      "drop_level": 55
+    },
+    {
+      "name": "Talon Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeM2",
+      "item_class": "Two Hand Axe",
+      "drop_level": 59
+    },
+    {
+      "name": "Karui Chopper",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe14",
+      "item_class": "Two Hand Axe",
+      "drop_level": 58
+    },
+    {
+      "name": "Sundering Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe15",
+      "item_class": "Two Hand Axe",
+      "drop_level": 60
+    },
+    {
+      "name": "Ezomyte Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe16",
+      "item_class": "Two Hand Axe",
+      "drop_level": 62
+    },
+    {
+      "name": "Vaal Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe17",
+      "item_class": "Two Hand Axe",
+      "drop_level": 64
+    },
+    {
+      "name": "Despot Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe18",
+      "item_class": "Two Hand Axe",
+      "drop_level": 66
+    },
+    {
+      "name": "Void Axe",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxe19",
+      "item_class": "Two Hand Axe",
+      "drop_level": 68
+    },
+    {
+      "name": "Fleshripper",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeM3",
+      "item_class": "Two Hand Axe",
+      "drop_level": 70
+    },
+    {
+      "name": "Prime Cleaver",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeE1",
+      "item_class": "Two Hand Axe",
+      "drop_level": 30
+    },
+    {
+      "name": "Honed Cleaver",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeE2",
+      "item_class": "Two Hand Axe",
+      "drop_level": 50
+    },
+    {
+      "name": "Apex Cleaver",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandAxes/TwoHandAxeE3",
+      "item_class": "Two Hand Axe",
+      "drop_level": 70
+    },
+    {
+      "name": "Driftwood Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace1",
+      "item_class": "Two Hand Mace",
+      "drop_level": 3
+    },
+    {
+      "name": "Tribal Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace2",
+      "item_class": "Two Hand Mace",
+      "drop_level": 8
+    },
+    {
+      "name": "Mallet",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace3",
+      "item_class": "Two Hand Mace",
+      "drop_level": 12
+    },
+    {
+      "name": "Sledgehammer",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace4",
+      "item_class": "Two Hand Mace",
+      "drop_level": 17
+    },
+    {
+      "name": "Jagged Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace5",
+      "item_class": "Two Hand Mace",
+      "drop_level": 22
+    },
+    {
+      "name": "Brass Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace6",
+      "item_class": "Two Hand Mace",
+      "drop_level": 27
+    },
+    {
+      "name": "Fright Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace7",
+      "item_class": "Two Hand Mace",
+      "drop_level": 32
+    },
+    {
+      "name": "Morning Star",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceM1",
+      "item_class": "Two Hand Mace",
+      "drop_level": 34
+    },
+    {
+      "name": "Totemic Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace8",
+      "item_class": "Two Hand Mace",
+      "drop_level": 36
+    },
+    {
+      "name": "Great Mallet",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace9",
+      "item_class": "Two Hand Mace",
+      "drop_level": 40
+    },
+    {
+      "name": "Steelhead",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace10",
+      "item_class": "Two Hand Mace",
+      "drop_level": 44
+    },
+    {
+      "name": "Spiny Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace11",
+      "item_class": "Two Hand Mace",
+      "drop_level": 48
+    },
+    {
+      "name": "Plated Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace12",
+      "item_class": "Two Hand Mace",
+      "drop_level": 51
+    },
+    {
+      "name": "Dread Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace13",
+      "item_class": "Two Hand Mace",
+      "drop_level": 54
+    },
+    {
+      "name": "Solar Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceM2",
+      "item_class": "Two Hand Mace",
+      "drop_level": 56
+    },
+    {
+      "name": "Karui Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace14",
+      "item_class": "Two Hand Mace",
+      "drop_level": 57
+    },
+    {
+      "name": "Colossus Mallet",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace15",
+      "item_class": "Two Hand Mace",
+      "drop_level": 59
+    },
+    {
+      "name": "Piledriver",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace16",
+      "item_class": "Two Hand Mace",
+      "drop_level": 61
+    },
+    {
+      "name": "Meatgrinder",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace17",
+      "item_class": "Two Hand Mace",
+      "drop_level": 63
+    },
+    {
+      "name": "Imperial Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace18",
+      "item_class": "Two Hand Mace",
+      "drop_level": 65
+    },
+    {
+      "name": "Terror Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMace19",
+      "item_class": "Two Hand Mace",
+      "drop_level": 67
+    },
+    {
+      "name": "Coronal Maul",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceM3",
+      "item_class": "Two Hand Mace",
+      "drop_level": 69
+    },
+    {
+      "name": "Blunt Force Condenser",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceE1",
+      "item_class": "Two Hand Mace",
+      "drop_level": 30
+    },
+    {
+      "name": "Crushing Force Magnifier",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceE2",
+      "item_class": "Two Hand Mace",
+      "drop_level": 50
+    },
+    {
+      "name": "Impact Force Propagator",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandMaces/TwoHandMaceE3",
+      "item_class": "Two Hand Mace",
+      "drop_level": 70
+    },
+    {
+      "name": "Corroded Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword1",
+      "item_class": "Two Hand Sword",
+      "drop_level": 3
+    },
+    {
+      "name": "Longsword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword2",
+      "item_class": "Two Hand Sword",
+      "drop_level": 8
+    },
+    {
+      "name": "Bastard Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword3",
+      "item_class": "Two Hand Sword",
+      "drop_level": 12
+    },
+    {
+      "name": "Two-Handed Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword4",
+      "item_class": "Two Hand Sword",
+      "drop_level": 17
+    },
+    {
+      "name": "Etched Greatsword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword5",
+      "item_class": "Two Hand Sword",
+      "drop_level": 22
+    },
+    {
+      "name": "Ornate Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword6",
+      "item_class": "Two Hand Sword",
+      "drop_level": 27
+    },
+    {
+      "name": "Spectral Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword7",
+      "item_class": "Two Hand Sword",
+      "drop_level": 32
+    },
+    {
+      "name": "Curved Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordM1",
+      "item_class": "Two Hand Sword",
+      "drop_level": 35
+    },
+    {
+      "name": "Butcher Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword8",
+      "item_class": "Two Hand Sword",
+      "drop_level": 36
+    },
+    {
+      "name": "Footman Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword9",
+      "item_class": "Two Hand Sword",
+      "drop_level": 40
+    },
+    {
+      "name": "Highland Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword10",
+      "item_class": "Two Hand Sword",
+      "drop_level": 44
+    },
+    {
+      "name": "Engraved Greatsword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword11",
+      "item_class": "Two Hand Sword",
+      "drop_level": 48
+    },
+    {
+      "name": "Tiger Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword12",
+      "item_class": "Two Hand Sword",
+      "drop_level": 51
+    },
+    {
+      "name": "Wraith Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword13",
+      "item_class": "Two Hand Sword",
+      "drop_level": 54
+    },
+    {
+      "name": "Lithe Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordM2",
+      "item_class": "Two Hand Sword",
+      "drop_level": 56
+    },
+    {
+      "name": "Headman's Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword14",
+      "item_class": "Two Hand Sword",
+      "drop_level": 57
+    },
+    {
+      "name": "Reaver Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword15",
+      "item_class": "Two Hand Sword",
+      "drop_level": 59
+    },
+    {
+      "name": "Ezomyte Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword16",
+      "item_class": "Two Hand Sword",
+      "drop_level": 61
+    },
+    {
+      "name": "Vaal Greatsword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword17",
+      "item_class": "Two Hand Sword",
+      "drop_level": 63
+    },
+    {
+      "name": "Lion Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword18",
+      "item_class": "Two Hand Sword",
+      "drop_level": 65
+    },
+    {
+      "name": "Infernal Sword",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSword19",
+      "item_class": "Two Hand Sword",
+      "drop_level": 67
+    },
+    {
+      "name": "Exquisite Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordM3",
+      "item_class": "Two Hand Sword",
+      "drop_level": 70
+    },
+    {
+      "name": "Rebuking Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordE1",
+      "item_class": "Two Hand Sword",
+      "drop_level": 30
+    },
+    {
+      "name": "Blasting Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordE2",
+      "item_class": "Two Hand Sword",
+      "drop_level": 50
+    },
+    {
+      "name": "Banishing Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/TwoHandSwordE3",
+      "item_class": "Two Hand Sword",
+      "drop_level": 70
+    },
+    {
+      "name": "Energy Blade",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/TwoHandSwords/StormBladeTwoHand",
+      "item_class": "Two Hand Sword",
+      "drop_level": 1
+    },
+    {
+      "name": "Driftwood Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand1",
+      "item_class": "Wand",
+      "drop_level": 1
+    },
+    {
+      "name": "Goat's Horn",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand2",
+      "item_class": "Wand",
+      "drop_level": 6
+    },
+    {
+      "name": "Carved Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand3",
+      "item_class": "Wand",
+      "drop_level": 12
+    },
+    {
+      "name": "Quartz Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand4",
+      "item_class": "Wand",
+      "drop_level": 18
+    },
+    {
+      "name": "Spiraled Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand5",
+      "item_class": "Wand",
+      "drop_level": 24
+    },
+    {
+      "name": "Sage Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand6",
+      "item_class": "Wand",
+      "drop_level": 30
+    },
+    {
+      "name": "Pagan Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandM1",
+      "item_class": "Wand",
+      "drop_level": 34
+    },
+    {
+      "name": "Faun's Horn",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand7",
+      "item_class": "Wand",
+      "drop_level": 35
+    },
+    {
+      "name": "Engraved Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand8",
+      "item_class": "Wand",
+      "drop_level": 40
+    },
+    {
+      "name": "Crystal Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand9",
+      "item_class": "Wand",
+      "drop_level": 45
+    },
+    {
+      "name": "Coiled Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand10",
+      "item_class": "Wand",
+      "drop_level": 49
+    },
+    {
+      "name": "Omen Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand11",
+      "item_class": "Wand",
+      "drop_level": 53
+    },
+    {
+      "name": "Heathen Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandM2",
+      "item_class": "Wand",
+      "drop_level": 55
+    },
+    {
+      "name": "Demon's Horn",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand12",
+      "item_class": "Wand",
+      "drop_level": 56
+    },
+    {
+      "name": "Imbued Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand13",
+      "item_class": "Wand",
+      "drop_level": 59
+    },
+    {
+      "name": "Opal Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand14",
+      "item_class": "Wand",
+      "drop_level": 62
+    },
+    {
+      "name": "Tornado Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand15",
+      "item_class": "Wand",
+      "drop_level": 65
+    },
+    {
+      "name": "Prophecy Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand16",
+      "item_class": "Wand",
+      "drop_level": 68
+    },
+    {
+      "name": "Profane Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandM3",
+      "item_class": "Wand",
+      "drop_level": 70
+    },
+    {
+      "name": "Assembler Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandE1",
+      "item_class": "Wand",
+      "drop_level": 30
+    },
+    {
+      "name": "Congregator Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandE2",
+      "item_class": "Wand",
+      "drop_level": 50
+    },
+    {
+      "name": "Accumulator Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandE3",
+      "item_class": "Wand",
+      "drop_level": 70
+    },
+    {
+      "name": "Somatic Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandK1",
+      "item_class": "Wand",
+      "drop_level": 12
+    },
+    {
+      "name": "Blasting Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandK2",
+      "item_class": "Wand",
+      "drop_level": 40
+    },
+    {
+      "name": "Kinetic Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandK3",
+      "item_class": "Wand",
+      "drop_level": 59
+    },
+    {
+      "name": "Calling Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandMinion1",
+      "item_class": "Wand",
+      "drop_level": 20
+    },
+    {
+      "name": "Convening Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandMinion2",
+      "item_class": "Wand",
+      "drop_level": 50
+    },
+    {
+      "name": "Convoking Wand",
+      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandAtlas1",
+      "item_class": "Wand",
+      "drop_level": 72
+    },
+    {
+      "name": "Iron Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff4",
+      "item_class": "Warstaff",
+      "drop_level": 13
+    },
+    {
+      "name": "Coiled Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff5",
+      "item_class": "Warstaff",
+      "drop_level": 23
+    },
+    {
+      "name": "Vile Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff7",
+      "item_class": "Warstaff",
+      "drop_level": 33
+    },
+    {
+      "name": "Military Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff10",
+      "item_class": "Warstaff",
+      "drop_level": 41
+    },
+    {
+      "name": "Serpentine Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff11",
+      "item_class": "Warstaff",
+      "drop_level": 49
+    },
+    {
+      "name": "Foul Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff13",
+      "item_class": "Warstaff",
+      "drop_level": 55
+    },
+    {
+      "name": "Ezomyte Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff16",
+      "item_class": "Warstaff",
+      "drop_level": 60
+    },
+    {
+      "name": "Maelström Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff17",
+      "item_class": "Warstaff",
+      "drop_level": 64
+    },
+    {
+      "name": "Judgement Staff",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/Staff19",
+      "item_class": "Warstaff",
+      "drop_level": 68
+    },
+    {
+      "name": "Capacity Rod",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/WarstaffE1",
+      "item_class": "Warstaff",
+      "drop_level": 30
+    },
+    {
+      "name": "Potentiality Rod",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/WarstaffE2",
+      "item_class": "Warstaff",
+      "drop_level": 50
+    },
+    {
+      "name": "Eventuality Rod",
+      "id": "Metadata/Items/Weapons/TwoHandWeapons/Staves/WarstaffE3",
+      "item_class": "Warstaff",
+      "drop_level": 70
+    }
+  ]
+}
