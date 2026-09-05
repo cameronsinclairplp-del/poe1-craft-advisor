@@ -1,0 +1,30 @@
+# source: https://github.com/veiset/poe.re/issues/482
+# posted: 24/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: magic, prefix + suffix
+Item Class: Sceptres
+Rarity: Magic
+Scorching Void Sceptre of Dissolution
+--------
+Sceptre
+Physical Damage: 50-76
+Elemental Damage: 34-77 (augmented)
+Critical Strike Chance: 7.30%
+Attacks per Second: 1.25
+Weapon Range: 1.1 metres
+--------
+Requirements:
+Level: 68
+Str: 104
+Int: 122
+--------
+Sockets: B-W-W
+--------
+Item Level: 85
+--------
+{ Implicit Modifier — Damage, Elemental }
+40% increased Elemental Damage
+--------
+{ Prefix Modifier "Scorching" (Tier: 5) — Damage, Elemental, Fire, Attack }
+Adds 34(34-46) to 77(68-80) Fire Damage
+{ Suffix Modifier "of Dissolution" (Tier: 1) — Damage }
++25(24-26)% to Damage over Time Multiplier

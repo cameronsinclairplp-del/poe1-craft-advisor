@@ -1,0 +1,23 @@
+# source: https://github.com/SnosMe/awakened-poe-trade/issues/1729 (item 2 of 2 in that post)
+# posted: 24/11/2025. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: magic with a fractured prefix marked by the (fractured) line suffix
+Item Class: Boots
+Rarity: Magic
+Hellion's Warlock Boots
+--------
+Quality: +20% (augmented)
+Energy Shield: 98 (augmented)
+--------
+Requirements:
+Level: 84
+Int: 177
+--------
+Sockets: B-B-R-R
+--------
+Item Level: 86
+--------
+{ Prefix Modifier "Hellion's" (Tier: 1) — Speed }
+35% increased Movement Speed (fractured)
+
+--------
+Fractured Item

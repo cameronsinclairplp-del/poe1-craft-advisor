@@ -1,0 +1,29 @@
+# source: https://github.com/Sidekick-Poe/Sidekick/issues/1235
+# posted: 02/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: corrupted rare, Corruption Implicit replaced the base implicit, 2 prefixes + 2 suffixes. Posted 02/08/2026 (patch 3.29). The game shows "Thaumaturgist's" (18-22)% increased Spell Damage as Tier 4; RePoE (04/09/2026) and Path of Building (23/08/2026) both list only five amulet spell damage tiers, which makes it T2. The other three mods on the item check out. Unexplained: either the game has amulet spell damage tiers neither dataset carries, or the game numbers this family differently (STATUS.md VERIFY 13). The parser must fail loudly on it until that is settled.
+# expect-error: TierMismatchError
+Item Class: Amulets
+Rarity: Rare
+Pandemonium Idol
+Citrine Amulet
+--------
+Requirements:
+Level: 44
+--------
+Item Level: 80
+--------
+{ Corruption Implicit Modifier — Attribute }
+4(4-6)% increased Strength
+4(4-6)% increased Intelligence
+--------
+{ Prefix Modifier "Burning" (Tier: 6) — Damage, Elemental, Fire, Attack }
+Adds 8(7-10) to 18(15-18) Fire Damage to Attacks
+{ Prefix Modifier "Thaumaturgist's" (Tier: 4) — Damage, Caster }
+20(18-22)% increased Spell Damage
+{ Suffix Modifier "of the Heavens" (Tier: 5) — Attribute }
++17(17-20) to all Attributes
+(Attributes are Strength, Dexterity, and Intelligence)
+{ Suffix Modifier "of Sleet" (Tier: 4) — Damage, Elemental, Cold }
+15(13-15)% increased Cold Damage
+--------
+Corrupted

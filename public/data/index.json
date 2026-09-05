@@ -1,162 +1,192 @@
 {
-  "schema": 1,
-  "generated": "2026-09-05T04:18:50.036Z",
+  "schema": 2,
+  "generated": "2026-09-04T22:58:29.000Z",
   "source": {
     "repoe": "https://repoe-fork.github.io",
-    "mods_last_modified": "Fri, 04 Sep 2026 22:58:29 GMT"
+    "mods_last_modified": "Fri, 04 Sep 2026 22:58:29 GMT",
+    "data_last_modified": "Fri, 04 Sep 2026 22:58:29 GMT"
   },
   "classes": [
     {
       "item_class": "Amulet",
+      "name": "Amulets",
       "file": "Amulet.json.gz",
       "bases": 97,
       "mods": 309
     },
     {
       "item_class": "Belt",
+      "name": "Belts",
       "file": "Belt.json.gz",
       "bases": 16,
       "mods": 205
     },
     {
       "item_class": "Body Armour",
+      "name": "Body Armours",
       "file": "Body_Armour.json.gz",
       "bases": 122,
       "mods": 337
     },
     {
       "item_class": "Boots",
+      "name": "Boots",
       "file": "Boots.json.gz",
       "bases": 81,
       "mods": 329
     },
     {
       "item_class": "Bow",
+      "name": "Bows",
       "file": "Bow.json.gz",
       "bases": 29,
       "mods": 214
     },
     {
       "item_class": "Claw",
+      "name": "Claws",
       "file": "Claw.json.gz",
       "bases": 28,
       "mods": 234
     },
     {
       "item_class": "Dagger",
+      "name": "Daggers",
       "file": "Dagger.json.gz",
       "bases": 13,
       "mods": 247
     },
     {
       "item_class": "FishingRod",
+      "name": "Fishing Rods",
       "file": "FishingRod.json.gz",
       "bases": 1,
       "mods": 82
     },
     {
       "item_class": "Gloves",
+      "name": "Gloves",
       "file": "Gloves.json.gz",
       "bases": 79,
       "mods": 348
     },
     {
       "item_class": "Helmet",
+      "name": "Helmets",
       "file": "Helmet.json.gz",
       "bases": 94,
       "mods": 352
     },
     {
       "item_class": "One Hand Axe",
+      "name": "One Hand Axes",
       "file": "One_Hand_Axe.json.gz",
       "bases": 28,
       "mods": 226
     },
     {
       "item_class": "One Hand Mace",
+      "name": "One Hand Maces",
       "file": "One_Hand_Mace.json.gz",
       "bases": 28,
       "mods": 217
     },
     {
       "item_class": "One Hand Sword",
+      "name": "One Hand Swords",
       "file": "One_Hand_Sword.json.gz",
       "bases": 31,
       "mods": 226
     },
     {
       "item_class": "Quiver",
+      "name": "Quivers",
       "file": "Quiver.json.gz",
       "bases": 22,
       "mods": 204
     },
     {
       "item_class": "Ring",
+      "name": "Rings",
       "file": "Ring.json.gz",
       "bases": 47,
       "mods": 286
     },
     {
       "item_class": "Rune Dagger",
+      "name": "Rune Daggers",
       "file": "Rune_Dagger.json.gz",
       "bases": 18,
       "mods": 231
     },
     {
       "item_class": "Sceptre",
+      "name": "Sceptres",
       "file": "Sceptre.json.gz",
       "bases": 28,
       "mods": 313
     },
     {
       "item_class": "Shield",
+      "name": "Shields",
       "file": "Shield.json.gz",
       "bases": 97,
       "mods": 444
     },
     {
       "item_class": "Staff",
+      "name": "Staves",
       "file": "Staff.json.gz",
       "bases": 16,
       "mods": 348
     },
     {
       "item_class": "Thrusting One Hand Sword",
+      "name": "Thrusting One Hand Swords",
       "file": "Thrusting_One_Hand_Sword.json.gz",
       "bases": 25,
       "mods": 226
     },
     {
       "item_class": "Two Hand Axe",
+      "name": "Two Hand Axes",
       "file": "Two_Hand_Axe.json.gz",
       "bases": 25,
       "mods": 226
     },
     {
       "item_class": "Two Hand Mace",
+      "name": "Two Hand Maces",
       "file": "Two_Hand_Mace.json.gz",
       "bases": 25,
       "mods": 217
     },
     {
       "item_class": "Two Hand Sword",
+      "name": "Two Hand Swords",
       "file": "Two_Hand_Sword.json.gz",
       "bases": 26,
       "mods": 226
     },
     {
       "item_class": "Wand",
+      "name": "Wands",
       "file": "Wand.json.gz",
       "bases": 29,
       "mods": 347
     },
     {
       "item_class": "Warstaff",
+      "name": "Warstaves",
       "file": "Warstaff.json.gz",
       "bases": 12,
       "mods": 215
     }
   ],
+  "other_mods": {
+    "file": "other_mods.json.gz",
+    "mods": 2095
+  },
   "bases": [
     {
       "name": "Paua Amulet",

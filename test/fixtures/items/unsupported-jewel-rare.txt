@@ -1,0 +1,23 @@
+# source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues/6214
+# posted: 09/05/2023. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: rare jewel: item class not supported
+# expect-error: UnsupportedItemClassError
+Item Class: Jewels
+Rarity: Rare
+Sol Glimmer
+Crimson Jewel
+--------
+Item Level: 72
+--------
+{ Prefix Modifier "Harmonic" (Tier: 1) — Attack, Speed }
+4(4-6)% increased Attack Speed while Dual Wielding
+{ Prefix Modifier "Piercing" (Tier: 1) — Damage, Attack, Critical }
++17(15-18)% to Critical Strike Multiplier with One Handed Melee Weapons
+{ Suffix Modifier "of Stunning" (Tier: 1) }
+11(10-14)% increased Stun Duration on Enemies
+{ Suffix Modifier "of Bleeding" (Tier: 1) — Physical, Attack, Ailment }
+Attacks have 5(3-5)% chance to cause Bleeding
+(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is higher while moving)
+14(12-16)% increased Bleeding Duration
+--------
+Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.

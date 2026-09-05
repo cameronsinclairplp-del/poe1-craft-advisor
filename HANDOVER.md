@@ -1,70 +1,187 @@
 # Handover — the one place to look
 
-Updated 05/09/2026 after Claude Code finished milestones 1 and 2 (see `STATUS.md`). Written for Claude Code inside the Claude desktop app (Fable 5.1). You paste prompts; it runs the commands.
+Updated 05/09/2026 (evening). Step B now merges PR #2 itself, then does parity numbers, per-type tier ladders and your three items in one go. Written for Claude Code inside the Claude desktop app (Fable 5.1). You paste prompts; it runs the commands.
 
 ## Where things are
 
 | | |
 |---|---|
-| Done | Parts 1–3. Repo is on GitHub, PR #1 open (`m1-m2-foundation` → `main`, 2 commits), CI ran on it. Hooks installed on disk. |
-| Now | The walkthrough below, top to bottom. One step at a time. |
-| Then | Milestone 3 (parser) prompt from Cowork, after parity passes. |
+| Done | Foundation (M1–2), GitHub + safety net, M3 parser (PR #2, open). Parity numbers read off Craft of Exile by Cowork (all ten within 3.2%). Your three 3.29 items received 05/09/2026 (staff, Twilight Regalia, magic Titan Plate). |
+| Now | Run Step B (it merges PR #2 first) → merge PR #3, tag `m2-parity` → run Step C (M4+M5, ultracode on). |
+| Finished means | You paste an item, pick a target, get the next step, cost and odds, on the Pages site. Step D (UI) after Step C. |
 
-## Walkthrough from here (05/09/2026)
+## The finish line, step by step
 
-**Step 1a — guard v2 in, identity fixed, checks 2 and 3 (current session, effort high).** The first guard test (05/09/2026) found two holes: `git switch main && git commit` slipped past because the guard only looked at the branch before the line ran, and the shell had no git identity so every commit (autosave included) failed silently. Both are fixed in `safety\`. Paste:
+**Step A — done 05/09/2026.** PR #1 merged (9976b87), milestone 3 parser built on `m3-parser` with 19 public fixtures, PR #2 open. The prompt is in this file's git history.
 
-```
-Six steps, in order, then stop.
-1. `node safety/install.mjs` — installs guard v2, autosave v2 and the updated settings.
-2. Git identity, repo-local so it does not depend on which shell runs: `gh api user --jq .id`
-   to get my GitHub id, then `git config user.name "Cameron"` and
-   `git config user.email "<id>+cameronsinclairplp-del@users.noreply.github.com"`.
-   Print `git config user.email` to confirm.
-3. `git add -A`, commit "Safety hooks v2: block switching to main, autosave reports failures,
-   protect hook files", push.
-4. `gh pr checks 1` — report each check and its conclusion.
-5. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/rulesets` — report whether
-   protect-main exists.
-6. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/pages` — report whether Pages is
-   enabled with build_type "workflow" (a 404 means not enabled: say so, do not fix it).
-```
+**Step B — parity numbers, per-type tiers, your three items (new session, `/effort high`, no workflows).** Cowork read all ten scenarios off Craft of Exile (Calculator, patch 3.29 data) and found one data bug on the way: four Royale-only mods carry normal spawn weights in RePoE and were polluting our pools. Your three items are the first 3.29 items with in-game tier numbers the parser has seen; Cowork checked them against RePoE: the magic Titan Plate already matches (Vigorous = Tier 3, of Thick Skin = Tier 6), the staff needs the per-type ladder (Stone Singer's is Tier 1 in game, Tier 5 on our ladder today), and the Twilight Regalia's fractured suffix is a Delve mod the pool can never roll.
 
-**Step 1b — prove the guard (new session).** Close that session, start a new one in the folder (hooks load at session start), `/effort high`, paste:
+How to paste: copy the block below into Claude Code, then paste the three items straight under it (copy them from the Cowork chat, or Ctrl+Alt+C each one in game again) and send. Everything in one message.
 
 ```
-Two probes, then stop. Both must be BLOCKED by .claude/hooks/guard.mjs.
-1. `git switch main && git commit --allow-empty -m test`
-2. `git switch main`
-If either one runs instead of being blocked, stop immediately and tell me. Then `git status`
-and confirm we are on m1-m2-foundation with a clean tree.
+Parity stage 2, per-type tier ladders, and Cameron's three items. Read CLAUDE.md and STATUS.md first.
+
+0. Housekeeping. If the working tree is not clean (HANDOVER.md), commit it on the current branch
+   and push. Then `gh pr view 2 --json state,statusCheckRollup`: if PR #2 is OPEN and its checks
+   are green, `gh pr merge 2 --squash --auto` and poll `gh pr view 2 --json state` until MERGED;
+   if a check is red, report it and stop. Then
+   `git fetch origin && git switch -c parity-tiers origin/main`.
+
+1. Royale mods out. In scripts/build-data.ts exclude every mod whose id contains "Royale"
+   (four of them: MovementVelocity2Royale, IncreasedCastSpeed2Royale,
+   LocalIncreasedAttackSpeed2Royale____, IncreasedAttackSpeed2Royale). They never roll outside
+   the Royale event; Craft of Exile excludes them, and with them out our pool weights match CoE
+   exactly on all four parity bases (Astral 45500/58200, Titan 39000/56600, Vaal 49614/61750,
+   Amethyst 60250/103600 prefix/suffix). Add a data test that asserts no mod id containing
+   "Royale" is in any class file.
+
+2. Same one-line exclusion in poc/engine.mjs buildPool (Cameron authorises this edit to poc/:
+   `if (id.includes("Royale")) continue;` right after the generation_type check, with a comment).
+   Regenerate: `cd poc && node engine.mjs --scenarios ../test/parity/scenarios.json --out results.json`
+   (about 3 minutes). Same seed, so expect these exact hit counts: astral-chaos 1256,
+   astral-alch 1256, astral-greed 15120, astral-anger 14763, astral-life1 8120,
+   titan-chaos 1518, titan-zeal 14764, vaal-chaos 6603, vaal-zeal 5902, amethyst 1042.
+
+3. Fill coe_p in test/parity/scenarios.json (change nothing else in the scenarios):
+   astral-chaos-life2-fire2 0.00631 | astral-alch-life2-fire2 0.00631 |
+   astral-greed-life2-fire2 0.07575 | astral-anger-life2-fire2 0.07513 |
+   astral-chaos-life1 0.04002 | titan-chaos-ms2-life2 0.00763 | titan-zeal-life2 0.07187 |
+   vaal-axe-chaos-phys2 0.00329 | vaal-axe-zeal-phys2 0.00305 | amethyst-chaos-2of3res2 0.00521
+   Add to the file's _readme: "coe_p read from craftofexile.com (3.29 data) on 05/09/2026 via
+   the Calculator. amethyst is derived by inclusion-exclusion: P(fire AND cold)=0.176%, same for
+   the other pairs by symmetry, P(all three)=0.003565%, so P(>=2 of 3)=3*0.1761-2*0.003565=0.521%.
+   titan-zeal-life2 was also run through CoE's Simulator (300,000 essences): 7.321% +-0.093;
+   the Calculator is an approximation for essences, the Simulator is the emulation, and our
+   engine agrees with the Simulator within noise."
+
+4. Tier ladders per type. Change the tier ranking from (group, side) to (group, side, type),
+   type being RePoE `type`, still over the mods that can roll on the base's tag set at any ilvl.
+   Today families that share a group but not a stat share one ladder: on a staff the five
+   "+4 to Level of all <X> Spell Skill Gems" prefixes (group IncreaseSpecificSocketedGemLevel)
+   all sit at level 77, so "Stone Singer's" comes out Tier 5 where the game says Tier 1. Per type
+   it is Stone Singer's 1, Tecton's 2, Lithomancer's 3. The ten parity scenarios only touch
+   single-type groups, so no parity tier may move; `npm test` proves it. Update the tier
+   sentence in CLAUDE.md Conventions to say (group, side, type). Rebuild public/data once, after
+   items 1 and 4. Then make the parser's "(Tier: n)" cross-check a WARNING recorded on the
+   parsed item, never a throw: resolution is by name + side + text, the number is informational.
+   The VERIFY 13 amulet fixture (`# expect-error: TierMismatchError`) now parses with one
+   warning; change its expectation to that and assert it in the test. VERIFY 13 itself stays
+   open: RePoE and Path of Building both give amulet spell damage five tiers, the game printed
+   Tier 4 on a 3.29 item, and nothing in the data (influence, essence or Delve mods included)
+   explains it.
+
+5. Cameron's three items are pasted under this prompt, each block starting at "Item Class:".
+   One of them may have a chat sentence pasted inside its Requirements block (starts "these are
+   the items"); drop that line only. Save them otherwise verbatim as
+   test/fixtures/items/rare-staff-crafted-rank-gem-level.txt,
+   rare-body-armour-fractured-delve-eldritch-heist-enchant.txt and
+   magic-body-armour-prefix-suffix.txt, first line `# source: own stash, 05/09/2026`, then a
+   `# note:` line in the style of the other fixtures. Expected, checked by Cowork against RePoE:
+   - Imperial Staff "Woe Bane": "Stone Singer's" = GlobalPhysicalSpellGemsLevelTwoHand3, Tier 1
+     after item 4, no warning. The bench craft is headed "(Rank: n)": crafted, no tier check.
+   - Titan Plate (magic, "Vigorous Titan Plate of Thick Skin"): "Vigorous" = IncreasedLife10
+     Tier 3, "of Thick Skin" = StunRecovery1 Tier 6, both match already. Values print as
+     149(145-159).
+   - Twilight Regalia "Apocalypse Coat": Searing Exarch and Eater of Worlds implicits; an enchant
+     "8% increased Explicit Defence Modifier magnitudes" (a Heist armour enchant,
+     RePoE ArmourEnchantmentHeistDefenceEffect1) kept as an enchant, and the "— 8% Increased" it
+     appends to the defence mod headers is display-only, same shape as the Simplex Amulet
+     fixture; a Master Crafted hybrid attribute suffix; "Fractured Item" footer; and the
+     fractured suffix "of the Underground" is a Delve mod: fossil-only, spawn weight 0 on every
+     tag, so it is in no class file but is in other_mods (136 entries share that name; match by
+     side + text, and if the text is shared across item classes disambiguate by the mod's
+     spawn tags). Expected result: kind "other", flagged fractured, the existing "no v1 action
+     can roll it" warning, no error.
+   Fix the parser where these need it; no engine changes. Anything that will not resolve goes
+   in STATUS.md with the exact line, not a guess.
+
+6. `npm test` — parity stage 1 (POC reproduction) and stage 2 (CoE) both 10/10, every fixture
+   parses. `npm run typecheck`, `npm run build`. STATUS.md: parity section with the final table,
+   VERIFY 1 (affix split) and VERIFY 2 (essence slot rule) confirmed by parity, a new VERIFY note
+   that essence scenarios sit 1.8-3.2% off CoE's Calculator in a side-dependent pattern while
+   CoE's own Simulator agrees with us, VERIFY 7 closed by the per-type ladder with the three
+   staff tiers as evidence, VERIFY 13 still open, the three new fixtures and every warning they
+   raised (quote the lines). Commit "Parity stage 2, per-type tiers, Cameron's fixtures; Royale
+   mods excluded", push, `gh pr create --fill --base main`. Stop.
 ```
 
-Pass = both blocked, `typecheck-and-test` passing, ruleset present, Pages enabled. Anything else: paste the output to Cowork before going on.
+Expected result (Cowork's POC after the Royale fix vs Craft of Exile): every scenario within 3.2%, seven of ten within 1.5%. If stage 2 fails on anything, or a fixture will not parse, paste the report to Cowork.
 
-**Step 2 — parity numbers.** Say **"parity numbers"** to Cowork. It reads the ten scenarios off Craft of Exile and hands you ten `coe_p` values.
-
-**Step 3 — fill them in and test.** Same Claude Code session:
+When it stops with PR #3, paste this (same session is fine):
 
 ```
-Fill ONLY the coe_p fields in test/parity/scenarios.json with these values, in this order,
-changing nothing else in the file: <paste the ten id: value lines Cowork gave you>.
-Run `npm test` and show me the parity summary table. Commit "Parity stage 2: Craft of Exile
-numbers" and push. Stop. Do not change any engine code even if scenarios fail.
+PR #3 is done. Merge it and tag it.
+1. `gh pr view 3 --json state,statusCheckRollup`. If the checks are green, `gh pr merge 3 --squash --auto`
+   and poll `gh pr view 3 --json state` until MERGED. If a check is red, report why and stop.
+2. Without switching branches: `git fetch origin && git tag -a m2-parity origin/main -m "Engine matches Craft of Exile" && git push origin --tags`.
+3. Report the merge commit and the tag. Stop.
 ```
 
-**Step 4a — all ten pass:** merge and tag.
+**Step C — milestones 4 + 5: actions, abstract state, solver (new session, ultracode ON).** Paste after PR #3 is merged and tagged:
 
 ```
-`gh pr merge 1 --squash --delete-branch --auto`, wait for it to merge, then `git fetch origin`,
-then `git tag -a m2-parity origin/main -m "Engine matches Craft of Exile"` and
-`git push origin --tags`. Do not switch to main (the guard blocks it; tagging origin/main
-does not need it). Report the merge commit and the tag. Stop.
+Read CLAUDE.md, STATUS.md, then BRIEF.md §3 (all three layers), §5 v1 scope and §7 milestones
+4–5. `git fetch origin && git switch -c m4-m5-solver origin/main`. Verification budget: one
+adversarial workflow over the finished solver, not a swarm per change; say what ran in STATUS.md.
+
+1. Milestone 4, actions. src/engine/actions.ts: a registry where every action has
+   applicability(state), cost(prices) and transition(state) → outcome distribution. v1 set:
+   Transmutation, Alteration, Augmentation, Regal, Chaos, Alchemy, Scouring, Exalted, Annulment;
+   every essence in the class file; bench add crafted mod (each bench option from the class file,
+   cost from crafting_bench_options, one crafted slot unless the multimod metamod is on);
+   bench remove crafted mods; the four metamods (Prefixes/Suffixes Cannot Be Changed, Cannot roll
+   Attack/Caster Modifiers) with their effect on chaos, scour, alt, annul, exalt, regal and the
+   rerolls; the 3.29 bench rerolls (3 mods for 3c, 1 mod for 8c: implement as "remove k random
+   removable explicit mods, then add k random eligible mods", marked VERIFY 3.29-REROLL until
+   Cameron confirms in game); buy fresh base (cost = BaseType price from the snapshot, else
+   user-entered); sell (value from the target spec, 0 by default).
+   Rules to encode, each marked VERIFY where BRIEF §9 says so: magic items hold 1–2 mods
+   (transmute/alt split VERIFY — fetch craftofexile.com's Basics/Advanced page for the number;
+   if unavailable use 50/50 and flag it); annul cannot remove fractured mods and can remove crafted
+   ones; scour keeps fractured mods; metamods block their side from chaos/scour/alt/annul as the
+   game does; "cannot roll attack/caster" removes mods carrying the attack/caster tag
+   (RePoE implicit_tags) from the eligible pool.
+
+2. Abstract state. src/solver/abstract.ts exactly as BRIEF §3 Layer 2: rarity, per-pick status
+   (absent | below-tier | ok | ok+fractured; a pick may be "k of n"), junk prefix/suffix counts,
+   junk attack/caster flags, craftedCount, metamod, influence. Plus one thing the brief does not
+   spell out: fractured mods that are not picks are permanent junk. Chaos, scour, annul and the
+   rerolls cannot remove them, they hold their slot forever and count against the three per side.
+   Carry them as fractured junk counts per side, separate from removable junk. The parser already
+   marks mods the pool cannot produce (kind "other", e.g. the fractured Delve suffix on the
+   Twilight Regalia fixture); the state must accept those on the item without trying to roll
+   them. Concrete Item + Target → state; outcome → state. Single-mod actions get exact
+   closed-form transitions from pool weights (blocked groups, open sides, metamod tag
+   exclusions); full rerolls get Monte Carlo transitions computed once per (action, constraints)
+   and cached (afterstates). Every transition's probabilities sum to 1 within 1e-9, and a Monte
+   Carlo of the concrete engine must agree with the abstract table within noise for every action;
+   that is the milestone 4 test. Item → state must work on all three of Cameron's fixtures
+   (test/fixtures/items/rare-staff-*, rare-body-armour-fractured-*, magic-body-armour-*).
+
+3. Milestone 5, solver. src/solver/mdp.ts: value iteration with sell and finish as terminal
+   values, gamma = 1, a per-click cost (default 0.1c, user-settable), stop when the change is under
+   0.01c. Outputs: policy (argmax per state), V(current state), the next step. src/solver/rollout.ts:
+   simulate the policy 20,000 times from the current state using the cached tables: mean, median,
+   p90, worst, P(finished within budget B). Alternative targets are extra terminal states with a
+   sell value. State budget: cap picks at 4, merge "k of n" picks, refuse with a clear message
+   above 150,000 states. Package engine + solver for a Web Worker (a single solve(request) entry
+   point, no DOM). Milestone 5 tests: essence-only target → M − V(fresh) ≈ essence price ÷ p;
+   the policy prefers the cheaper of essence vs chaos when prices flip; sells when an alternative
+   target is hit and its value beats continuing; rollout mean matches V within noise; a
+   3-pick body armour solve finishes under 3 s in Node.
+
+4. `npm test`, `npm run typecheck`, `npm run build`. STATUS.md: milestones 4 and 5 with the
+   numbers, every VERIFY hit, the verification that ran. Commit, push,
+   `gh pr create --fill --base main`. Stop. Do not start the UI.
 ```
 
-Then ask Cowork for the milestone 3 prompt.
+**Step D — milestone 6 (UI on Pages).** Ultracode off. Prompt from Cowork after Step C. This is the "usable" line: paste item → target → next step, cost, odds.
 
-**Step 4b — any scenario fails:** do not merge. Paste the parity table to Cowork. The suspects are `STATUS.md` VERIFY 1–4, in that order, and Cowork will write the fix prompt.
+You never run commands yourself. Every step ends with a PR; the "merge it and tag it" prompt above (change the PR number) is how each one gets merged. Merging deploys to `https://cameronsinclairplp-del.github.io/poe1-craft-advisor/`.
+
+## Done on 05/09/2026 (for the record)
+
+Parts 1–3 (folder, brief, POC, M1–2 build, GitHub, fix-ups). Guard v1 tested and found wanting; guard v2 blocks `git switch main` outright and hook-file edits; proven in a fresh session. Repo-local git identity set. PR #1 CI green, ruleset `protect-main` active, Pages enabled.
 
 ## Ultracode: when to have it on
 
@@ -83,75 +200,6 @@ Two layers. Either alone is not enough.
 
 Net effect: everything Claude Code does is on GitHub within a turn; `main` is always a tested, known-good state; every milestone gets a tag you can return to. Not covered: your own terminal (the hooks only bind Claude Code), and a secret committed to a public repo (rotate it; history is public). There are no secrets in this project.
 
-## Part 2 — GitHub setup (paste into Claude Code, effort high)
+## Archive — Parts 1–4 (completed 05/09/2026)
 
-The device-code step needs you: Claude Code will print a code, you type it at github.com/login/device. Everything else is hands-off.
-
-```
-Read CLAUDE.md. Do exactly these steps in order, report each result, and stop after step 10.
-Ask me before doing anything not listed here.
-
-1. Run `node safety/install.mjs`. It moves the hooks, CI workflow and ruleset file into
-   .claude/ and .github/ and removes safety/. Confirm the five files exist.
-2. `git branch -M main`, then `git switch -c m1-m2-foundation`, then `git add -A`, then
-   commit with message "Milestones 1-2: scaffold, data build, price snapshot, engine port,
-   parity test, safety hooks, CI".
-3. Check `gh --version`. If gh is missing, install it:
-   `winget install --id GitHub.cli --source winget --accept-source-agreements --accept-package-agreements`
-   then use the full path "C:\Program Files\GitHub CLI\gh.exe" for every gh command in this
-   session (PATH only updates for new processes).
-4. `gh auth status`. If not logged in, run
-   `gh auth login --hostname github.com --git-protocol https --web --skip-ssh-key --scopes workflow`
-   with a 10-minute timeout. It prints a one-time code and https://github.com/login/device.
-   Tell me the code straight away and keep the command running while I enter it in my browser.
-   When it finishes: `gh auth setup-git --hostname github.com`, then `gh auth status`.
-5. `gh repo create poe1-craft-advisor --public --source=. --remote=origin` (no --push).
-6. `git push -u origin main` FIRST so main becomes the default branch, then
-   `git push -u origin m1-m2-foundation`.
-7. `gh repo edit --enable-squash-merge --enable-merge-commit=false --enable-rebase-merge=false --delete-branch-on-merge --enable-auto-merge`
-8. `gh api -X POST repos/cameronsinclairplp-del/poe1-craft-advisor/rulesets --input .github/ruleset-main.json`
-9. `gh api -X POST repos/cameronsinclairplp-del/poe1-craft-advisor/pages -f build_type=workflow`
-   (a 409 means Pages already exists: retry with -X PUT).
-10. `gh pr create --fill --base main`. Print the PR URL. Do not merge. Stop.
-```
-
-Notes:
-- `--scopes workflow` matters: without it GitHub refuses pushes that contain `.github/workflows`.
-- Public because GitHub Pages on a free account needs it (same as `la-trade-links`). Site: `https://cameronsinclairplp-del.github.io/poe1-craft-advisor/` once `main` has the app.
-- If step 8 or 9 errors, do it in the browser: Settings → Rules → Rulesets → New branch ruleset (import `.github/ruleset-main.json`); Settings → Pages → Source: GitHub Actions.
-- After this, start a new Claude Code session so the hooks are definitely loaded. Quick test: ask it to run `git switch main && git commit --allow-empty -m test`. The guard must block it.
-
-## Part 3 — fix-up prompt for Claude Code (new session, effort high)
-
-```
-Read CLAUDE.md, STATUS.md, then BRIEF.md. You are on branch m1-m2-foundation with an open PR.
-Three changes, then update STATUS.md, commit, push. Do not start milestone 3.
-
-1. Prices: stop committing snapshots from CI. Delete .github/workflows/snapshot-prices.yml. In
-   deploy.yml add a schedule trigger (cron "17 */6 * * *") and run
-   `npm run snapshot-prices -- --league Allflame --force` as a build step before `npm run build`,
-   with the ETag cache step kept, so every deploy (push, cron, manual) ships fresh prices without a
-   commit. Remove the workflow_run trigger and its comment. public/prices/Allflame.json stays in
-   git as the dev/offline fallback. Reason: the main branch ruleset blocks pushes from GITHUB_TOKEN,
-   and four bot commits a day add nothing; poe.ninja already keeps price history.
-
-2. Tiers: make tier numbers independent of item level, as CLAUDE.md Conventions now says. Rank
-   each (group, side) ladder over every mod that can roll on the base's tag set at any level
-   (build the ladder at ilvl 100); the pool at a given ilvl is the subset that can roll. This is
-   what the in-game "(Tier: n)" and Craft of Exile show, and the milestone 3 parser depends on
-   it. Re-run the full test suite. If any parity hit count changes, report which scenario and
-   which mod above ilvl 86 caused it. Update STATUS.md VERIFY 8 accordingly.
-
-3. index.json: drop Royale bases (tag not_for_sale). Leave everything else as is.
-
-Then: `npm test`, `npm run typecheck`, `npm run build`, update STATUS.md (a short "fix-up" section
-plus the changed VERIFY items), commit with a clear message, push. Stop.
-```
-
-## Part 4 — superseded by the walkthrough at the top
-
-Parts 2 and 3 are done (05/09/2026). Follow "Walkthrough from here" above.
-
-## Part 1 — done 05/09/2026
-
-Folder created, brief and POC written, Claude Code built milestones 1–2 (`STATUS.md`).
+Part 1 folder + brief + POC. Part 2 GitHub setup (repo, ruleset, Pages, PR #1). Part 3 fix-ups (deploy-time prices, level-independent tiers, Royale bases out). Part 4 superseded by "The finish line" above. The prompts that were used are in this file's git history if ever needed.

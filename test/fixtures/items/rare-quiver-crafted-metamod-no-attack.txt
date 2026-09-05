@@ -1,0 +1,30 @@
+# source: https://github.com/SnosMe/awakened-poe-trade/issues/1935
+# posted: 30/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
+# note: metamod Cannot roll Attack Modifiers (of Spellcraft); base name shared by a legacy quiver, told apart by the implicit
+Item Class: Quivers
+Rarity: Rare
+Honour Flight
+Broadhead Arrow Quiver
+--------
+Intangibility: 10%
+--------
+Requirements:
+Level: 68
+--------
+Item Level: 87
+--------
+{ Implicit Modifier — Attack, Speed }
+10(8-10)% increased Attack Speed
+--------
+{ Prefix Modifier "Electrocuting" (Tier: 1) — Damage, Elemental, Lightning, Attack }
+Adds 10(5-11) to 132(124-140) Lightning Damage to Attacks
+{ Prefix Modifier "Fecund" (Tier: 1) — Life }
++134(130-144) to maximum Life
+{ Prefix Modifier "Impaling" (Tier: 1) — Damage }
+49(43-50)% increased Damage with Bow Skills
+{ Suffix Modifier "of Destruction" (Tier: 1) — Damage, Attack, Critical }
++38(35-38)% to Critical Strike Multiplier with Bows
+{ Suffix Modifier "of Splintering" (Tier: 1) — Attack }
+Bow Attacks fire an additional Arrow
+{ Master Crafted Suffix Modifier "of Spellcraft" }
+Cannot roll Attack Modifiers — Unscalable Value
