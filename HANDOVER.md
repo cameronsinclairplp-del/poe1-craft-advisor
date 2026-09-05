@@ -6,65 +6,71 @@ Updated 05/09/2026 after Claude Code finished milestones 1 and 2 (see `STATUS.md
 
 | | |
 |---|---|
-| Done | Parts 1–3. Repo is on GitHub, PR #1 open (`m1-m2-foundation` → `main`, 2 commits), CI ran on it. Hooks installed on disk. |
-| Now | The walkthrough below, top to bottom. One step at a time. |
-| Then | Milestone 3 (parser) prompt from Cowork, after parity passes. |
+| Done | Foundation: data build, engine, parity harness, prices, GitHub, CI, ruleset, Pages, safety hooks proven (05/09/2026). |
+| Now | Build the product. Four Claude Code runs left: M3 parser → M4 actions → M5 solver → M6 UI. Parity numbers from Cowork run in parallel. |
+| Finished means | You paste an item, pick a target, get the next step, cost and odds, on the Pages site. |
 
-## Walkthrough from here (05/09/2026)
+## The finish line, step by step
 
-**Step 1a — guard v2 in, identity fixed, checks 2 and 3 (current session, effort high).** The first guard test (05/09/2026) found two holes: `git switch main && git commit` slipped past because the guard only looked at the branch before the line ran, and the shell had no git identity so every commit (autosave included) failed silently. Both are fixed in `safety\`. Paste:
-
-```
-Six steps, in order, then stop.
-1. `node safety/install.mjs` — installs guard v2, autosave v2 and the updated settings.
-2. Git identity, repo-local so it does not depend on which shell runs: `gh api user --jq .id`
-   to get my GitHub id, then `git config user.name "Cameron"` and
-   `git config user.email "<id>+cameronsinclairplp-del@users.noreply.github.com"`.
-   Print `git config user.email` to confirm.
-3. `git add -A`, commit "Safety hooks v2: block switching to main, autosave reports failures,
-   protect hook files", push.
-4. `gh pr checks 1` — report each check and its conclusion.
-5. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/rulesets` — report whether
-   protect-main exists.
-6. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/pages` — report whether Pages is
-   enabled with build_type "workflow" (a 404 means not enabled: say so, do not fix it).
-```
-
-**Step 1b — prove the guard (new session).** Close that session, start a new one in the folder (hooks load at session start), `/effort high`, paste:
+**Step A — merge the foundation and start milestone 3 (now, current session, `/effort high`).** Paste:
 
 ```
-Two probes, then stop. Both must be BLOCKED by .claude/hooks/guard.mjs.
-1. `git switch main && git commit --allow-empty -m test`
-2. `git switch main`
-If either one runs instead of being blocked, stop immediately and tell me. Then `git status`
-and confirm we are on m1-m2-foundation with a clean tree.
+Read CLAUDE.md, STATUS.md, then BRIEF.md §3, §6 and §7. Do this in order.
+
+1. `gh pr merge 1 --squash --auto`, then poll `gh pr view 1 --json state,mergeCommit` until
+   state is MERGED. Report the merge commit. Then `git fetch origin` and
+   `git switch -c m3-parser origin/main`. (If gh moved you onto main, that switch fixes it.)
+
+2. Milestone 3, the item parser. src/parse/itemText.ts:
+   - Input: PoE 1 advanced item text (Ctrl+Alt+C in game). Output: Item { base resolved to a
+     RePoE base id via index.json (disambiguate by item class), itemClass, ilvl, rarity
+     normal|magic|rare|unique, influences, corrupted, mirrored, mods[] } where each explicit mod
+     is { side, name, tier from "(Tier: n)", text, modId, flags crafted|fractured|veiled|
+     unveiled } plus implicits/enchants/eldritch implicits kept separately, openPrefixes,
+     openSuffixes, metamods present.
+   - Resolve modId by mod name + side + item-class ladder from the class file. Cross-check the
+     in-game "(Tier: n)" against our level-independent tier and FAIL LOUDLY on mismatch (that
+     mismatch is exactly what VERIFY 8 needs to surface). Unknown names → ParseError naming the
+     line; never guess. Influence-only mods (VERIFY 9) → recorded as unresolved-influence, not
+     an error.
+   - Fixtures in test/fixtures/items/*.txt, at least 12. Use real pastes from public sources
+     (Path of Building GitHub issues and forum threads contain exact Ctrl+Alt+C dumps); note the
+     source URL in a comment line at the top of each fixture. Cover: rare with a crafted mod;
+     rare with "Prefixes Cannot Be Changed"; fractured; magic with 1 mod and with 2; normal;
+     Shaper or Hunter influenced; corrupted with implicit; a unique (rarity only, no mod
+     resolution); a jewel and a flask → explicit UnsupportedItemClass error. Cameron will add
+     three of his own items later; make it trivial to drop a file in.
+   - Tests: every fixture parses; the tier cross-check passes on every resolved mod; unknown-name
+     and unsupported-class error paths tested.
+
+3. While you are in scripts/build-data.ts: stamp the class files with RePoE's Last-Modified
+   header, not run time, so a re-run with unchanged data dirties nothing.
+
+4. `npm test`, `npm run typecheck`, `npm run build`. STATUS.md: milestone 3 section with the
+   numbers, VERIFY items hit, how much verification ran. Commit, push,
+   `gh pr create --fill --base main`. Stop. Do not start milestone 4.
 ```
 
-Pass = both blocked, `typecheck-and-test` passing, ruleset present, Pages enabled. Anything else: paste the output to Cowork before going on.
-
-**Step 2 — parity numbers.** Say **"parity numbers"** to Cowork. It reads the ten scenarios off Craft of Exile and hands you ten `coe_p` values.
-
-**Step 3 — fill them in and test.** Same Claude Code session:
+**Step B — parity numbers (Cowork, in parallel with Step A).** Say **"parity numbers"** to Cowork. When you have the ten values, in Claude Code (any session, any branch except main):
 
 ```
-Fill ONLY the coe_p fields in test/parity/scenarios.json with these values, in this order,
-changing nothing else in the file: <paste the ten id: value lines Cowork gave you>.
-Run `npm test` and show me the parity summary table. Commit "Parity stage 2: Craft of Exile
-numbers" and push. Stop. Do not change any engine code even if scenarios fail.
+`git fetch origin && git switch -c parity-numbers origin/main`. Fill ONLY the coe_p fields in
+test/parity/scenarios.json with these values, changing nothing else: <the ten lines>.
+`npm test` and show me the parity summary table. Commit "Parity stage 2: Craft of Exile numbers",
+push, `gh pr create --fill --base main`. Stop. Do not change engine code even if scenarios fail.
 ```
 
-**Step 4a — all ten pass:** merge and tag.
+All ten pass → merge it, then `git fetch origin && git tag -a m2-parity origin/main -m "Engine matches Craft of Exile" && git push origin --tags`. Any fail → paste the table to Cowork; the suspects are STATUS.md VERIFY 1–4 in that order.
 
-```
-`gh pr merge 1 --squash --delete-branch --auto`, wait for it to merge, then `git fetch origin`,
-then `git tag -a m2-parity origin/main -m "Engine matches Craft of Exile"` and
-`git push origin --tags`. Do not switch to main (the guard blocks it; tagging origin/main
-does not need it). Report the merge commit and the tag. Stop.
-```
+**Step C — milestone 4 + 5 (actions, abstract state, solver).** Ultracode ON for this one. Cowork writes the prompt once Step A's PR is merged; it depends on what the parser produced.
 
-Then ask Cowork for the milestone 3 prompt.
+**Step D — milestone 6 (UI on Pages).** Ultracode off. Prompt from Cowork after Step C. This is the "usable" line: paste item → target → next step, cost, odds.
 
-**Step 4b — any scenario fails:** do not merge. Paste the parity table to Cowork. The suspects are `STATUS.md` VERIFY 1–4, in that order, and Cowork will write the fix prompt.
+Each step ends with a PR you merge (`gh pr merge <n> --squash --auto` in Claude Code, or the green button on GitHub). Merging deploys to `https://cameronsinclairplp-del.github.io/poe1-craft-advisor/`.
+
+## Done on 05/09/2026 (for the record)
+
+Parts 1–3 (folder, brief, POC, M1–2 build, GitHub, fix-ups). Guard v1 tested and found wanting; guard v2 blocks `git switch main` outright and hook-file edits; proven in a fresh session. Repo-local git identity set. PR #1 CI green, ruleset `protect-main` active, Pages enabled.
 
 ## Ultracode: when to have it on
 
