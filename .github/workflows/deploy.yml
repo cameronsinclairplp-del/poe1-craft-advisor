@@ -1,13 +1,14 @@
 name: Deploy to GitHub Pages
 
+# Every deploy (a push to main, the 6-hourly schedule, or a manual run) fetches fresh poe.ninja
+# prices into the build, so the site ships current prices without any bot commit. The committed
+# public/prices/Allflame.json is the dev/offline fallback and the baseline the snapshot script
+# falls back to (marked stale) when poe.ninja is unavailable or returns a bad body.
 on:
   push:
-    branches: [master, main]
-  # A commit pushed by the price-snapshot cron uses GITHUB_TOKEN, which never fires `push`
-  # workflows, so redeploy when that workflow finishes successfully instead.
-  workflow_run:
-    workflows: ["Snapshot poe.ninja prices"]
-    types: [completed]
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,7 +22,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,6 +32,19 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      # ETag store and body cache for poe.ninja, restored from the previous run so requests send
+      # If-None-Match and can get 304s instead of re-downloading the 8.5 MB BaseType body.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/ninja
+          key: ninja-cache-${{ github.run_id }}
+          restore-keys: |
+            ninja-cache-
+      # --force bypasses the 30-minute guard (the committed fallback may be recent) and the
+      # Cache-Control shortcut; the empty-body and plausibility protections stay on. A snapshot
+      # failure must never block shipping code: the committed file is what gets built then.
+      - run: npm run snapshot-prices -- --league Allflame --force
+        continue-on-error: true
       - run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/

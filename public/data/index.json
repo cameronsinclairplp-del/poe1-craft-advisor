@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-09-05T03:01:27.018Z",
+  "generated": "2026-09-05T04:18:50.036Z",
   "source": {
     "repoe": "https://repoe-fork.github.io",
     "mods_last_modified": "Fri, 04 Sep 2026 22:58:29 GMT"
@@ -265,12 +265,6 @@
       "id": "Metadata/Items/Amulet/AmuletAtlas3",
       "item_class": "Amulet",
       "drop_level": 74
-    },
-    {
-      "name": "Onyx Amulet",
-      "id": "Metadata/Items/Amulets/AmuletRoyale1",
-      "item_class": "Amulet",
-      "drop_level": 3
     },
     {
       "name": "Black Maw Talisman",
@@ -817,24 +811,6 @@
       "id": "Metadata/Items/Belts/BeltFaridun",
       "item_class": "Belt",
       "drop_level": 1
-    },
-    {
-      "name": "Leather Belt",
-      "id": "Metadata/Items/Belts/BeltRoyale1",
-      "item_class": "Belt",
-      "drop_level": 2
-    },
-    {
-      "name": "Heavy Belt",
-      "id": "Metadata/Items/Belts/BeltRoyale2",
-      "item_class": "Belt",
-      "drop_level": 2
-    },
-    {
-      "name": "Cloth Belt",
-      "id": "Metadata/Items/Belts/BeltRoyale3",
-      "item_class": "Belt",
-      "drop_level": 2
     },
     {
       "name": "Plate Vest",
@@ -2221,12 +2197,6 @@
       "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/BowE3",
       "item_class": "Bow",
       "drop_level": 70
-    },
-    {
-      "name": "Crude Bow",
-      "id": "Metadata/Items/Weapons/TwoHandWeapons/Bows/Bow1Royale",
-      "item_class": "Bow",
-      "drop_level": 1
     },
     {
       "name": "Nailed Fist",
@@ -4431,30 +4401,6 @@
       "drop_level": 1
     },
     {
-      "name": "Opal Ring",
-      "id": "Metadata/Items/Rings/RingRoyale1",
-      "item_class": "Ring",
-      "drop_level": 2
-    },
-    {
-      "name": "Prismatic Ring",
-      "id": "Metadata/Items/Rings/RingRoyale2",
-      "item_class": "Ring",
-      "drop_level": 2
-    },
-    {
-      "name": "Diamond Ring",
-      "id": "Metadata/Items/Rings/RingRoyale3",
-      "item_class": "Ring",
-      "drop_level": 2
-    },
-    {
-      "name": "Paua Ring",
-      "id": "Metadata/Items/Rings/RingRoyale4",
-      "item_class": "Ring",
-      "drop_level": 2
-    },
-    {
       "name": "Carving Knife",
       "id": "Metadata/Items/Weapons/OneHandWeapons/Daggers/Dagger3",
       "item_class": "Rune Dagger",
@@ -6181,12 +6127,6 @@
       "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/WandAtlas1",
       "item_class": "Wand",
       "drop_level": 72
-    },
-    {
-      "name": "Driftwood Wand",
-      "id": "Metadata/Items/Weapons/OneHandWeapons/Wands/Wand1Royale",
-      "item_class": "Wand",
-      "drop_level": 1
     },
     {
       "name": "Iron Staff",

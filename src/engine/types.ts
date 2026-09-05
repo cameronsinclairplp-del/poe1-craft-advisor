@@ -73,9 +73,10 @@ export interface TagSetRecord {
   weights: number[];
   /**
    * "group|side" -> mods indices with weight > 0, best first (highest required_level, stable in
-   * mods order for equal levels). The tier of a mod at item level L is 1 + its position among the
-   * entries whose required_level <= L. Essence-only mods are not in these ladders; they get a
-   * value-based tier at runtime (see pool.ts buildPool).
+   * mods order for equal levels). A mod's tier is 1 + its position in this ladder whatever the
+   * item level; at item level L only the entries with required_level <= L are in the pool.
+   * Essence-only mods are not in these ladders; they get a value-based tier at runtime (see
+   * pool.ts buildPool).
    */
   tiers: Record<string, number[]>;
 }
@@ -178,12 +179,14 @@ export interface DataIndex {
   schema: 1;
   generated: string;
   source: PoolFile["source"];
+  /** `bases` counts the bases in the file, Royale copies included. */
   classes: { item_class: string; file: string; bases: number; mods: number }[];
   /**
-   * Every base in every class file. Display names are not unique: 26 names map to several base
-   * ids (Royale copies, most tagged not_for_sale; talisman variants; the three Two-Stone Rings;
-   * legacy quivers; three Two-Toned Boots with different tags; Energy Blade in both One Hand
-   * Sword and Two Hand Sword). Match on id when it matters.
+   * Every base in every class file except the ten Royale-mode copies (ids like ".../BeltRoyale1";
+   * they stay in the class files, they are just not offered here). Display names are still not
+   * unique: talisman variants, the three Two-Stone Rings, legacy quivers, three Two-Toned Boots
+   * with different tags, and Energy Blade in both One Hand Sword and Two Hand Sword. Match on id
+   * when it matters.
    */
   bases: { name: string; id: string; item_class: string; drop_level: number }[];
 }
@@ -216,9 +219,11 @@ export interface PoolMod {
   essenceOnly: boolean;
   addsTags: string[];
   /**
-   * 1 = best. Rollable mods: rank by required_level (desc) within (group, side) over the mods
-   * that can roll on this base at this ilvl. Essence-only mods: 1 + number of rollable tiers in
-   * the same (group, side) whose first-stat max beats this mod's; null if the mod has no stats.
+   * 1 = best, independent of item level. Rollable mods: rank by required_level (desc) within
+   * (group, side) over every mod that can roll on this base's tags at any level, so the number
+   * matches the in-game "(Tier: n)" and Craft of Exile. Essence-only mods: 1 + number of rollable
+   * tiers in the same (group, side) whose first-stat max beats this mod's; null if the mod has
+   * no stats.
    */
   tier: number | null;
   /** Index into PoolFile.mods. */

@@ -1,5 +1,6 @@
 // Mod pool for a base at an item level. Port of poc/engine.mjs §2 over the PoolFile format.
-// Behaviour is identical to the POC: same filters, same ordering, same tiering rule.
+// Filters, ordering and weights are identical to the POC, so draws are identical. Tier numbering
+// differs on purpose: tiers are independent of item level here (see buildPool).
 
 import type { BaseRecord, PoolFile, PoolInfo, PoolMod, TagWeight } from "./types.ts";
 
@@ -28,19 +29,28 @@ export function resolveGenMultiplier(list: readonly TagWeight[], tags: ReadonlyS
  * (e.g. "body_armour_shaper") later. Note that the class files do not yet carry influence-gated
  * mods (see PoolFile.mods), so today extraTags changes nothing; the POC over raw mods.json would
  * honour them. Fix in build-data before influence is attempted.
+ *
+ * Tiers are independent of item level (CLAUDE.md conventions). Each (group, side) ladder ranks
+ * every mod that can roll on the base's tag set at any level, best (highest required_level) first,
+ * so the number is the in-game "(Tier: n)" and what Craft of Exile shows. The pool at `ilvl` is
+ * the subset whose required_level fits; a mod keeps its ladder tier whatever the item level, so at
+ * ilvl 80 an Astral Plate's best rollable life mod is T3, not T1. poc/engine.mjs ranked over the
+ * ilvl-filtered pool instead; the two agree wherever no ladder has a mod above the item level.
  */
 export function buildPool(file: PoolFile, base: BaseRecord, ilvl: number, extraTags: readonly string[] = []): PoolInfo {
   const tags = new Set<string>([...base.tags, ...extraTags]);
-  const pool: PoolMod[] = [];
+  // Every mod that can roll on these tags at any level, plus the essence-only mods. In mods order.
+  const ladderMods: PoolMod[] = [];
   file.mods.forEach((m, index) => {
     const w = resolveWeight(m.spawn_weights, tags) * resolveGenMultiplier(m.generation_weights, tags);
-    // Rollable mods need level + weight. Essence-only mods are forced, so neither applies to them.
-    // A regular mod that an essence forces but that has weight 0 on this base or required_level
-    // above ilvl (e.g. Muttering Essence of Sorrow -> Dexterity2 on a Belt; Deafening Essence of
-    // Greed on a Body Armour below ilvl 81) is dropped here too, so poolModById throws for it.
-    // Same as the POC. Whether the game applies the essence mod anyway is unconfirmed.  // VERIFY
-    if (!m.is_essence_only && (m.required_level > ilvl || w <= 0)) return;
-    pool.push({
+    // Rollable mods need weight (and, below, level). Essence-only mods are forced, so neither
+    // applies to them. A regular mod that an essence forces but that has weight 0 on this base or
+    // required_level above ilvl (e.g. Muttering Essence of Sorrow -> Dexterity2 on a Belt;
+    // Deafening Essence of Greed on a Body Armour below ilvl 81) is therefore not in the pool, so
+    // poolModById throws for it. Same as the POC. Whether the game applies the essence mod
+    // anyway is unconfirmed.                                                             // VERIFY
+    if (!m.is_essence_only && w <= 0) return;
+    ladderMods.push({
       id: m.id,
       name: m.name,
       text: m.text.split("\n")[0] ?? m.text,
@@ -60,7 +70,7 @@ export function buildPool(file: PoolFile, base: BaseRecord, ilvl: number, extraT
   // Essence-only mods get a value-based tier: 1 + number of rollable tiers with a higher
   // first-stat max. So an essence mod that beats T1 is T1; one between T1 and T2 is T2.   // VERIFY
   const byKey = new Map<string, { regular: PoolMod[]; essence: PoolMod[] }>();
-  for (const p of pool) {
+  for (const p of ladderMods) {
     const k = `${p.group}|${p.side}`;
     let bucket = byKey.get(k);
     if (!bucket) byKey.set(k, (bucket = { regular: [], essence: [] }));
@@ -74,6 +84,9 @@ export function buildPool(file: PoolFile, base: BaseRecord, ilvl: number, extraT
       e.tier = max == null ? null : 1 + regular.filter((r) => r.statMax != null && r.statMax > max).length;
     }
   }
+  // The pool at this item level: rollable mods whose required_level fits, and every essence-only
+  // mod (forced mods ignore the level requirement, as in the POC). Order is preserved.
+  const pool = ladderMods.filter((p) => p.essenceOnly || p.level <= ilvl);
   return { base, ilvl, tags, pool };
 }
 

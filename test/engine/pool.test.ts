@@ -91,33 +91,47 @@ describe("Astral Plate ilvl 86 (BRIEF.md §7.1)", () => {
   });
 });
 
-describe("tiers are relative to what can roll at the item level (CLAUDE.md convention)", () => {
-  // Craft of Exile and poedb number tiers absolutely (T1 life is always +175-189). This project
-  // ranks over the mods that can roll on this base at this ilvl, so at ilvl 80 the best life mod
-  // that can roll becomes T1. The expected id is derived from the file's own ladder, not typed in.
+describe("tiers are independent of item level (CLAUDE.md convention)", () => {
+  // Ladders rank every mod that can roll on the base's tag set at any level, so a mod's tier is
+  // the in-game "(Tier: n)" and Craft of Exile number whatever the item level. At ilvl 80 the L86
+  // and L81 life mods cannot roll and are not in the pool; the L73 mod stays T3, it does not
+  // become T1. The expected mod and tier are derived from the file's own ladder, not typed in.
   const ILVL = 80;
 
-  it(`at ilvl ${ILVL} Astral Plate's life T1 is the highest life mod with required_level <= ${ILVL}`, () => {
+  it(`at ilvl ${ILVL} Astral Plate's best rollable life mod keeps its full-ladder tier`, () => {
     const tagSet = at(bodyArmour.tag_sets, astralPlate.tag_set);
-    const fullLadder = tagSet.tiers["IncreasedLife|prefix"];
-    expect(fullLadder).toBeDefined();
-    const expectedIndex = (fullLadder ?? []).find((i) => at(bodyArmour.mods, i).required_level <= ILVL);
+    const fullLadder = tagSet.tiers["IncreasedLife|prefix"] ?? [];
+    expect(fullLadder.length).toBeGreaterThan(0);
+    const expectedIndex = fullLadder.find((i) => at(bodyArmour.mods, i).required_level <= ILVL);
     expect(expectedIndex).toBeDefined();
     const expected = at(bodyArmour.mods, expectedIndex ?? -1);
+    const expectedTier = fullLadder.indexOf(expectedIndex ?? -1) + 1;
 
     const pool80 = buildPool(bodyArmour, astralPlate, ILVL);
     const life80 = ladder(pool80, "IncreasedLife", "prefix");
-    const t1 = at(life80, 0);
-    expect(t1.tier).toBe(1);
-    expect(t1.id).toBe(expected.id);
-    expect(t1.level).toBe(expected.required_level);
-    expect(t1.level).toBeLessThanOrEqual(ILVL);
-    // Concretely, on today's data that is IncreasedLife10 (L73, +145-159), two rungs below the
-    // ilvl 86 T1; the L86 and L81 mods cannot roll at ilvl 80 and are not in the pool at all.
-    expect(t1.id).not.toBe("IncreasedLife12");
+    const best = at(life80, 0);
+    expect(best.id).toBe(expected.id);
+    expect(best.level).toBe(expected.required_level);
+    expect(best.level).toBeLessThanOrEqual(ILVL);
+    expect(best.tier).toBe(expectedTier);
+    // Concretely, on today's data: IncreasedLife10 (L73, +145-159) is T3 at ilvl 80 exactly as
+    // at ilvl 86, and the L86 / L81 mods are not in the ilvl 80 pool at all.
+    expect(best.id).toBe("IncreasedLife10");
+    expect(best.tier).toBe(3);
     expect(pool80.pool.some((p) => p.id === "IncreasedLife12")).toBe(false);
     expect(pool80.pool.some((p) => p.id === "IncreasedLife11")).toBe(false);
     expect(life80.length).toBe(ladder(astral86, "IncreasedLife", "prefix").length - 2);
+    // Same mod, same tier at both item levels.
+    expect(ladder(astral86, "IncreasedLife", "prefix").find((p) => p.id === best.id)?.tier).toBe(best.tier);
+  });
+
+  it("essence-only tiers are level-independent too: Zeal's 32% movement speed is T2 on an ilvl 1 Titan Greaves", () => {
+    const boots = loadPoolFileFor("Titan Greaves");
+    const titan = findBase(boots, "Titan Greaves");
+    const pool1 = buildPool(boots, titan, 1);
+    const zeal = poolModById(pool1, essenceForBase(boots, "Deafening Essence of Zeal", titan));
+    expect(zeal.tier).toBe(2); // 35% (T1) beats it, 30% (T2) does not, whatever the item level
+    expect(ladder(pool1, "MovementVelocity", "prefix").every((p) => p.level <= 1)).toBe(true);
   });
 });
 

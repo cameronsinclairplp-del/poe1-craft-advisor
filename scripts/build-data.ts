@@ -5,7 +5,8 @@
 //   domain "item" base and at least one rollable prefix/suffix mod:
 //     public/data/<Item_Class>.json.gz   bases, mods, per-tag-set weights + tier ladders, essences,
 //                                        bench options, the 25 fossils
-//     public/data/index.json             DataIndex: every class file and every base it contains
+//     public/data/index.json             DataIndex: every class file and every base it contains,
+//                                        minus the ten Royale-mode copies (which stay in the files)
 //   Stale *.json.gz files in public/data that this build did not produce are removed.
 //
 // How to run
@@ -595,6 +596,14 @@ function readPoolFile(path: string): PoolFile {
   return JSON.parse(gunzipSync(readFileSync(path)).toString("utf8")) as PoolFile;
 }
 
+/**
+ * Royale-mode copies of ordinary bases (ids like "Metadata/Items/Belts/BeltRoyale1"). They stay in
+ * the class files but are left out of index.json so the UI never offers one. The id is the reliable
+ * marker: eight of the ten carry the not_for_sale tag, Crude Bow's and Driftwood Wand's copies do
+ * not, and the Fishing Rod carries the tag without being a copy.
+ */
+const isRoyaleCopy = (b: BaseRecord): boolean => /Royale/.test(b.id);
+
 function buildIndex(builds: readonly ClassBuild[], generated: string, source: PoolFile["source"]): DataIndex {
   return {
     schema: 1,
@@ -607,7 +616,7 @@ function buildIndex(builds: readonly ClassBuild[], generated: string, source: Po
       mods: file.mods.length,
     })),
     bases: builds.flatMap(({ file }) =>
-      file.bases.map((b) => ({ name: b.name, id: b.id, item_class: b.item_class, drop_level: b.drop_level })),
+      file.bases.filter((b) => !isRoyaleCopy(b)).map((b) => ({ name: b.name, id: b.id, item_class: b.item_class, drop_level: b.drop_level })),
     ),
   };
 }
@@ -816,9 +825,11 @@ async function main(): Promise<void> {
     build.stats.gzBytes = gz.byteLength;
     produced.add(name);
   }
-  const indexJson = `${JSON.stringify(buildIndex(builds, generated, source), null, 2)}\n`;
+  const index = buildIndex(builds, generated, source);
+  const indexJson = `${JSON.stringify(index, null, 2)}\n`;
   writeFileSync(resolve(OUT_DIR, "index.json"), indexJson);
-  console.log(`  wrote ${produced.size} class files and index.json`);
+  const royale = builds.flatMap(({ file }) => file.bases.filter(isRoyaleCopy));
+  console.log(`  wrote ${produced.size} class files and index.json (${fmtInt(index.bases.length)} bases; ${royale.length} Royale copies left out: ${royale.map((b) => b.name).join(", ")})`);
   removeStaleFiles(produced);
 
   // Self-checks on the re-read files.

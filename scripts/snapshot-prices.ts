@@ -4,6 +4,7 @@
 //   npm run snapshot-prices                          # league Allflame
 //   npm run snapshot-prices -- --league Standard
 //   npm run snapshot-prices -- --force               # ignore the 30-minute guard, revalidate every URL
+//   npm run snapshot-prices -- --accept-shrink       # accept a section under half its previous size
 //
 // poe.ninja etiquette (CLAUDE.md ground rule 6, BRIEF.md section 4):
 //   - documented PoE 1 economy endpoints only (/poe1/api/economy/...); the old /api/data/... are dead
@@ -25,11 +26,14 @@
 // snapshot's section) that section is carried over from the previous snapshot with stale: true and
 // its old fetched timestamp, a WARNING is printed and the file is still written. Exit 1 only if a
 // failed section has no previous data to fall back on (then nothing is written). A rejected body
-// is never cached, so a persistently bad feed stays stale run after run; --force skips the
-// "under half" check for the case where the market really did shrink.
+// is never cached, so a persistently bad feed stays stale run after run; --accept-shrink skips the
+// "under half" check for the case where the market really did shrink. --force does NOT skip it:
+// the Pages deploy runs this script with --force on every build (deploy.yml), and a deploy must
+// keep that protection.
 //
-// Every successful run rewrites the file (generated and each section's fetched move even on a
-// 304), so the cron workflow commits on every run that reaches the network.
+// Every run that reaches the network rewrites the file (generated and each section's fetched move
+// even on a 304). Nothing commits it automatically: deploy.yml regenerates it into the build and
+// the committed copy is the dev/offline fallback.
 //
 // Console timestamps are DD/MM/YYYY HH:MM (24-hour, local time); the file holds ISO 8601.
 
@@ -74,7 +78,7 @@ const REQUEST_TIMEOUT_MS = 60_000;
  * a bad body (poe.ninja gives no stability guarantee). Only applied when the previous section had
  * at least MIN_LINES_FOR_PLAUSIBILITY lines, so tiny sections (4 resonators) never flap. The
  * previous section counts whether or not it is stale: a carried-over section holds the last
- * known-good counts. --force skips the check.
+ * known-good counts. --accept-shrink skips the check; --force does not.
  */
 const PLAUSIBILITY_FRACTION = 0.5;
 const MIN_LINES_FOR_PLAUSIBILITY = 10;
@@ -628,21 +632,22 @@ function serialiseSnapshot(snapshot: PriceSnapshot): string {
 // Main
 // ---------------------------------------------------------------------------
 
-function parseCli(): { league: string; force: boolean } {
+function parseCli(): { league: string; force: boolean; acceptShrink: boolean } {
   try {
     const { values } = parseArgs({
       options: {
         league: { type: "string", default: "Allflame" },
         force: { type: "boolean", default: false },
+        "accept-shrink": { type: "boolean", default: false },
       },
       strict: true,
     });
     const league = (values.league ?? "Allflame").trim();
     if (!league) throw new Error("--league must not be empty");
-    return { league, force: values.force ?? false };
+    return { league, force: values.force ?? false, acceptShrink: values["accept-shrink"] ?? false };
   } catch (err) {
     console.error(`snapshot-prices: ${err instanceof Error ? err.message : String(err)}`);
-    console.error("usage: npm run snapshot-prices [-- --league <id>] [-- --force]");
+    console.error("usage: npm run snapshot-prices [-- --league <id>] [-- --force] [-- --accept-shrink]");
     process.exit(2);
   }
 }
@@ -650,9 +655,9 @@ function parseCli(): { league: string; force: boolean } {
 async function main(): Promise<number> {
   const cli = parseCli();
   let league = canonicalLeagueFromDisk(cli.league);
-  const force = cli.force;
+  const { force, acceptShrink } = cli;
   const started = new Date();
-  console.log(`snapshot-prices  league=${league}${force ? "  --force" : ""}  ${fmtLocal(started)}`);
+  console.log(`snapshot-prices  league=${league}${force ? "  --force" : ""}${acceptShrink ? "  --accept-shrink" : ""}  ${fmtLocal(started)}`);
   const warnings: string[] = [];
 
   // 30-minute guard (before anything touches the network).
@@ -704,7 +709,7 @@ async function main(): Promise<number> {
     const prev = previous?.[key];
     try {
       const shape = key === "currency" ? validateCurrency : validateExchange;
-      const validate = withPlausibility(shape, pricedLineCount, "priced lines", prev ? Object.keys(prev.items).length : 0, force);
+      const validate = withPlausibility(shape, pricedLineCount, "priced lines", prev ? Object.keys(prev.items).length : 0, acceptShrink);
       const r = await fetchCached(exchangeUrl(league, type), `${type}.json`, store, force, validate);
       const b = buildExchangeSection(r.body, r.fetched);
       sections[key] = b.section;
@@ -734,7 +739,7 @@ async function main(): Promise<number> {
   {
     const prev = previous?.base_types;
     try {
-      const validate = withPlausibility(validateBaseType, keptBaseLineCount, "base lines", prev ? prev.lines.length : 0, force);
+      const validate = withPlausibility(validateBaseType, keptBaseLineCount, "base lines", prev ? prev.lines.length : 0, acceptShrink);
       const r = await fetchCached(baseTypeUrl(league), "BaseType.json", store, force, validate);
       const b = buildBaseTypeSection(r.body, r.fetched);
       baseTypes = b.section;
