@@ -1,7 +1,6 @@
 # source: https://github.com/veiset/poe.re/issues/414
 # posted: 29/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
-# note: magic, prefix + suffix, base name in the middle of the item name. The game shows "+4 to Level of all Chaos Spell Skill Gems" as Tier 1; the engine ranks it T4 because its (group, side) ladder IncreaseSpecificSocketedGemLevel|prefix interleaves the five element-specific gem-level families (STATUS.md VERIFY 7). Ranked by RePoE type it is T1. Kept as the real example of that flaw; the parser must fail loudly on it until the ladder rule changes.
-# expect-error: TierMismatchError
+# note: magic, prefix + suffix, base name in the middle of the item name. The game shows "+4 to Level of all Chaos Spell Skill Gems" as Tier 1; until 05/09/2026 the engine ranked it T4 because its (group, side) ladder IncreaseSpecificSocketedGemLevel|prefix interleaved the five element-specific gem-level families, and the parser threw TierMismatchError on it (STATUS.md VERIFY 7). Keyed per (group, side, type) it is T1 as the game says, and the fixture parses clean.
 Item Class: Staves
 Rarity: Magic
 Schismatist's Imperial Staff of the Titan

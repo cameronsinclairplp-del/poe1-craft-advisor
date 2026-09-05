@@ -1,6 +1,7 @@
 // Mod pool for a base at an item level. Port of poc/engine.mjs §2 over the PoolFile format.
 // Filters, ordering and weights are identical to the POC, so draws are identical. Tier numbering
-// differs on purpose: tiers are independent of item level here (see buildPool).
+// differs on purpose: tiers are independent of item level and keyed per RePoE type here (see
+// buildPool).
 
 import type { BaseRecord, PoolFile, PoolInfo, PoolMod, TagWeight } from "./types.ts";
 
@@ -30,12 +31,18 @@ export function resolveGenMultiplier(list: readonly TagWeight[], tags: ReadonlyS
  * mods (see PoolFile.mods), so today extraTags changes nothing; the POC over raw mods.json would
  * honour them. Fix in build-data before influence is attempted.
  *
- * Tiers are independent of item level (CLAUDE.md conventions). Each (group, side) ladder ranks
- * every mod that can roll on the base's tag set at any level, best (highest required_level) first,
- * so the number is the in-game "(Tier: n)" and what Craft of Exile shows. The pool at `ilvl` is
- * the subset whose required_level fits; a mod keeps its ladder tier whatever the item level, so at
- * ilvl 80 an Astral Plate's best rollable life mod is T3, not T1. poc/engine.mjs ranked over the
+ * Tiers are independent of item level (CLAUDE.md conventions). Each (group, side, type) ladder
+ * ranks every mod that can roll on the base's tag set at any level, best (highest required_level)
+ * first, so the number is the in-game "(Tier: n)" and what Craft of Exile shows. The pool at `ilvl`
+ * is the subset whose required_level fits; a mod keeps its ladder tier whatever the item level, so
+ * at ilvl 80 an Astral Plate's best rollable life mod is T3, not T1. poc/engine.mjs ranked over the
  * ilvl-filtered pool instead; the two agree wherever no ladder has a mod above the item level.
+ *
+ * The RePoE `type` is part of the key because families that share a group but not a stat share a
+ * group: on a staff the five "+4 to Level of all <X> Spell Skill Gems" prefixes all sit in
+ * IncreaseSpecificSocketedGemLevel at level 77, and the game tiers each family on its own (Stone
+ * Singer's T1, Tecton's T2, Lithomancer's T3). poc/engine.mjs keyed on (group, side); the two agree
+ * on every ladder with a single type, which includes every parity scenario.
  */
 export function buildPool(file: PoolFile, base: BaseRecord, ilvl: number, extraTags: readonly string[] = []): PoolInfo {
   const tags = new Set<string>([...base.tags, ...extraTags]);
@@ -66,12 +73,14 @@ export function buildPool(file: PoolFile, base: BaseRecord, ilvl: number, extraT
       index,
     });
   });
-  // Tier = rank by required_level, best first, within (group, side), over rollable mods only.
-  // Essence-only mods get a value-based tier: 1 + number of rollable tiers with a higher
-  // first-stat max. So an essence mod that beats T1 is T1; one between T1 and T2 is T2.   // VERIFY
+  // Tier = rank by required_level, best first, within (group, side, type), over rollable mods only.
+  // Essence-only mods get a value-based tier: 1 + number of rollable tiers of the same type with a
+  // higher first-stat max. So an essence mod that beats T1 is T1; one between T1 and T2 is T2. On a
+  // base whose group has no rollable mod of the essence mod's type (Deafening Essence of Woe's flat
+  // Energy Shield on a pure-armour chest) it is T1: nothing like it beats it.                // VERIFY
   const byKey = new Map<string, { regular: PoolMod[]; essence: PoolMod[] }>();
   for (const p of ladderMods) {
-    const k = `${p.group}|${p.side}`;
+    const k = `${p.group}|${p.side}|${p.type}`;
     let bucket = byKey.get(k);
     if (!bucket) byKey.set(k, (bucket = { regular: [], essence: [] }));
     bucket[p.essenceOnly ? "essence" : "regular"].push(p);

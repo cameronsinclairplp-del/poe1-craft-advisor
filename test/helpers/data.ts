@@ -85,7 +85,11 @@ export function loadOtherMods(): OtherModsFile {
  *   # source: <url>                       where the paste was found (required)
  *   # note: <free text>                   what it covers
  *   # expect-error: <ErrorClassName>      the parser must throw this (jewels, flasks, ...)
- * Drop a new .txt into test/fixtures/items and the fixture suite picks it up.
+ *   # expect-warning: <text>              the parsed item carries a warning containing this text; one
+ *                                         line per warning, and every warning must have one (the
+ *                                         line number the warning ends with is not part of the text)
+ * Drop a new .txt into test/fixtures/items and the fixture suite picks it up; a warning it did not
+ * declare fails the suite with the warning quoted, so a new paste's findings surface on their own.
  */
 export interface Fixture {
   name: string;
@@ -94,6 +98,7 @@ export interface Fixture {
   source: string | null;
   note: string | null;
   expectError: string | null;
+  expectWarnings: string[];
 }
 
 /** Fixture file names (without .txt), sorted. */
@@ -111,7 +116,8 @@ export function readFixture(name: string): Fixture {
     const m = new RegExp(`^# ${key}: (.+)$`, "m").exec(text);
     return m?.[1]?.trim() ?? null;
   };
-  return { name, path, text, source: directive("source"), note: directive("note"), expectError: directive("expect-error") };
+  const expectWarnings = [...text.matchAll(/^# expect-warning: (.+)$/gm)].map((m) => m[1]!.trim());
+  return { name, path, text, source: directive("source"), note: directive("note"), expectError: directive("expect-error"), expectWarnings };
 }
 
 /** detectItemClass + the right class file + parseItem, the way the UI will do it. */

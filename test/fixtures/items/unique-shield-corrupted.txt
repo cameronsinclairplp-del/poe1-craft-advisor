@@ -1,6 +1,8 @@
 # source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues/10097 (item 1 of 4 in that post)
 # posted: 03/08/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: unique, corrupted, Corruption Implicit; rarity only, no mod resolution
+# expect-warning: unrecognised line
+# expect-warning: unrecognised line
 Item Class: Shields
 Rarity: Unique
 Aegis Aurora

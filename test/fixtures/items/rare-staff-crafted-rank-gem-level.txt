@@ -1,0 +1,43 @@
+# source: own stash, 05/09/2026
+# note: rare Imperial Staff (3.29), copied by Cameron with Ctrl+Alt+C; a chat sentence pasted into the Requirements block (and the blank lines around it) was removed, nothing else changed. Two weapon enchants, a bench craft with (Rank: 2) (= bench_tier 2 of EinharMasterCriticalStrikeChanceSpells2h2_), and "Stone Singer's" +4 to Level of all Physical Spell Skill Gems shown as Tier 1: on the old (group, side) ladder it was T5 behind the fire/cold/lightning/chaos families at the same level; per (group, side, type) it is T1 as the game says (STATUS.md VERIFY 7). Every tier on the item matches the engine's.
+Item Class: Staves
+Rarity: Rare
+Woe Bane
+Imperial Staff
+--------
+Staff
+Quality: +20% (augmented)
+Physical Damage: 57-171
+Critical Strike Chance: 8.50%
+Attacks per Second: 1.15
+Weapon Range: 1.3 metres
+Intangibility: 32%
+--------
+Requirements:
+Level: 78
+Str: 113 (unmet)
+Dex: 100
+Int: 123
+--------
+Sockets: R-G-R-B-W-W
+--------
+Item Level: 87
+--------
+Quality does not increase Physical Damage (enchant)
+Grants 1% increased Elemental Damage per 2% Quality (enchant)
+--------
+{ Implicit Modifier }
++25% Chance to Block Spell Damage
+--------
+{ Prefix Modifier "Stone Singer's" (Tier: 1) — Physical, Caster, Gem }
++4 to Level of all Physical Spell Skill Gems
+{ Prefix Modifier "Archon's" (Tier: 1) — Caster, Gem }
++2 to Level of all Spell Skill Gems
+{ Prefix Modifier "Runic" (Tier: 1) — Damage, Caster }
+197(175-200)% increased Spell Damage
+{ Suffix Modifier "of Destruction" (Tier: 1) — Damage, Critical }
++38(35-38)% to Global Critical Strike Multiplier
+{ Suffix Modifier "of Finesse" (Tier: 1) — Caster, Speed }
+49(44-49)% increased Cast Speed
+{ Master Crafted Suffix Modifier "of Craft" (Rank: 2) — Caster, Critical }
+120(90-120)% increased Spell Critical Strike Chance

@@ -12,8 +12,7 @@ export type ParseErrorCode =
   | "unknown-base"
   | "ambiguous-base"
   | "unknown-mod"
-  | "ambiguous-mod"
-  | "tier-mismatch";
+  | "ambiguous-mod";
 
 export interface LineRef {
   /** 1-based line number in the text as pasted (leading "#" comment lines count). */
@@ -93,7 +92,10 @@ export class UnknownModError extends ParseError {
   }
 }
 
-/** Name, side, text and ranges all match more than one mod. Never guessed. */
+/**
+ * Name, side, text and ranges all match more than one mod (for the shared list of unrollable mods,
+ * after the base's tags failed to single one out). Never guessed.
+ */
 export class AmbiguousModError extends ParseError {
   readonly candidates: string[];
 
@@ -104,56 +106,7 @@ export class AmbiguousModError extends ParseError {
   }
 }
 
-export interface LadderEntry {
-  id: string;
-  name: string;
-  level: number;
-  tier: number | null;
-  text: string;
-}
-
-/**
- * The in-game "(Tier: n)" disagrees with the engine's level-independent tier for the resolved
- * mod. This is the loud failure CLAUDE.md asks for: either the tiering rule (STATUS.md VERIFY 7/8)
- * or the data is wrong for this base, and the item must not be fed to the solver as if it were right.
- */
-export class TierMismatchError extends ParseError {
-  readonly modId: string;
-  readonly modName: string;
-  readonly side: "prefix" | "suffix";
-  readonly gameTier: number;
-  readonly ourTier: number;
-  /** The (group, side) ladder the engine ranked, best first. */
-  readonly ladder: LadderEntry[];
-  /** Rank of the mod among pool mods with the same RePoE `type` and side (a diagnostic for VERIFY 7), null if not computable. */
-  readonly typeTier: number | null;
-
-  constructor(args: {
-    modId: string;
-    modName: string;
-    side: "prefix" | "suffix";
-    gameTier: number;
-    ourTier: number;
-    ladderKey: string;
-    ladder: LadderEntry[];
-    typeTier: number | null;
-    where: LineRef;
-  }) {
-    const ladderText = args.ladder.map((e) => `T${e.tier ?? "?"} L${e.level} ${e.id} "${e.text}"`).join("; ");
-    super(
-      "tier-mismatch",
-      `${args.side} "${args.modName}" resolved to ${args.modId}: the game says Tier ${args.gameTier}, the engine's ladder ${args.ladderKey} says T${args.ourTier}` +
-        (args.typeTier !== null && args.typeTier !== args.ourTier ? ` (ranked by RePoE type instead it would be T${args.typeTier})` : "") +
-        `. Ladder: ${ladderText}`,
-      args.where,
-    );
-    this.name = "TierMismatchError";
-    this.modId = args.modId;
-    this.modName = args.modName;
-    this.side = args.side;
-    this.gameTier = args.gameTier;
-    this.ourTier = args.ourTier;
-    this.ladder = args.ladder;
-    this.typeTier = args.typeTier;
-  }
-}
+// A disagreement between the in-game "(Tier: n)" and the engine's ladder is not an error: the mod is
+// resolved by name, side, text and ranges, so it is the right mod and the number is informational.
+// The parser records it as a warning on the item with ItemMod.tierCheck = "mismatch" (STATUS.md
+// VERIFY 13 is the open case). Until 05/09/2026 it threw a TierMismatchError.

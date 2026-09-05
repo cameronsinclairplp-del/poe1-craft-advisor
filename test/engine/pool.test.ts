@@ -13,7 +13,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildPool, essenceForBase, findBase, poolModById } from "../../src/engine/pool.ts";
 import type { ModRecord, PoolFile, PoolInfo, PoolMod } from "../../src/engine/types.ts";
-import { ROOT, loadPoolFileByClass, loadPoolFileFor } from "../helpers/data.ts";
+import { ROOT, loadIndex, loadOtherMods, loadPoolFileByClass, loadPoolFileFor } from "../helpers/data.ts";
 
 /** Checked index (noUncheckedIndexedAccess): throws instead of returning undefined. */
 function at<T>(list: readonly T[], i: number): T {
@@ -22,7 +22,11 @@ function at<T>(list: readonly T[], i: number): T {
   return value;
 }
 
-/** Rollable mods of one (group, side) in the pool, best tier first. */
+/**
+ * Rollable mods of one (group, side) in the pool, best tier first. Ladders are keyed per (group,
+ * side, type); every group this helper is used on below holds a single type, which the test
+ * "every ladder holds a single type" pins for the four parity files.
+ */
 function ladder(poolInfo: PoolInfo, group: string, side: "prefix" | "suffix"): PoolMod[] {
   return poolInfo.pool
     .filter((p) => p.group === group && p.side === side && !p.essenceOnly)
@@ -100,7 +104,7 @@ describe("tiers are independent of item level (CLAUDE.md convention)", () => {
 
   it(`at ilvl ${ILVL} Astral Plate's best rollable life mod keeps its full-ladder tier`, () => {
     const tagSet = at(bodyArmour.tag_sets, astralPlate.tag_set);
-    const fullLadder = tagSet.tiers["IncreasedLife|prefix"] ?? [];
+    const fullLadder = tagSet.tiers["IncreasedLife|prefix|IncreasedLife"] ?? [];
     expect(fullLadder.length).toBeGreaterThan(0);
     const expectedIndex = fullLadder.find((i) => at(bodyArmour.mods, i).required_level <= ILVL);
     expect(expectedIndex).toBeDefined();
@@ -140,12 +144,15 @@ describe("Titan Greaves ilvl 86 (Boots)", () => {
   const titan = findBase(boots, "Titan Greaves");
   const titan86 = buildPool(boots, titan, 86);
 
-  it("movement speed prefix ladder: T1 is 35%, T2 is 30%", () => {
+  it("movement speed prefix ladder: T1 is 35%, T2 is 30%, six tiers down to 10% with the Royale mod gone", () => {
     const ms = ladder(titan86, "MovementVelocity", "prefix");
     expect(at(ms, 0).tier).toBe(1);
     expect(at(ms, 0).text).toBe("35% increased Movement Speed");
     expect(at(ms, 1).tier).toBe(2);
     expect(at(ms, 1).text).toBe("30% increased Movement Speed");
+    // MovementVelocity2Royale (L5, 15-25%) used to sit at T6 and push the 10% mod to T7.
+    expect(ms.map((p) => p.id)).toEqual(["MovementVelocity6", "MovementVelocity5", "MovementVelocity4", "MovementVelocity3", "MovementVelocity2", "MovementVelocity1"]);
+    expect(at(ms, 5).text).toBe("10% increased Movement Speed");
   });
 
   it("Deafening Essence of Zeal forces MovementVelocityEssence7: essence-only, 32%, value-based tier 2", () => {
@@ -230,6 +237,88 @@ describe("essenceForBase", () => {
 });
 
 // ---------------------------------------------------------------------------
+// Royale-only mods (parity stage 2). Four item-domain prefix/suffix mods carry ordinary spawn
+// weights in RePoE but only roll in the Royale event; Craft of Exile leaves them out and so does
+// build-data. With them out the pool weight totals match the numbers Cameron read off Craft of
+// Exile's Calculator (3.29 data) on 05/09/2026 for the four parity bases.
+// ---------------------------------------------------------------------------
+
+describe("Royale-only mods are excluded from the data", () => {
+  it('no mod id containing "Royale" is in any class file list or in other_mods', () => {
+    for (const cls of loadIndex().classes) {
+      const file = loadPoolFileByClass(cls.item_class);
+      for (const list of [file.mods, file.crafted_mods, file.unveiled_mods, file.influence_mods, file.veiled_mods]) {
+        for (const m of list) expect(m.id, `${cls.item_class}: ${m.id}`).not.toMatch(/Royale/);
+      }
+    }
+    for (const m of loadOtherMods().mods) expect(m.id, `other_mods: ${m.id}`).not.toMatch(/Royale/);
+  });
+
+  it("the two that used to roll on parity bases are gone from their pools", () => {
+    const boots = loadPoolFileFor("Titan Greaves");
+    expect(buildPool(boots, findBase(boots, "Titan Greaves"), 86).pool.some((p) => p.id === "MovementVelocity2Royale")).toBe(false);
+    const axes = loadPoolFileFor("Vaal Axe");
+    expect(buildPool(axes, findBase(axes, "Vaal Axe"), 86).pool.some((p) => p.id === "LocalIncreasedAttackSpeed2Royale____")).toBe(false);
+  });
+
+  // prefix / suffix weight totals over the rollable pool at ilvl 86, as Craft of Exile shows them.
+  const COE_WEIGHT_TOTALS: [base: string, prefixes: number, suffixes: number][] = [
+    ["Astral Plate", 45500, 58200],
+    ["Titan Greaves", 39000, 56600],
+    ["Vaal Axe", 49614, 61750],
+    ["Amethyst Ring", 60250, 103600],
+  ];
+  for (const [name, prefixes, suffixes] of COE_WEIGHT_TOTALS) {
+    it(`${name} ilvl 86 pool weights total ${prefixes} prefix / ${suffixes} suffix, as on Craft of Exile`, () => {
+      const file = loadPoolFileFor(name);
+      const { pool } = buildPool(file, findBase(file, name), 86);
+      const total = (side: "prefix" | "suffix"): number => pool.filter((p) => !p.essenceOnly && p.side === side).reduce((s, p) => s + p.weight, 0);
+      expect(total("prefix")).toBeCloseTo(prefixes, 6);
+      expect(total("suffix")).toBeCloseTo(suffixes, 6);
+    });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Tier ladders are keyed per (group, side, type). Families that share a group but not a stat are
+// tiered apart, as the game does; the ten parity scenarios only touch single-type groups.
+// ---------------------------------------------------------------------------
+
+describe("tier ladders are per (group, side, type)", () => {
+  it("Imperial Staff: each +4 gem-level family is T1 on its own; Stone Singer's 1, Tecton's 2, Lithomancer's 3 (in-game tiers, 05/09/2026)", () => {
+    const staves = loadPoolFileByClass("Staff");
+    const staff = buildPool(staves, findBase(staves, "Imperial Staff"), 100);
+    const group = staff.pool.filter((p) => p.group === "IncreaseSpecificSocketedGemLevel" && p.side === "prefix" && !p.essenceOnly);
+    expect(group).toHaveLength(17);
+    expect(new Set(group.map((p) => p.type)).size).toBe(6);
+    expect(poolModById(staff, "GlobalPhysicalSpellGemsLevelTwoHand3")).toMatchObject({ name: "Stone Singer's", level: 77, tier: 1 });
+    expect(poolModById(staff, "GlobalPhysicalSpellGemsLevelTwoHand2_")).toMatchObject({ name: "Tecton's", tier: 2 });
+    expect(poolModById(staff, "GlobalPhysicalSpellGemsLevelTwoHand1_")).toMatchObject({ name: "Lithomancer's", tier: 3 });
+    for (const id of ["GlobalFireSpellGemsLevelTwoHand3", "GlobalColdSpellGemsLevelTwoHand3", "GlobalLightningSpellGemsLevelTwoHand3", "GlobalChaosSpellGemsLevelTwoHand3"]) {
+      expect(poolModById(staff, id).tier, id).toBe(1);
+    }
+    // Within a type the ladder is dense from 1.
+    const physical = group.filter((p) => p.type === "GlobalIncreasePhysicalSpellSkillGemLevel").sort((a, b) => (a.tier ?? 99) - (b.tier ?? 99));
+    expect(physical.map((p) => p.tier)).toEqual([1, 2, 3]);
+  });
+
+  it("Twilight Regalia: the hybrid ES + mana prefix is T2 of its own family, not T4 of the shared BaseLocalDefencesAndLife ladder (in-game Tier 2)", () => {
+    const twilight = buildPool(bodyArmour, findBase(bodyArmour, "Twilight Regalia"), 100);
+    expect(poolModById(twilight, "LocalBaseEnergyShieldAndMana3").tier).toBe(2);
+    expect(poolModById(twilight, "LocalBaseEnergyShieldAndMana4").tier).toBe(1);
+    expect(poolModById(twilight, "LocalIncreasedEnergyShield11").tier).toBe(1);
+  });
+
+  it("essence-only value tiers compare like with like: Woe's flat Energy Shield on a pure-armour Astral Plate is T1, nothing of its type beats it", () => {
+    const woe = poolModById(astral86, essenceForBase(bodyArmour, "Deafening Essence of Woe", astralPlate));
+    expect(woe.essenceOnly).toBe(true);
+    expect(woe.type).toBe("LocalEnergyShield");
+    expect(astral86.pool.some((p) => !p.essenceOnly && p.side === "prefix" && p.type === woe.type)).toBe(false);
+    expect(woe.tier).toBe(1);
+  });
+});
+
+// ---------------------------------------------------------------------------
 // tag_sets consistency: the pre-resolved weights and tier ladders in the file must be exactly what
 // buildPool derives at runtime (build-data asserts this for every base in every class file; this re-checks four
 // files from the test side so a hand-edited or stale data file cannot slip past the suite).
@@ -238,8 +327,9 @@ describe("essenceForBase", () => {
 /** Item level at which every mod is in: no item-domain mod has required_level > 95 today. */
 const CHECK_ILVL = 100;
 
+/** Same key as scripts/build-data.ts tierKey and pool.ts buildPool. */
 function tierKey(m: ModRecord): string {
-  return `${m.groups[0] ?? m.type}|${m.side}`;
+  return `${m.groups[0] ?? m.type}|${m.side}|${m.type}`;
 }
 
 /** Mismatches between a base's tag set and buildPool at CHECK_ILVL. Empty = consistent. */
@@ -267,6 +357,8 @@ function tagSetProblems(file: PoolFile, baseIndex: number): string[] {
   const ladderTier = new Map<number, number>();
   for (const [key, indices] of Object.entries(tagSet.tiers)) {
     let previousLevel = Number.POSITIVE_INFINITY;
+    const types = new Set(indices.map((i) => at(file.mods, i).type));
+    if (types.size !== 1) problems.push(`${where}: ladder ${key} mixes types ${[...types].join(", ")}`);
     indices.forEach((i, rank) => {
       const m = at(file.mods, i);
       if (tierKey(m) !== key) problems.push(`${where}: ${m.id} sits in ladder ${key} but belongs to ${tierKey(m)}`);
@@ -284,8 +376,8 @@ function tagSetProblems(file: PoolFile, baseIndex: number): string[] {
   return problems;
 }
 
-describe(`tag_sets agree with buildPool at ilvl ${CHECK_ILVL} for every base`, () => {
-  for (const itemClass of ["Body Armour", "Boots", "Two Hand Axe", "Ring"]) {
+describe(`tag_sets agree with buildPool at ilvl ${CHECK_ILVL} for every base, and every ladder holds a single type`, () => {
+  for (const itemClass of ["Body Armour", "Boots", "Two Hand Axe", "Ring", "Staff"]) {
     it(`${itemClass}: weights, rollable set and tier per mod`, () => {
       const file = loadPoolFileByClass(itemClass);
       expect(file.item_class).toBe(itemClass);

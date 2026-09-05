@@ -1,6 +1,7 @@
 # source: https://github.com/PathOfBuildingCommunity/PathOfBuilding/pull/9972 (item 1 of 2 in that post)
 # posted: 22/07/2026. Ctrl+Alt+C text as pasted by the reporter; only trailing spaces and runs of blank lines were trimmed
 # note: unique whose explicit mods are unveiled (Chosen / of the Order); rarity only
+# expect-warning: unrecognised line
 Item Class: Warstaves
 Rarity: Unique
 Cane of Kulemak

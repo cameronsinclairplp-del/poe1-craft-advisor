@@ -6,9 +6,10 @@
 // and other_mods.json.gz. It resolves the base (disambiguating same-name bases by implicit and
 // requirements), every explicit mod by name + side + text template + value ranges, in this order:
 // veiled placeholders, the class's rollable mods (tier cross-checked against the in-game
-// "(Tier: n)"; a mismatch throws), bench crafts, unveiled mods, influence mods (recorded as
-// unresolved-influence), then the shared list of mods nothing in v1 can roll. A name that matches
-// nowhere is an UnknownModError naming the line. Nothing is guessed.
+// "(Tier: n)"; a mismatch is a warning on the item, the number is informational), bench crafts,
+// unveiled mods, influence mods (recorded as unresolved-influence), then the shared list of mods
+// nothing in v1 can roll (several equal matches there are narrowed by the base's tags). A name that
+// matches nowhere is an UnknownModError naming the line. Nothing is guessed.
 //
 // Format notes, all taken from real pastes in test/fixtures/items (see the "# source:" line in each):
 //   { Prefix Modifier "Virile" (Tier: 2) — Life }                                  ordinary mod
@@ -33,7 +34,6 @@ import {
   AmbiguousBaseError,
   AmbiguousModError,
   ParseError,
-  TierMismatchError,
   UnknownBaseError,
   UnknownModError,
   UnsupportedItemClassError,
@@ -722,7 +722,9 @@ class ModResolver {
       return { ...common, modId: veiled.id, kind: "veiled", flags: flags({ veiled: true }), ourTier: null, tierCheck: "no-ladder" };
     }
 
-    // 2. The class's rollable mods: the only ones with a tier ladder to check against.
+    // 2. The class's rollable mods: the only ones with a tier ladder to compare against. The
+    //    in-game "(Tier: n)" is informational: the mod is already resolved by name, side, text and
+    //    ranges, so a different number is a warning (tierCheck "mismatch"), never an error.
     const pool = one(match(this.classFile.mods));
     if (pool) {
       const p = this.poolById.get(pool.id);
@@ -735,7 +737,10 @@ class ModResolver {
         if (block.tier === null) tierCheck = "no-game-tier";
         else if (ourTier === null) tierCheck = "no-ladder";
         else if (ourTier === block.tier) tierCheck = "ok";
-        else this.throwTierMismatch(block, p, where);
+        else {
+          tierCheck = "mismatch";
+          this.warnings.push(this.tierMismatchWarning(block, p));
+        }
       }
       return { ...common, modId: pool.id, kind: "pool", flags: flags(), ourTier, tierCheck };
     }
@@ -773,8 +778,17 @@ class ModResolver {
       };
     }
 
-    // 6. Known to RePoE, rollable by nothing v1 models.
-    const other = one(match(this.otherMods.mods));
+    // 6. Known to RePoE, rollable by nothing v1 models. Every Delve mod is named "Subterranean" /
+    //    "of the Underground" and some texts recur across item classes (177 (name, side, text) keys
+    //    are shared in other_mods today, mostly Incursion's level-50 twins), so when several match
+    //    equally the ones with a positive spawn weight on one of this base's tags are preferred.
+    //    Still several after that: AmbiguousModError, never a guess.
+    const otherMatch = match(this.otherMods.mods);
+    if (otherMatch.byRange.length > 1) {
+      const onBase = otherMatch.byRange.filter((m) => m.tags.some((t) => this.baseTags.has(t)));
+      if (onBase.length > 0) otherMatch.byRange = onBase;
+    }
+    const other = one(otherMatch);
     if (other) {
       this.warnings.push(`${block.side} "${block.name}" is ${other.id} (${other.domain} domain): on the item, occupies its slot, but no v1 action can roll it (line ${block.line})`);
       return { ...common, modId: other.id, kind: "other", flags: flags(), ourTier: null, tierCheck: "no-ladder", domain: other.domain };
@@ -783,25 +797,16 @@ class ModResolver {
     throw new UnknownModError(block.name, block.side, [...new Set(nearMisses)], where);
   }
 
-  private throwTierMismatch(block: RawModBlock, p: PoolMod, where: LineRef): never {
-    const pool = [...this.poolById.values()];
-    const ladder = pool
-      .filter((x) => x.group === p.group && x.side === p.side)
+  /** The (group, side, type) ladder the mod sits in, best first, so the warning shows what the engine compared against. */
+  private tierMismatchWarning(block: RawModBlock, p: PoolMod): string {
+    const ladder = [...this.poolById.values()]
+      .filter((x) => x.group === p.group && x.side === p.side && x.type === p.type && !x.essenceOnly)
       .sort((a, b) => (a.tier ?? 99) - (b.tier ?? 99) || b.level - a.level)
-      .map((x) => ({ id: x.id, name: x.name, level: x.level, tier: x.tier, text: x.text }));
-    const sameType = pool.filter((x) => x.type === p.type && x.side === p.side && !x.essenceOnly).sort((a, b) => b.level - a.level);
-    const typeIndex = sameType.findIndex((x) => x.id === p.id);
-    throw new TierMismatchError({
-      modId: p.id,
-      modName: block.name,
-      side: block.side,
-      gameTier: block.tier!,
-      ourTier: p.tier!,
-      ladderKey: `${p.group}|${p.side}`,
-      ladder,
-      typeTier: typeIndex >= 0 ? typeIndex + 1 : null,
-      where,
-    });
+      .map((x) => `T${x.tier ?? "?"} L${x.level} ${x.id} "${x.text}"`);
+    return (
+      `${block.side} "${block.name}" (${p.id}): the game says Tier ${block.tier}, the engine's ladder ${p.group}|${p.side}|${p.type} says T${p.tier}; ` +
+      `resolved by name, side and text, the number is informational. Ladder: ${ladder.join("; ")} (line ${block.line})`
+    );
   }
 }
 

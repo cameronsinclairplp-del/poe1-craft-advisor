@@ -1,0 +1,46 @@
+# source: own stash, 05/09/2026
+# note: rare Twilight Regalia (3.29), copied by Cameron with Ctrl+Alt+C, verbatim. Searing Exarch (Exquisite) and Eater of Worlds (Grand) implicits; a Heist armour enchant "8% increased Explicit Defence Modifier magnitudes" (RePoE ArmourEnchantmentHeistDefenceEffect1) kept as an enchant, whose "— 8% Increased" note on the three defence prefix headers is display-only (same shape as the Simplex Amulet fixture); "Priest's" hybrid ES + mana shown as Tier 2, which only the per-type ladder gives (T4 on the shared BaseLocalDefencesAndLife ladder); "of the Order" is an unveiled mod that prints a tier (VERIFY 15); a Master Crafted hybrid attribute suffix without a Rank; the fractured suffix "of the Underground" is the Delve (fossil-only) mod DelveDexterityGemLevel1, in no class file, resolved from other_mods as kind "other" with the "no v1 action can roll it" warning; "Fractured Item" footer.
+# expect-warning: suffix "of the Underground" is DelveDexterityGemLevel1 (delve domain): on the item, occupies its slot, but no v1 action can roll it
+Item Class: Body Armours
+Rarity: Rare
+Apocalypse Coat
+Twilight Regalia
+--------
+Quality: +20% (augmented)
+Energy Shield: 1109 (augmented)
+Intangibility: 49%
+--------
+Requirements:
+Level: 84
+Str: 279 (unmet)
+Dex: 279 (unmet)
+Int: 293 (unmet)
+--------
+Sockets: W-W-B-B-W-W
+--------
+Item Level: 88
+--------
+8% increased Explicit Defence Modifier magnitudes (enchant)
+--------
+{ Searing Exarch Implicit Modifier (Exquisite) }
+Flasks gain 2 Charges every 3 seconds
+{ Eater of Worlds Implicit Modifier (Grand) — Physical, Elemental, Cold }
+11% of Physical Damage from Hits taken as Cold Damage
+--------
+{ Prefix Modifier "Unfaltering" (Tier: 1) — Defences, Energy Shield  — 8% Increased }
+109(101-110)% increased Energy Shield
+{ Prefix Modifier "Priest's" (Tier: 2) — Mana, Defences, Energy Shield  — 8% Increased }
++16(16-25) to maximum Energy Shield
++20(20-22) to maximum Mana
+{ Prefix Modifier "Resplendent" (Tier: 1) — Defences, Energy Shield  — 8% Increased }
++100(91-100) to maximum Energy Shield
+{ Fractured Suffix Modifier "of the Underground" (Tier: 1) — Attribute, Gem }
++1 to Level of Socketed Dexterity Gems
+{ Suffix Modifier "of the Order" (Tier: 1) — Elemental, Cold, Chaos, Resistance }
++19(16-20)% to Cold and Chaos Resistances
+{ Master Crafted Suffix Modifier "of Craft" — Attribute }
++24(21-25) to Strength and Intelligence
+Searing Exarch Item
+Eater of Worlds Item
+--------
+Fractured Item

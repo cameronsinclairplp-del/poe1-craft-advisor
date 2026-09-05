@@ -1,0 +1,20 @@
+# source: own stash, 05/09/2026
+# note: magic Titan Plate (3.29), copied by Cameron with Ctrl+Alt+C, verbatim. Prefix + suffix with the base name in the middle of the item name; both tiers matched the engine before and after the per-type ladder ("Vigorous" IncreasedLife10 Tier 3, "of Thick Skin" StunRecovery1 Tier 6); values print as 149(145-159).
+Item Class: Body Armours
+Rarity: Magic
+Vigorous Titan Plate of Thick Skin
+--------
+Armour: 983
+--------
+Requirements:
+Level: 73
+Str: 222 (unmet)
+--------
+Sockets: W-R-W-W-W-W
+--------
+Item Level: 85
+--------
+{ Prefix Modifier "Vigorous" (Tier: 3) — Life }
++149(145-159) to maximum Life
+{ Suffix Modifier "of Thick Skin" (Tier: 6) }
+11(11-13)% increased Stun and Block Recovery
