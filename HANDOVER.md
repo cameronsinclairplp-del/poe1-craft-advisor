@@ -6,9 +6,65 @@ Updated 05/09/2026 after Claude Code finished milestones 1 and 2 (see `STATUS.md
 
 | | |
 |---|---|
-| Done | Milestones 1–2 built and verified, nothing committed yet, no GitHub remote. |
-| Now | Part 2: one prompt that puts it on GitHub with the safety net on. |
-| Then | Part 3: one fix-up prompt. Then say **"parity numbers"** to Cowork. Then merge, tag, milestone 3. |
+| Done | Parts 1–3. Repo is on GitHub, PR #1 open (`m1-m2-foundation` → `main`, 2 commits), CI ran on it. Hooks installed on disk. |
+| Now | The walkthrough below, top to bottom. One step at a time. |
+| Then | Milestone 3 (parser) prompt from Cowork, after parity passes. |
+
+## Walkthrough from here (05/09/2026)
+
+**Step 1a — guard v2 in, identity fixed, checks 2 and 3 (current session, effort high).** The first guard test (05/09/2026) found two holes: `git switch main && git commit` slipped past because the guard only looked at the branch before the line ran, and the shell had no git identity so every commit (autosave included) failed silently. Both are fixed in `safety\`. Paste:
+
+```
+Six steps, in order, then stop.
+1. `node safety/install.mjs` — installs guard v2, autosave v2 and the updated settings.
+2. Git identity, repo-local so it does not depend on which shell runs: `gh api user --jq .id`
+   to get my GitHub id, then `git config user.name "Cameron"` and
+   `git config user.email "<id>+cameronsinclairplp-del@users.noreply.github.com"`.
+   Print `git config user.email` to confirm.
+3. `git add -A`, commit "Safety hooks v2: block switching to main, autosave reports failures,
+   protect hook files", push.
+4. `gh pr checks 1` — report each check and its conclusion.
+5. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/rulesets` — report whether
+   protect-main exists.
+6. `gh api repos/cameronsinclairplp-del/poe1-craft-advisor/pages` — report whether Pages is
+   enabled with build_type "workflow" (a 404 means not enabled: say so, do not fix it).
+```
+
+**Step 1b — prove the guard (new session).** Close that session, start a new one in the folder (hooks load at session start), `/effort high`, paste:
+
+```
+Two probes, then stop. Both must be BLOCKED by .claude/hooks/guard.mjs.
+1. `git switch main && git commit --allow-empty -m test`
+2. `git switch main`
+If either one runs instead of being blocked, stop immediately and tell me. Then `git status`
+and confirm we are on m1-m2-foundation with a clean tree.
+```
+
+Pass = both blocked, `typecheck-and-test` passing, ruleset present, Pages enabled. Anything else: paste the output to Cowork before going on.
+
+**Step 2 — parity numbers.** Say **"parity numbers"** to Cowork. It reads the ten scenarios off Craft of Exile and hands you ten `coe_p` values.
+
+**Step 3 — fill them in and test.** Same Claude Code session:
+
+```
+Fill ONLY the coe_p fields in test/parity/scenarios.json with these values, in this order,
+changing nothing else in the file: <paste the ten id: value lines Cowork gave you>.
+Run `npm test` and show me the parity summary table. Commit "Parity stage 2: Craft of Exile
+numbers" and push. Stop. Do not change any engine code even if scenarios fail.
+```
+
+**Step 4a — all ten pass:** merge and tag.
+
+```
+`gh pr merge 1 --squash --delete-branch --auto`, wait for it to merge, then `git fetch origin`,
+then `git tag -a m2-parity origin/main -m "Engine matches Craft of Exile"` and
+`git push origin --tags`. Do not switch to main (the guard blocks it; tagging origin/main
+does not need it). Report the merge commit and the tag. Stop.
+```
+
+Then ask Cowork for the milestone 3 prompt.
+
+**Step 4b — any scenario fails:** do not merge. Paste the parity table to Cowork. The suspects are `STATUS.md` VERIFY 1–4, in that order, and Cowork will write the fix prompt.
 
 ## Ultracode: when to have it on
 
@@ -22,7 +78,7 @@ Ultracode = `xhigh` effort plus Claude Code orchestrating multi-agent workflows 
 
 Two layers. Either alone is not enough.
 
-1. **On your machine (Claude Code):** `.claude/settings.json` installs two hooks; the docs confirm hooks fire the same way in the desktop app as in the terminal. `guard.mjs` runs before every shell command Claude Code issues and blocks the ones that make mistakes unrecoverable (force push, `reset --hard`, `checkout --`/`restore` on the worktree, `git clean`, `stash drop`, `branch -D`, amend, recursive `rm`, touching `.git`, deleting on GitHub) and blocks any commit or push while on `main`. `autosave.mjs` runs every time Claude Code finishes a turn on a branch: commits whatever is uncommitted as `autosave <time>` and pushes it. Both were tested against 40 commands before they went in.
+1. **On your machine (Claude Code):** `.claude/settings.json` installs two hooks; the docs confirm hooks fire the same way in the desktop app as in the terminal. `guard.mjs` runs before every shell command and every file edit Claude Code issues and blocks the ones that make mistakes unrecoverable (force push, `reset --hard`, `checkout --`/`restore` on the worktree, `git clean`, `stash drop`, `branch -D`, amend, recursive `rm`, touching `.git`, deleting on GitHub), blocks switching to `main` at all (so nothing can be committed there, even in a one-line `switch && commit`), and blocks edits to the hook files themselves. `autosave.mjs` runs every time Claude Code finishes a turn on a branch: commits whatever is uncommitted as `autosave <time>` and pushes it, and prints `AUTOSAVE FAILED` if it cannot. v2 was tested against 44 commands and file edits. Known limit: the guard fails open if its file is missing from the worktree (only on commits older than the safety-hooks commit) or if `node` is not on PATH.
 2. **On GitHub:** a ruleset on `main` (`.github/ruleset-main.json`) refuses force pushes and deletions, and only lets `main` change through a pull request whose `typecheck-and-test` CI check is green. It binds everyone, you and any GitHub Actions token included. Squash merge keeps `main` readable despite the autosave commits on branches.
 
 Net effect: everything Claude Code does is on GitHub within a turn; `main` is always a tested, known-good state; every milestone gets a tag you can return to. Not covered: your own terminal (the hooks only bind Claude Code), and a secret committed to a public repo (rotate it; history is public). There are no secrets in this project.
@@ -92,11 +148,9 @@ Then: `npm test`, `npm run typecheck`, `npm run build`, update STATUS.md (a shor
 plus the changed VERIFY items), commit with a clear message, push. Stop.
 ```
 
-## Part 4 — after that
+## Part 4 — superseded by the walkthrough at the top
 
-1. Say **"parity numbers"** to Cowork. It reads the 10 scenarios off Craft of Exile and gives you the `coe_p` values. Paste them into `test/parity/scenarios.json` (or have Claude Code do it), run `npm test`. Green means the engine is trustworthy. Red means VERIFY 1–4 in `STATUS.md`, in that order, before anything else.
-2. Merge: `gh pr merge --squash --delete-branch --auto` (merges itself once CI is green). Then `git switch main && git pull`, then tag: `git tag -a m2-parity -m "Engine matches Craft of Exile" && git push origin m2-parity`. Claude Code can run all of that; the guard allows tag pushes.
-3. Ask Cowork for the milestone 3 (parser) prompt. It gets written after parity, not before, because the parser's tier mapping depends on the answer.
+Parts 2 and 3 are done (05/09/2026). Follow "Walkthrough from here" above.
 
 ## Part 1 — done 05/09/2026
 

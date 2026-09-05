@@ -17,9 +17,9 @@ A "what do I do next" crafting advisor for Path of Exile 1 (patch 3.29, Allflame
 
 ## Git discipline (the safety net)
 
-- **Never work on main.** First thing every session: `git status`, then `git switch -c <milestone-or-task>` if you are on main. Commits and pushes on main are blocked by the guard hook; main only changes through squash-merged pull requests.
+- **Never touch main.** The guard blocks `git switch main` / `git checkout main` outright, as well as commits and pushes while on main. Start work with `git fetch origin && git switch -c <milestone-or-task> origin/main`. Tag without switching: `git tag -a <tag> origin/main -m "..."` then `git push origin --tags`. Main only changes through squash-merged pull requests.
 - **Commit after every green `npm test`**, with a message that says what changed and why. Small commits, often.
-- **Autosave is on.** A Stop hook commits anything uncommitted as `autosave <time>` and pushes the branch every time you finish a turn. It is a backstop, not a substitute for real commits. Do not disable or edit `.claude/hooks/`.
+- **Autosave is on.** A Stop hook commits anything uncommitted as `autosave <time>` and pushes the branch every time you finish a turn. It is a backstop, not a substitute for real commits. If it prints `AUTOSAVE FAILED`, fix the cause it names (usually git identity) before anything else. The guard blocks edits to `.claude/settings.json` and `.claude/hooks/`; changing them is Cameron's call.
 - **Never rewrite pushed history or discard work.** No force push, no amend, no `reset --hard`, no `checkout --`/`restore` on the worktree, no `git clean`, no `stash drop`, no `branch -D`, no recursive `rm`. `.claude/hooks/guard.mjs` blocks these. If it blocks you, do the safe thing it suggests (stash, new commit, new branch, `git rm` + commit). Do not look for a way around it.
 - **Hand-back = pull request.** When a milestone is done: update `STATUS.md`, commit, push, `gh pr create --fill --base main`, and stop. Cameron merges. CI (`typecheck-and-test`) must be green; it is a required check.
 - **Tag merged milestones** (Cameron does this): annotated tags like `m2-parity`, `m3-parser`. They are the known-good points to return to.
