@@ -1,0 +1,124 @@
+{
+  "_readme": [
+    "Parity scenarios: our engine vs Craft of Exile's Calculator (craftofexile.com, PoE1, patch 3.29).",
+    "poc_p = per-attempt success probability from poc/engine.mjs (see poc/results.json for the run that produced it).",
+    "coe_p = the same number read off Craft of Exile. null until filled in. Milestone 2 passes when |poc_p - coe_p| / coe_p <= 0.05 for every scenario.",
+    "Tiers are 1 = best, counted over the mods that can roll on that base at that ilvl. Essence-forced mods get a value-based tier (see engine.mjs buildPool).",
+    "Groups are RePoE mod group ids. Sides: prefix | suffix. A kOf pick means any k of the options.",
+    "All scenarios start from a fresh base of the stated ilvl, no influence, no fractured/crafted mods."
+  ],
+  "league": "Allflame",
+  "scenarios": [
+    {
+      "id": "astral-chaos-life2-fire2",
+      "base": "Astral Plate", "ilvl": 86,
+      "method": { "kind": "chaos" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 },
+        { "group": "FireResistance", "side": "suffix", "minTier": 2 }
+      ],
+      "coe_setup": "Astral Plate ilvl 86, Chaos Orb. Target: maximum Life T1 or T2 (+160 or better) AND Fire Resistance T1 or T2 (+42% or better).",
+      "coe_p": null
+    },
+    {
+      "id": "astral-alch-life2-fire2",
+      "base": "Astral Plate", "ilvl": 86,
+      "method": { "kind": "alch" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 },
+        { "group": "FireResistance", "side": "suffix", "minTier": 2 }
+      ],
+      "coe_setup": "Same as above with Orb of Alchemy. Sanity check: p must equal the chaos scenario.",
+      "coe_p": null
+    },
+    {
+      "id": "astral-greed-life2-fire2",
+      "base": "Astral Plate", "ilvl": 86,
+      "method": { "kind": "essence", "essence": "Deafening Essence of Greed" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 },
+        { "group": "FireResistance", "side": "suffix", "minTier": 2 }
+      ],
+      "coe_setup": "Astral Plate ilvl 86, Deafening Essence of Greed (forces +160-174 Life). Target: Fire Resistance T1 or T2.",
+      "coe_p": null
+    },
+    {
+      "id": "astral-anger-life2-fire2",
+      "base": "Astral Plate", "ilvl": 86,
+      "method": { "kind": "essence", "essence": "Deafening Essence of Anger" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 },
+        { "group": "FireResistance", "side": "suffix", "minTier": 2 }
+      ],
+      "coe_setup": "Astral Plate ilvl 86, Deafening Essence of Anger (forces +46-48% Fire Res). Target: maximum Life T1 or T2.",
+      "coe_p": null
+    },
+    {
+      "id": "astral-chaos-life1",
+      "base": "Astral Plate", "ilvl": 86,
+      "method": { "kind": "chaos" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 1 }
+      ],
+      "coe_setup": "Astral Plate ilvl 86, Chaos Orb. Target: maximum Life T1 (+175-189) only.",
+      "coe_p": null
+    },
+    {
+      "id": "titan-chaos-ms2-life2",
+      "base": "Titan Greaves", "ilvl": 86,
+      "method": { "kind": "chaos" },
+      "target": [
+        { "group": "MovementVelocity", "side": "prefix", "minTier": 2 },
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 }
+      ],
+      "coe_setup": "Titan Greaves ilvl 86, Chaos Orb. Target: Movement Speed T1 or T2 (30% or 35%) AND maximum Life T1 or T2.",
+      "coe_p": null
+    },
+    {
+      "id": "titan-zeal-life2",
+      "base": "Titan Greaves", "ilvl": 86,
+      "method": { "kind": "essence", "essence": "Deafening Essence of Zeal" },
+      "target": [
+        { "group": "IncreasedLife", "side": "prefix", "minTier": 2 }
+      ],
+      "coe_setup": "Titan Greaves ilvl 86, Deafening Essence of Zeal (forces 32% Movement Speed, a prefix). Target: maximum Life T1 or T2.",
+      "coe_p": null
+    },
+    {
+      "id": "vaal-axe-chaos-phys2",
+      "base": "Vaal Axe", "ilvl": 86,
+      "method": { "kind": "chaos" },
+      "sims": 2000000,
+      "target": [
+        { "group": "LocalPhysicalDamagePercent", "side": "prefix", "minTier": 2 }
+      ],
+      "coe_setup": "Vaal Axe ilvl 86, Chaos Orb. Target: increased Physical Damage (pure, not the hybrid with accuracy) T1 or T2. Low p: 2M rolls.",
+      "coe_p": null
+    },
+    {
+      "id": "vaal-axe-zeal-phys2",
+      "base": "Vaal Axe", "ilvl": 86,
+      "method": { "kind": "essence", "essence": "Deafening Essence of Zeal" },
+      "sims": 2000000,
+      "target": [
+        { "group": "LocalPhysicalDamagePercent", "side": "prefix", "minTier": 2 }
+      ],
+      "coe_setup": "Vaal Axe ilvl 86, Deafening Essence of Zeal (forces 28-30% Attack Speed, a suffix). Target: increased Physical Damage (pure) T1 or T2. Low p: 2M rolls.",
+      "coe_p": null
+    },
+    {
+      "id": "amethyst-chaos-2of3res2",
+      "base": "Amethyst Ring", "ilvl": 86,
+      "method": { "kind": "chaos" },
+      "target": [
+        { "kOf": 2, "options": [
+          { "group": "FireResistance", "side": "suffix", "minTier": 2 },
+          { "group": "ColdResistance", "side": "suffix", "minTier": 2 },
+          { "group": "LightningResistance", "side": "suffix", "minTier": 2 }
+        ] }
+      ],
+      "coe_setup": "Amethyst Ring ilvl 86, Chaos Orb. Target: any two of Fire/Cold/Lightning Resistance at T1 or T2. Use CoE's 'any N of' target group if available, otherwise sum the three pair cases (minus the triple counted twice).",
+      "coe_p": null
+    }
+  ]
+}

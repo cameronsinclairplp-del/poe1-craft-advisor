@@ -1,0 +1,126 @@
+{
+  "generated": "2026-09-05T01:37:57.346Z",
+  "league": "Allflame",
+  "sims": 200000,
+  "divine_chaos": 452.3,
+  "results": [
+    {
+      "id": "astral-chaos-life2-fire2",
+      "poc_p": 0.00628,
+      "ci95_abs": 0.000346,
+      "hits": 1256,
+      "sims": 200000,
+      "exp_attempts": 159.2,
+      "cost_per_attempt_c": 1,
+      "exp_cost_c": 159.2,
+      "forced": []
+    },
+    {
+      "id": "astral-alch-life2-fire2",
+      "poc_p": 0.00628,
+      "ci95_abs": 0.000346,
+      "hits": 1256,
+      "sims": 200000,
+      "exp_attempts": 159.2,
+      "cost_per_attempt_c": 1.009,
+      "exp_cost_c": 160.6,
+      "forced": []
+    },
+    {
+      "id": "astral-greed-life2-fire2",
+      "poc_p": 0.0756,
+      "ci95_abs": 0.001159,
+      "hits": 15120,
+      "sims": 200000,
+      "exp_attempts": 13.2,
+      "cost_per_attempt_c": 4.53,
+      "exp_cost_c": 59.9,
+      "forced": [
+        "+(160-174) to maximum Life (T2)"
+      ]
+    },
+    {
+      "id": "astral-anger-life2-fire2",
+      "poc_p": 0.073815,
+      "ci95_abs": 0.001146,
+      "hits": 14763,
+      "sims": 200000,
+      "exp_attempts": 13.5,
+      "cost_per_attempt_c": 4.97,
+      "exp_cost_c": 67.3,
+      "forced": [
+        "+(46-48)% to Fire Resistance (T1)"
+      ]
+    },
+    {
+      "id": "astral-chaos-life1",
+      "poc_p": 0.0406,
+      "ci95_abs": 0.000865,
+      "hits": 8120,
+      "sims": 200000,
+      "exp_attempts": 24.6,
+      "cost_per_attempt_c": 1,
+      "exp_cost_c": 24.6,
+      "forced": []
+    },
+    {
+      "id": "titan-chaos-ms2-life2",
+      "poc_p": 0.007125,
+      "ci95_abs": 0.000369,
+      "hits": 1425,
+      "sims": 200000,
+      "exp_attempts": 140.4,
+      "cost_per_attempt_c": 1,
+      "exp_cost_c": 140.4,
+      "forced": []
+    },
+    {
+      "id": "titan-zeal-life2",
+      "poc_p": 0.07382,
+      "ci95_abs": 0.001146,
+      "hits": 14764,
+      "sims": 200000,
+      "exp_attempts": 13.5,
+      "cost_per_attempt_c": 12.78,
+      "exp_cost_c": 173.1,
+      "forced": [
+        "32% increased Movement Speed (T2)"
+      ]
+    },
+    {
+      "id": "vaal-axe-chaos-phys2",
+      "poc_p": 0.003308,
+      "ci95_abs": 0.00008,
+      "hits": 6615,
+      "sims": 2000000,
+      "exp_attempts": 302.3,
+      "cost_per_attempt_c": 1,
+      "exp_cost_c": 302.3,
+      "forced": []
+    },
+    {
+      "id": "vaal-axe-zeal-phys2",
+      "poc_p": 0.002951,
+      "ci95_abs": 0.000075,
+      "hits": 5902,
+      "sims": 2000000,
+      "exp_attempts": 338.9,
+      "cost_per_attempt_c": 12.78,
+      "exp_cost_c": 4330.7,
+      "forced": [
+        "(28-30)% increased Attack Speed (T1)"
+      ]
+    },
+    {
+      "id": "amethyst-chaos-2of3res2",
+      "poc_p": 0.00521,
+      "ci95_abs": 0.000316,
+      "hits": 1042,
+      "sims": 200000,
+      "exp_attempts": 191.9,
+      "cost_per_attempt_c": 1,
+      "exp_cost_c": 191.9,
+      "forced": []
+    }
+  ]
+}
