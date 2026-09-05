@@ -1,53 +1,103 @@
-# Handover to Claude Code
+# Handover — the one place to look
 
-Written 05/09/2026. This folder is ready to open in Claude Code. Nothing has been scaffolded yet on purpose; Claude Code does that as milestone 1.
+Updated 05/09/2026 after Claude Code finished milestones 1 and 2 (see `STATUS.md`). Written for Claude Code inside the Claude desktop app (Fable 5.1). You paste prompts; it runs the commands.
 
-## What is in the folder
+## Where things are
 
-| File | What it is |
+| | |
 |---|---|
-| `BRIEF.md` | The spec. Method, data sources, scope, architecture, milestones, risks, VERIFY list. |
-| `CLAUDE.md` | Standing instructions Claude Code reads automatically every session. |
-| `poc/engine.mjs` | Working proof of concept (Node, no dependencies). Downloads game data + prices, rolls items, prints odds and cost. |
-| `poc/results.json` | The POC's numbers for the 10 parity scenarios (run 05/09/2026, Allflame prices). |
-| `poc/README.md` | How to run the POC. |
-| `test/parity/scenarios.json` | The 10 parity scenarios. `coe_p` is blank until we read the numbers off Craft of Exile. |
-| `.gitignore` | node_modules, dist, poc/cache. |
+| Done | Milestones 1–2 built and verified, nothing committed yet, no GitHub remote. |
+| Now | Part 2: one prompt that puts it on GitHub with the safety net on. |
+| Then | Part 3: one fix-up prompt. Then say **"parity numbers"** to Cowork. Then merge, tag, milestone 3. |
 
-## Steps
+## Ultracode: when to have it on
 
-1. Open a terminal in `C:\Projects\poe1-craft-advisor`.
-2. `git init` then `git add -A` and `git commit -m "Brief, POC and parity scenarios"`. (Skip if you prefer Claude Code to do it.)
-3. Run `claude` in that folder.
-4. Paste the prompt below as the first message.
-5. When it hands back with `STATUS.md` written, come back to Cowork and say **"parity numbers"**. I will read the 10 scenarios off Craft of Exile and give you the `coe_p` values to paste into `test/parity/scenarios.json`.
+Ultracode = `xhigh` effort plus Claude Code orchestrating multi-agent workflows for every substantive task. That is what spawned the eight reviewer agents and turned milestones 1–2 into an hours-long run. `CLAUDE.md` cannot switch it off; only you can, per session.
 
-## First prompt for Claude Code
+- **Off** for Part 2, Part 3 and milestone 3 (parser). Mechanical work; one pass is enough. In the session, type `/effort high` before pasting the prompt (or move the effort slider in the model picker to `high`).
+- **On** for milestones 4 and 5 (actions + abstract state, solver). Adversarial verification earns its cost there.
+- If a session still spawns workflows after `/effort high`, ultracode is set persistently: open `%USERPROFILE%\.claude\settings.json` and remove `"ultracode": true`, then turn it on per session from the model picker when you want it.
+
+## What the safety net is
+
+Two layers. Either alone is not enough.
+
+1. **On your machine (Claude Code):** `.claude/settings.json` installs two hooks; the docs confirm hooks fire the same way in the desktop app as in the terminal. `guard.mjs` runs before every shell command Claude Code issues and blocks the ones that make mistakes unrecoverable (force push, `reset --hard`, `checkout --`/`restore` on the worktree, `git clean`, `stash drop`, `branch -D`, amend, recursive `rm`, touching `.git`, deleting on GitHub) and blocks any commit or push while on `main`. `autosave.mjs` runs every time Claude Code finishes a turn on a branch: commits whatever is uncommitted as `autosave <time>` and pushes it. Both were tested against 40 commands before they went in.
+2. **On GitHub:** a ruleset on `main` (`.github/ruleset-main.json`) refuses force pushes and deletions, and only lets `main` change through a pull request whose `typecheck-and-test` CI check is green. It binds everyone, you and any GitHub Actions token included. Squash merge keeps `main` readable despite the autosave commits on branches.
+
+Net effect: everything Claude Code does is on GitHub within a turn; `main` is always a tested, known-good state; every milestone gets a tag you can return to. Not covered: your own terminal (the hooks only bind Claude Code), and a secret committed to a public repo (rotate it; history is public). There are no secrets in this project.
+
+## Part 2 — GitHub setup (paste into Claude Code, effort high)
+
+The device-code step needs you: Claude Code will print a code, you type it at github.com/login/device. Everything else is hands-off.
 
 ```
-Read CLAUDE.md, then BRIEF.md in full. We are building milestones 1 and 2 of BRIEF.md §7 only.
+Read CLAUDE.md. Do exactly these steps in order, report each result, and stop after step 10.
+Ask me before doing anything not listed here.
 
-1. Scaffold the repo layout in BRIEF.md §6: Vite + TypeScript (strict) + Preact + Vitest, tsx for
-   scripts, a GitHub Pages deploy workflow. package.json scripts as listed in CLAUDE.md.
-2. Write scripts/build-data.ts: download the RePoE fork files listed in BRIEF.md §4, build
-   per-item-class pool files (mods with id, name, text, side, group, type, required_level,
-   spawn/generation weights by tag, adds_tags, stats min/max, essence-only flag; tiers per base
-   tag-set; essences; bench options; fossils). Gzip to public/data/. Print the Astral Plate ilvl 86
-   check from §7.1 (109 rollable mods; life T1 175-189 at L86, T2 160-174 at L81; fire res T1
-   46-48% at L84) and fail if it does not match.
-3. Write scripts/snapshot-prices.ts for the documented poe.ninja endpoints in CLAUDE.md, writing
-   public/prices/Allflame.json with chaos-per-unit for Currency, Essence, Fossil, Resonator plus
-   BaseType prices, with a timestamp. Descriptive User-Agent.
-4. Port poc/engine.mjs to src/engine/pool.ts and src/engine/roll.ts with identical behaviour and
-   a seedable RNG. Keep every // VERIFY comment.
-5. Write the parity test around test/parity/scenarios.json (do not change the scenarios).
-   Stage 1: the TS engine reproduces poc/results.json poc_p within 2x the stated 95% CI.
-   Stage 2: when coe_p is filled in, match within 5% relative; until then report PENDING.
-6. Write STATUS.md: what passed with the numbers, every VERIFY item you hit, what is next.
-
-Do not start the solver or the UI. Stop after STATUS.md and wait for review.
+1. Run `node safety/install.mjs`. It moves the hooks, CI workflow and ruleset file into
+   .claude/ and .github/ and removes safety/. Confirm the five files exist.
+2. `git branch -M main`, then `git switch -c m1-m2-foundation`, then `git add -A`, then
+   commit with message "Milestones 1-2: scaffold, data build, price snapshot, engine port,
+   parity test, safety hooks, CI".
+3. Check `gh --version`. If gh is missing, install it:
+   `winget install --id GitHub.cli --source winget --accept-source-agreements --accept-package-agreements`
+   then use the full path "C:\Program Files\GitHub CLI\gh.exe" for every gh command in this
+   session (PATH only updates for new processes).
+4. `gh auth status`. If not logged in, run
+   `gh auth login --hostname github.com --git-protocol https --web --skip-ssh-key --scopes workflow`
+   with a 10-minute timeout. It prints a one-time code and https://github.com/login/device.
+   Tell me the code straight away and keep the command running while I enter it in my browser.
+   When it finishes: `gh auth setup-git --hostname github.com`, then `gh auth status`.
+5. `gh repo create poe1-craft-advisor --public --source=. --remote=origin` (no --push).
+6. `git push -u origin main` FIRST so main becomes the default branch, then
+   `git push -u origin m1-m2-foundation`.
+7. `gh repo edit --enable-squash-merge --enable-merge-commit=false --enable-rebase-merge=false --delete-branch-on-merge --enable-auto-merge`
+8. `gh api -X POST repos/cameronsinclairplp-del/poe1-craft-advisor/rulesets --input .github/ruleset-main.json`
+9. `gh api -X POST repos/cameronsinclairplp-del/poe1-craft-advisor/pages -f build_type=workflow`
+   (a 409 means Pages already exists: retry with -X PUT).
+10. `gh pr create --fill --base main`. Print the PR URL. Do not merge. Stop.
 ```
 
-## After milestone 2
+Notes:
+- `--scopes workflow` matters: without it GitHub refuses pushes that contain `.github/workflows`.
+- Public because GitHub Pages on a free account needs it (same as `la-trade-links`). Site: `https://cameronsinclairplp-del.github.io/poe1-craft-advisor/` once `main` has the app.
+- If step 8 or 9 errors, do it in the browser: Settings → Rules → Rulesets → New branch ruleset (import `.github/ruleset-main.json`); Settings → Pages → Source: GitHub Actions.
+- After this, start a new Claude Code session so the hooks are definitely loaded. Quick test: ask it to run `git switch main && git commit --allow-empty -m test`. The guard must block it.
 
-Milestones 3 to 6 (parser, actions + abstract state, solver, UI) each get their own prompt after review. Do not let Claude Code run ahead into the solver; it will want to.
+## Part 3 — fix-up prompt for Claude Code (new session, effort high)
+
+```
+Read CLAUDE.md, STATUS.md, then BRIEF.md. You are on branch m1-m2-foundation with an open PR.
+Three changes, then update STATUS.md, commit, push. Do not start milestone 3.
+
+1. Prices: stop committing snapshots from CI. Delete .github/workflows/snapshot-prices.yml. In
+   deploy.yml add a schedule trigger (cron "17 */6 * * *") and run
+   `npm run snapshot-prices -- --league Allflame --force` as a build step before `npm run build`,
+   with the ETag cache step kept, so every deploy (push, cron, manual) ships fresh prices without a
+   commit. Remove the workflow_run trigger and its comment. public/prices/Allflame.json stays in
+   git as the dev/offline fallback. Reason: the main branch ruleset blocks pushes from GITHUB_TOKEN,
+   and four bot commits a day add nothing; poe.ninja already keeps price history.
+
+2. Tiers: make tier numbers independent of item level, as CLAUDE.md Conventions now says. Rank
+   each (group, side) ladder over every mod that can roll on the base's tag set at any level
+   (build the ladder at ilvl 100); the pool at a given ilvl is the subset that can roll. This is
+   what the in-game "(Tier: n)" and Craft of Exile show, and the milestone 3 parser depends on
+   it. Re-run the full test suite. If any parity hit count changes, report which scenario and
+   which mod above ilvl 86 caused it. Update STATUS.md VERIFY 8 accordingly.
+
+3. index.json: drop Royale bases (tag not_for_sale). Leave everything else as is.
+
+Then: `npm test`, `npm run typecheck`, `npm run build`, update STATUS.md (a short "fix-up" section
+plus the changed VERIFY items), commit with a clear message, push. Stop.
+```
+
+## Part 4 — after that
+
+1. Say **"parity numbers"** to Cowork. It reads the 10 scenarios off Craft of Exile and gives you the `coe_p` values. Paste them into `test/parity/scenarios.json` (or have Claude Code do it), run `npm test`. Green means the engine is trustworthy. Red means VERIFY 1–4 in `STATUS.md`, in that order, before anything else.
+2. Merge: `gh pr merge --squash --delete-branch --auto` (merges itself once CI is green). Then `git switch main && git pull`, then tag: `git tag -a m2-parity -m "Engine matches Craft of Exile" && git push origin m2-parity`. Claude Code can run all of that; the guard allows tag pushes.
+3. Ask Cowork for the milestone 3 (parser) prompt. It gets written after parity, not before, because the parser's tier mapping depends on the answer.
+
+## Part 1 — done 05/09/2026
+
+Folder created, brief and POC written, Claude Code built milestones 1–2 (`STATUS.md`).
